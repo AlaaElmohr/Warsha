@@ -20,7 +20,7 @@ var contractRoutes = require('./routes/contract');
 var sendEmailRoutes = require('./routes/sendEmail');
 
 var app = express();
-mongoose.connect('mongodb://localhost:27017/Graduation-Project');
+mongoose.connect('mongodb://test-user:alaa1234@ds263740.mlab.com:63740/warsha');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
