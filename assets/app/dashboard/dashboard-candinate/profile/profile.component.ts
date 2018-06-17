@@ -22,7 +22,9 @@ export class ProfileComponent implements OnInit{
   FromToDate: string[] = [];
   languages = [];
   url;
+  category;
   imageName;
+  workTo;workFrom;educationTo;educationFrom;
 //  categories= [];
   profile:ProfileUser;
   editMode=false;
@@ -68,6 +70,16 @@ export class ProfileComponent implements OnInit{
                for(let languages of data.languages){
                   this.languages.push(languages);
                }
+               for(let category of this.categories ){
+                 if(category.viewValue === data.categories){
+                   this.category=category.value;
+                 }
+               }
+               this.educationFrom=new Date(data.educationFrom);
+               this.educationTo=new Date(data.educationTo);
+               this.workFrom=new Date(data.workFrom);
+               this.workTo=new Date(data.workTo);
+
                this.url="/assets/uploads/"+data.userImage;
                this.imageName=data.userImage;
              },

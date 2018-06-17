@@ -20,6 +20,9 @@ export class PostJobComponent implements OnInit {
    separatorKeysCodes = [ENTER, COMMA];
    deadline;
    id;
+   category;
+   deadLine;
+   jobType;
    jobTypes = [
     {value: '0', viewValue: 'Full Time'},
     {value: '1', viewValue: 'Part Time'},
@@ -101,7 +104,24 @@ export class PostJobComponent implements OnInit {
            this.editMode=true;
            this.jobService.getPostById(this.id).subscribe(
 
-                   data => {this.post=data;console.log(data);},
+                   data => {
+                     this.post=data;
+
+                     for(let category of this.categories ){
+                       if(category.viewValue === data.categories){
+                         this.category=category.value;
+                       }
+                     }
+                     for(let jobType of this.jobTypes ){
+                       if(jobType.viewValue === data.jobType){
+                         this.jobType=jobType.value;
+                       }
+                     }
+                     this.deadLine=new Date(data.deadline);
+                     for(let skill of data.skills){
+                        this.skills.push(skill);
+                     }
+                   },
                   error => console.error(error)
                );
           }

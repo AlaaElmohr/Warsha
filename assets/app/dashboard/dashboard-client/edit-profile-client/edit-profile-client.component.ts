@@ -77,8 +77,7 @@ export class EditProfileClientComponent implements OnInit {
                 error => console.error(error)
              );
         }
-    //    this.router.navigate(['Employer/Profile']);
-
+        this.router.navigate(['Employer/Profile',app.appId]);
 }
 
 }

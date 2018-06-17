@@ -109,7 +109,7 @@ const appRoutes: Routes = [
   {path:'JobsList/:title/:city',component :JobListComponent,canActivate: [AuthGuard]},
   {path:'JobsPost/:id',component :JobPostComponent,canActivate: [AuthGuard]},
   {path:'ApplyJob/:id',component :ApplyJobComponent,canActivate: [AuthGuard,UserAuthGuard]},
-  {path:'EmployerProfile',component :EmployerProfileComponent,canActivate: [AuthGuard]},
+  {path:'Employer/Profile',component :EmployerProfileComponent,canActivate: [AuthGuard]},
   {path:'EmployerList',component :EmployerListComponent,canActivate: [AuthGuard]},
   {path:'AboutUs',component :AboutUsComponent},
   {path:'ContactUs',component :ContactUsComponent},

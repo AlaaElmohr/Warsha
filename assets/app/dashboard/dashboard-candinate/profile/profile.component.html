@@ -61,14 +61,13 @@
             </div>
             <label for="exampleInputEmail1">Categories</label>
             <div class="input-group">
-              <mat-form-field placeholder="Categories">
-                <mat-select  ngModel name="categories">
-                  <mat-option *ngFor="let category of categories" [value]="category.value">
+              <mat-form-field placeholder="Categories"  >
+                <mat-select  ngModel name="categories"  [(value)]="category">
+                  <mat-option *ngFor="let category of categories" [value]="category.value" >
                     {{ category.viewValue }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-
             </div>
 
             <label for="exampleInputEmail1">Cover Letter</label>
@@ -87,7 +86,7 @@
                 <div class="col-md-6">
                   <label for="exampleInputEmail1">From Date</label>
                   <mat-form-field>
-                  <input matInput [matDatepicker]="picker"  (dateChange)="addEvent(0,$event)"  >
+                  <input matInput [matDatepicker]="picker"  (dateChange)="addEvent(0,$event)"  [value]="educationFrom">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -95,7 +94,7 @@
                 <div class="col-md-6">
                   <label for="exampleInputEmail1">To Date</label>
                   <mat-form-field>
-                  <input matInput [matDatepicker]="picker1"  (dateChange)="addEvent(1,$event)" >
+                  <input matInput [matDatepicker]="picker1"  (dateChange)="addEvent(1,$event)"   [value]="educationTo">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
                 </mat-form-field>
@@ -124,7 +123,7 @@
                 <div class="col-md-6">
                   <label for="exampleInputEmail1">From Date</label>
                   <mat-form-field>
-                  <input matInput [matDatepicker]="picker3"   (dateChange)="addEvent(2,$event)" >
+                  <input matInput [matDatepicker]="picker3"   (dateChange)="addEvent(2,$event)" [value]="workFrom">
                   <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                   <mat-datepicker #picker3></mat-datepicker>
                 </mat-form-field>
@@ -132,7 +131,7 @@
                 <div class="col-md-6">
                   <label for="exampleInputEmail1">To Date</label>
                   <mat-form-field>
-                  <input matInput [matDatepicker]="picker4"  (dateChange)="addEvent(3,$event)" >
+                  <input matInput [matDatepicker]="picker4"  (dateChange)="addEvent(3,$event)"  [value]="workTo">
                   <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
                   <mat-datepicker #picker4></mat-datepicker>
                 </mat-form-field>

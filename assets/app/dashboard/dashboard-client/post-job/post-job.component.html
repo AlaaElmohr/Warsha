@@ -48,7 +48,7 @@
                  <label for="exampleInputEmail1">Job Type</label>
                  <div class="input-group mb-3">
                    <mat-form-field placeholder="Job Type">
-                     <mat-select  ngModel name="jobType">
+                     <mat-select  ngModel name="jobType" [(value)]="jobType">
                        <mat-option *ngFor="let jobType of jobTypes" [value]="jobType.value">
                          {{ jobType.viewValue }}
                        </mat-option>
@@ -60,7 +60,7 @@
                    <label for="exampleInputEmail1">Category</label>
                    <div class="input-group mb-3">
                      <mat-form-field placeholder="Categories">
-                       <mat-select  ngModel name="categories">
+                       <mat-select  ngModel name="categories" [(value)]="category">
                          <mat-option *ngFor="let category of categories" [value]="category.value">
                            {{ category.viewValue }}
                          </mat-option>
@@ -106,7 +106,7 @@
                    <label for="exampleInputEmail1">Application Deadline Date</label>
                    <div class="input-group mb-3">
                      <mat-form-field>
-                     <input matInput [matDatepicker]="picker"  (dateChange)="addEvent($event)" >
+                     <input matInput [matDatepicker]="picker"  (dateChange)="addEvent($event)" [value]="deadLine">
                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                      <mat-datepicker #picker></mat-datepicker>
                    </mat-form-field>

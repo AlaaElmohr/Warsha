@@ -1,4 +1,10 @@
 @import '../../assets/sass/variables';
+section{
+  padding-bottom: 0px;
+}
+.p-t-40{
+  margin-top: 40px
+}
 .content{
   margin-top: 40px;
   .categories{
@@ -11,6 +17,7 @@
       @include font($Quicksand,$black,30px);
       font-weight: bold;
      }
+
      .b-p{
        border-bottom: 1px solid $borderGrey;
      }
