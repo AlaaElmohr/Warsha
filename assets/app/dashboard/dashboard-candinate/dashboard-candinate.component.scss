@@ -1,0 +1,10 @@
+@import '../../../assets/sass/variables';
+section{
+  padding-bottom: 40px;
+}
+.dashboard{
+  padding-bottom: 50px;
+  .sidebar{
+      border-right:1px solid $lightGrey;
+  }
+}

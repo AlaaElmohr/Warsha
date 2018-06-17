@@ -1,0 +1,119 @@
+<div class="cover-container  text-center">
+  <div class="overlay-header">
+    <div class="sticky-header ">
+     <header class="masthead mb-auto">
+        <div class="inner inner-menu">
+          <div class="logo">
+            <img src="/../../assets/images/logo.png">
+          </div>
+          <div class="navbar-mobile">
+            <button  mat-raised-button color="accent" (click)="showNavbar=!showNavbar">
+              <mat-icon>sort</mat-icon>Menu
+            </button>
+            <div *ngIf="showNavbar">
+              <app-navber-mobile></app-navber-mobile>
+            </div>
+          </div>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Home</a>
+            <a class="nav-link" routerLink="/Blog" routerLinkActive="active" *ngIf="typeUser()==='user'">Blog</a>
+            <div class="dropdown " ngbDropdown>
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+              Pages
+              </a>
+               <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                  <li class="dropdown-item"><a routerLink="/AboutUs" routerLinkActive="active">About Us</a></li>
+                   <li class="dropdown-item"> <a routerLink="/ContactUs" routerLinkActive="active">Contact</a></li>
+                   <li class="dropdown-item"> <a routerLink="/FAQ" routerLinkActive="active">FAQ</a></li>
+                   <li class="dropdown-item"> <a routerLink="/TermAndCondition" routerLinkActive="active">Terms And Conditions</a></li>
+                  <li class="dropdown-item"> <a routerLink="/HowItWorks" routerLinkActive="active">How It Works</a></li>
+              </ul>
+           </div>
+           <a class="nav-link" routerLink="/Employer/Profile" routerLinkActive="active" *ngIf="typeUser()==='client'">My Profile</a>
+
+            <div class="dropdown " ngbDropdown *ngIf="typeUser()==='client'">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+               Dashboard
+              </a>
+                       <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                               <li class="dropdown-item"><a tabindex="-1" routerLink="/DashboardClient/MyProfile">Edit Profile</a></li>
+                               <li class="dropdown-item"><a routerLink="/DashboardClient/PostJob">Post New Job</a></li>
+                               <li class="dropdown-item"><a routerLink="/DashboardClient/ManageJobs">Manage Jobs</a></li>
+                               <li class="dropdown-item"><a routerLink="/DashboardClient/ActivatedContract">Contracts</a></li>
+                               <li class="dropdown-item"><a routerLink="/DashboardClient/ChangePassword">Change Password</a></li>
+                         </ul>
+           </div>
+           <a class="nav-link" routerLink="/CandinateList" routerLinkActive="active" *ngIf="typeUser()==='client'">Users List</a>
+           <a class="nav-link" routerLink="/Candinate/Profile" routerLinkActive="active" *ngIf="typeUser()==='user'">My Profile</a>
+           <div class="dropdown " ngbDropdown *ngIf="typeUser()==='user'">
+             <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+               Dashboard
+             </a>
+                      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                              <li class="dropdown-item"><a tabindex="-1" routerLink="/DashboardUser/MyProfile">Edit Profile</a></li>
+                              <li class="dropdown-item"><a routerLink="/DashboardUser/AppliedJobs">Applied Jobs</a></li>
+                              <li class="dropdown-item"><a routerLink="/DashboardUser/ShortlistedJobs">Shortlisted Jobs</a></li>
+                              <li class="dropdown-item"><a routerLink="/DashboardUser/Proposals">Proposals</a></li>
+                              <li class="dropdown-item"><a routerLink="/DashboardUser/ChangePassword">Change Password</a></li>
+
+                        </ul>
+          </div>
+         <a class="nav-link" routerLink="/JobsList" routerLinkActive="active" >Jobs List</a>
+            <a class="nav-link space"  routerLink="/Blog/createPost" *ngIf="typeUser()==='user'"><button class="btn btn-primary btn-rounded">make a Post </button></a>
+            <a class="nav-link space"  routerLink="/DashboardClient/PostJob" *ngIf="typeUser()==='client'"><button class="btn btn-primary btn-rounded">+ Post A Job</button></a>
+            <a class="nav-link"  routerLink="/Login" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/login.png">Login</a>
+            <a class="nav-link"  routerLink="/SignUp" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/sign.png">Sign Up</a>
+            <a class="dropdown user-info"  ngbDropdown *ngIf="userName" >
+              <img [src]="userImage" class="img-circle" *ngIf="userImage"/>
+              <span >{{userName}}</span>
+              <a class="nav-link dropdown-toggle"  ngbDropdownToggle role="button" data-toggle="dropdown"  >
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                <button class="dropdown-item" type="button" (click)="logOut()">Log Out</button>
+              </div>
+            </a>
+          </nav>
+        </div>
+      </header>
+  </div>
+      <main role="main" class="inner cover">
+        <div *ngIf="text==='' ">
+          <p>The Easiest Way to Get Your New Job</p>
+          <span>Find Jobs, Employment & Career Opportunities</span>
+          <div class="container search">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div class="row">
+                <div class="col-md-4 offset-md-2">
+                  <div class="input-group mb-3">
+                   <input type="text" class="form-control" ngModel name="title" placeholder="Job title, keywords or company name" >
+                   <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/keyboard.png"></span>
+                   </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" ngModel name="city"  placeholder="City, province or region" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/map.png"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-secondary btn-rounded-small" type="submit"><img src="/../../assets/images/search.png"></button>
+                </div>
+              </div>
+            </form>
+        </div>
+        </div>
+        <p class="header-text">
+          {{text}}
+        </p>
+
+      </main>
+      <div class="go-down">
+         <i class="fas fa-arrow-down"></i>
+      </div>
+    </div>
+
+    </div>

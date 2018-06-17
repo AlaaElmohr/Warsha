@@ -1,0 +1,38 @@
+@import '../../../assets/sass/variables';
+.posts{
+  .row{
+    margin-top: 30px;
+  }
+  .card{
+    &:hover{
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+    }
+    .card-info{
+      margin-top: -15px;
+      background-color: transparent;
+      span{
+        @include font($openSans,$pink,$fontspan);
+        text-align: center;
+        background: $white;
+        border-radius: 10px;
+        padding:25px 25px;
+      }
+    }
+    .card-body{
+
+      h6{
+        @include font($openSans,$black,16px);
+        text-align: center;
+      }
+      p{
+        @include font($openSans,$grey,$fontp);
+        text-align: center;
+      }
+      a{
+        @include font($openSans,$pink,$fontspan);
+        text-align: center;
+        border-top: 1px solid $borderGrey
+      }
+    }
+  }
+}

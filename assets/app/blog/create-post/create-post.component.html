@@ -1,0 +1,52 @@
+<div class="create-post">
+  <form  [formGroup]="CreatePost" (ngSubmit)="submit()" >
+      <div>
+         <div class="addMore">
+           <button mat-raised-button color="accent" class="btn apply"  (click)="addMore()" type="button">
+              <mat-icon aria-label="Example icon-button with a heart icon">add_circle</mat-icon>
+              Add more
+           </button>
+         </div>
+      <div formArrayName="titleAndDesc">
+        <div *ngFor="let titleanddesc of  CreatePost.get('titleAndDesc').controls;let i =index" [formGroupName]="i" >
+            <label for="exampleInputEmail1">Title</label>
+            <div class="input-group mb-3">
+             <input type="text" class="form-control"  name="title" formControlName="title" placeholder="Front End Developer" >
+            </div>
+              <label for="exampleInputEmail1">Description</label>
+            <div class="input-group mb-3">
+              <textarea type="text" class="form-control"  name="description" formControlName="description"  rows="10" placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugos on Wall Street. Managed a small" ></textarea>
+            </div>
+          </div>
+        </div>
+          <div class="col-md-12 p-t-20">
+            <label for="exampleInputEmail1">Category</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control"  name="categories" formControlName="categories">
+            </div>
+          </div>
+        </div>
+      <label for="exampleInputEmail1">Tags</label>
+      <div class="input-group">
+        <mat-form-field class="demo-chip-list">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                       [removable]="removable" (remove)="removeTag(tag)">
+                {{tag}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="addTag($event)" />
+            </mat-chip-list>
+          </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="warn" class="btn apply btn-block send"  type="submit">
+         <mat-icon aria-label="Example icon-button with a heart icon">send</mat-icon>
+         {{editModeAction}}
+      </button>
+    </form>
+</div>

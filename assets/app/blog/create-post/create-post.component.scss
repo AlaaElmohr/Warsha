@@ -1,0 +1,38 @@
+@import '../../../assets/sass/variables';
+.create-post{
+  .update{
+    margin-top: 20px;
+    .btn-primary{
+      border-radius: 30px
+    }
+  }
+  .form-control{
+      border-radius: 10px;
+      border: 1px solid transparent;
+      border-top: 1px solid $borderGrey;
+      border-bottom: 1px solid $borderGrey;
+      border-left: 1px solid $borderGrey;
+      border-right: 1px solid $borderGrey;
+      font-family: $openSans;
+      font-size: 13px;
+
+  }
+  ::placeholder{
+   color:#a7a7a7;
+   font-family: $openSans;
+   font-size: 13px;
+  }
+  .mat-icon{
+    color: $white
+  }
+  .addMore{
+    float: right;
+    display: block;
+  }
+   .mat-raised-button{
+    border-radius: 30px;
+  }
+  .send{
+    margin-top: 20px
+  }
+}

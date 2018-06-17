@@ -1,0 +1,141 @@
+@import '../../../../assets/sass/variables';
+.header-timeline{
+  .items{
+    float: left;
+    width: 100%;
+    padding: 0 90px;
+    text-align: center;
+    .item{
+      display: inline-block;
+     width: 33.334%;
+     float: left;
+     position: relative;
+     margin-top: 50px;
+     margin-bottom: 50px;
+        &::before{
+          position: absolute;
+          left: 100%;
+          top: 45px;
+          width: 100%;
+          height: 2px;
+          background: #e8ecec;
+          content: "";
+          margin-left: -50%;
+        }
+        &:last-child:before{
+              display: none;
+          }
+        p{
+          position: relative;
+          z-index: 1;
+          background: #ffffff;
+          float: none;
+          display: inline-block;
+          border: 8px solid #ffffff;
+
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+
+          margin: 0;
+        }
+       svg{
+         padding: 10px;
+         float: none;
+         display: inline-block;
+         width: 70px;
+         height: 70px;
+         border: 2px solid $borderGrey;
+         -webkit-border-radius: 50%;
+         -moz-border-radius: 50%;
+         -ms-border-radius: 50%;
+         -o-border-radius: 50%;
+         border-radius: 50%;
+         text-align: center;
+         line-height: 66px;
+         font-size: 20px;
+         color: $grey;
+       }
+       span{
+         float: left;
+         width: 100%;
+         font-size: 14px;
+         color: $grey;
+         margin-top: 9px;
+       }
+    }
+     .item.active{
+       svg{
+         background: $lightPurple;
+          border-color: $lightPurple;
+          color: $white;
+       }
+       span{
+         color: #8b91dd;
+
+       }
+     }
+  }
+}
+.post-form{
+  .input-group{
+      padding-top: 10px;
+  }
+  .form-control{
+      border-radius: 10px;
+      border: 1px solid transparent;
+      border-top: 1px solid $borderGrey;
+      border-bottom: 1px solid $borderGrey;
+      border-left: 1px solid $borderGrey;
+      border-right: 1px solid $borderGrey;
+      font-family: $openSans;
+      font-size: 13px;
+
+  }
+  ::placeholder{
+   color:#a7a7a7;
+   font-family: $openSans;
+   font-size: 13px;
+   line-height: 2em;
+  }
+  textarea{
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  label{
+    padding-top: 10px;
+    color:$black;
+    font-family: $openSans;
+    font-size: 14px;
+  }
+  .next{
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .btn-primary{
+    background-color:transparent;
+    color:$pink;
+    border-color: $pink;
+    width: 140px;
+    float: right;
+  span{
+    color:$pink;
+  }
+  }
+
+}
+.mat-chip:not(.mat-basic-chip){
+  border-radius:4px;
+  background-color: #f4f5fa;
+  color:#888;
+  font-family: $openSans;
+  font-size: 13px;
+}
+.mat-calendar-content {
+    padding: 0 28px 8px 8px;}
+    .mat-input-element{
+      font-family: $openSans;
+
+    }

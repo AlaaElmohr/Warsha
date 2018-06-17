@@ -1,0 +1,162 @@
+<app-header></app-header>
+<section class="applyPost">
+  <form (ngSubmit)="onSubmit(fapply)" #fapply="ngForm">
+
+  <div class="header-apply">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8">
+               <div class="job-info">
+                 <div class="client-img">
+                    <img src="../../../assets/images/company.png">
+                 </div>
+                 <div class="job-title">
+                   <div class="flex">
+                        <h6>{{job?.title}}</h6>
+                       <button mat-raised-button color="warn">
+                          {{job?.jobType}}
+                       </button>
+                   </div>
+
+                  <div class="job-details">
+                      <ul class="p-l-2">
+                          <li><img src="../../../assets/images/money.png"></li>
+                          <li>Bugdet :{{job?.salary | currency:'USD'}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/date.png"></li>
+                          <li> {{job?.deadline | date}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/map2.png"></li>
+                          <li>{{job?.city}},{{job?.country}}</li>
+                      </ul>
+                  </div>
+
+                 </div>
+               </div>
+               <div class="job-tag">
+                 <mat-chip-list>
+                   <mat-chip *ngFor="let skill of job?.skills">{{skill}}</mat-chip>
+                 </mat-chip-list>
+               </div>
+              </div>
+              <div class="col-md-4">
+                <div class="job-apply">
+                  <button mat-raised-button color="primary" class="btn btn-block apply" type="submit" [disabled]="form.valid">
+                     <mat-icon aria-label="Example icon-button with a heart icon" >send</mat-icon>
+                     Send
+                  </button>
+                  <button mat-raised-button color="primary" class="btn btn-block shortlist" (click)="reset(fapply)">
+                    <mat-icon aria-label="Example icon-button with a heart icon">cancel</mat-icon>
+                     Cancel
+                  </button>
+                </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+             <div class="row">
+                 <div class="col-md-12">
+                   <div class="form" #form>
+
+                     <label for="exampleInputEmail1">Proposal</label>
+                     <div class="input-group mb-3">
+                      <textarea type="text" class="form-control" ngModel required name="coverLetter" row="20" cols="30" placeholder="Type Your Porposal" ></textarea>
+                     </div>
+                     <label for="exampleInputEmail1">Bid</label>
+                     <div class="input-group mb-3">
+                      <input type="text" class="form-control" ngModel required name="bid" placeholder="500$" />
+                     </div>
+
+                     <label for="exampleInputEmail1">Duration</label>
+                     <div class="row">
+                       <div class="col-md-6">
+                         <div class="input-group mb-3">
+                           <input type="text" class="form-control" required  ngModel name="duration" placeholder="2 Weeks" />
+                         </div>
+                       </div>
+                       <div class="col-md-6">
+                         <div class="input-group mb-3">
+                          <mat-form-field placeholder="Day">
+                            <mat-select  ngModel name="durationType">
+                              <mat-option *ngFor="let durationType of durationTypes" [value]="durationType.value">
+                                {{ durationType.viewValue }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                         </div>
+                       </div>
+                     </div>
+                 </div>
+               </div>
+              </div>
+            </div>
+            <div class="col-md-4 sidebar-apply">
+              <h5>Client Information</h5>
+              <div class="sidebar-overview">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link">
+                        <img src="../../../assets/images/money.png" />
+                        <div class="info">
+                            <p>Total spent</p>
+                            <span>{{job?.client.totalSpent | currency:'USD'}}</span>
+                        </div>
+                      </a>
+
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <img src="../../../assets/images/age.png" />
+                          <div class="info">
+                              <p>Age</p>
+                              <span>{{job?.client.profile?.age}} Years Old</span>
+                          </div>
+                        </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link">
+                            <img src="../../../assets/images/map3.png" />
+                            <div class="info">
+                                <p>From</p>
+                                <span>{{job?.client.profile?.city}} / {{job?.client.profile?.country}}</span>
+                            </div>
+                          </a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link">
+                            <img src="../../../assets/images/education.png" />
+                            <div class="info">
+                                <p>Number Of Jobs</p>
+                                <span>{{job?.client.contracts.length}} jobs</span>
+                            </div>
+                          </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link">
+                              <img src="../../../assets/images/language.png" />
+                              <div class="info">
+                                  <p>Rate</p>
+                                  <div class="rate">
+                                  <i class="fa fa-star" *ngFor="let star of getStars(job?.client.stars)" ></i>
+                                </div>
+                              </div>
+                            </a>
+                            </li>
+
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</form>
+
+</section>

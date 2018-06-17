@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<section class="candinateList">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-12 sidebar">
+      <div class="input-group mb-3">
+       <input type="text" class="form-control" ngModel #name placeholder="By Name" (change)="search(name.value)">
+       <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><img src="/../../../assets/images/search2.png"></span>
+       </div>
+      </div>
+      <div class="input-group mb-3">
+       <input type="text" class="form-control" ngModel  placeholder="All Locations" #city (change)="filterUser(0,city.value)">
+       <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><img src="/../../../assets/images/map.png"></span>
+       </div>
+      </div>
+      <div class="byCategory">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Category
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div *ngFor="let category of categories"><mat-checkbox ngModel name="category"  (change)="filterUser(1,category,$event)" >{{category}}</mat-checkbox></div>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <div class="price">
+        <mat-accordion>
+          <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Rate
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div  *ngFor="let star of stars;let i=index"><mat-checkbox ngModel name="rate"  (change)="filterUser(2,i+1,$event)"> <div class="rate" ><i class="fa fa-star" *ngFor="let wow of getStars(i+1)"></i></div></mat-checkbox></div>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-12">
+       <div class="list">
+         <ul class="list-group" *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: p };let i =index" (mouseenter)="makeActive=user" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==user}">
+            <li class="list-group-item">
+              <div class="flex">
+                <img [src]="userImage[i]" class="avatar" />
+                <div class="info">
+                 <p>{{user?.name}}</p>
+                 <span>{{user?.profile.jobTitle}}</span>
+                </div>
+              </div>
+
+               <div class="money">
+                 <div class="earned"><img src="/../../../assets/images/money.png" /><span>{{user?.totalEarned | currency:'USD'}}</span></div>
+                 <div class="rate"><i  *ngFor="let i of getStars(user?.stars)" class="fa fa-star"></i></div>
+               </div>
+              <div class="map">
+                   <img src="/../../../assets/images/map2.png">
+                   <span>{{user?.profile.city}} / {{user?.profile.country}}</span>
+               </div>
+               <button mat-raised-button color="warn" class="btn-rounded" (click)="visitProfile()">
+                   <mat-icon aria-label="Example icon-button with a heart icon">email</mat-icon>
+                  Contact</button>
+            </li>
+
+          </ul>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+       </div>
+    </div>
+    </div>
+  </div>
+</section>

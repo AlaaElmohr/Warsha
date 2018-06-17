@@ -1,0 +1,214 @@
+<app-header></app-header>
+<div class="profile">
+    <div class="row profile-header">
+        <div class="col-md-2 offset-2 offset-md-2 offset-lg-2 offset-lg-0 col-sm-6">
+            <div class="social-network">
+              <ul class="list-unstyled text-small">
+                <li class="facebook"><a [href]="user?.profile.facebookLink" target="_blank"> <i class="fab fa-facebook-f" aria-hidden="true"> </i></a></li>
+                <li class="twitter"><a  [href]="user?.profile.twitterLink" target="_blank"> <i class="fab fa-twitter" aria-hidden="true"> </i></a></li>
+                <li class="google"><a [href]="user?.profile.googleLink" target="_blank"> <i class="fab fa-google" aria-hidden="true"> </i></a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class=" profile-img">
+              <img [src]="userImage" />
+
+          </div>
+          <div class="profile-info text-center">
+                <h5>{{user?.name}}</h5>
+                <h6>{{user?.profile.jobTitle}}</h6>
+                <p>{{user?.email}}</p>
+                <p>{{user?.memberSince | date}}</p>
+                <div>
+                  <img src="/../../../assets/images/map2.png" />
+                  <span>{{user?.profile.city}} / {{user?.profile.country}}</span>
+                </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div class="profile-tag">
+            <mat-chip-list >
+              <mat-chip >{{user?.profile.categories}}</mat-chip>
+            </mat-chip-list>
+          </div>
+
+        </div>
+    </div>
+    <div class="container">
+          <div class="profile-nav">
+            <nav class="navbar navbar-expand-lg ">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Education</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Work Experience</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+
+                </ul>
+
+              </div>
+              </nav>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                  <div class="leftSide">
+                    <h3>Candinates About</h3>
+                    <div class="about" id="about">
+                      <p>{{user?.profile.coverLetter}}</p>
+                    </div>
+                    <h3>Education</h3>
+                    <div  id="education">
+                       <div class="education">
+                         <img src="/../../../assets/images/education2.png" />
+                         <div class="info">
+                           <h5>{{user?.profile.education.title}}</h5>
+                           <h6>{{user?.profile.education.from | date}} - {{user?.profile.education.to | date}}</h6>
+                           <p>{{user?.profile.education.institue}}<span>{{user?.profile.education.description}}</span></p>
+                         </div>
+                       </div>
+
+                    </div>
+                    <h3>Work Experiece</h3>
+                    <div class="experience" id="experience">
+                      <div class="timeline">
+                        <ul>
+                          <li>
+                            <div class="bullet purple"></div>
+                            <div class="desc">
+                              <h3>{{user?.profile.workExperience.title}}<span>{{user?.profile.workExperience.company}}</span></h3>
+                              <h4>{{user?.profile.workExperience.from | date}} - {{user?.profile.workExperience.to | date}}</h4>
+                              <p>{{user?.profile.workExperience.description}} </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="work-history">
+                      <h3>User's Work History and Feedback ({{usert?.jobDoneCount}})</h3>
+                      <ul class="list-group" *ngFor="let contract of user?.contracts">
+                        <li class="list-group-item">
+                          <div class="feedback-empolyer">
+                            <div class="feedback-left">
+                                 <h6>{{contract.title}}</h6>
+                                 <div class="rate" *ngFor="let feedback of contract?.feedbacks">
+                                   <div *ngIf="feedback.status==='fromClientToUser'">
+                                     <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
+                                      <span>{{feedback.comment}}</span>
+                                   </div>
+                                 </div>
+                            </div>
+                            <div class="feedback-right">
+                                <p>{{contract?.startTime | date}} - {{contract?.finishTime | date}}</p>
+                                <img src="../../../assets/images/money.png" /><span>{{contract?.budget | currency:'USD'}}</span>
+                            </div>
+                          </div>
+                        </li>
+                       </ul>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-lg-4 col-md-12 sidebar-profile">
+                  <h5>Overview</h5>
+                  <div class="sidebar-overview">
+                    <ul class="nav flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                          <img src="/../../../assets/images/experience.png" />
+                          <div class="info">
+                              <p>Experience</p>
+                              <span>{{user?.profile.experience}} Years</span>
+                          </div>
+                        </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                            <img src="/../../../assets/images/money.png" />
+                            <div class="info">
+                                <p>Total Earned</p>
+                                <span>{{user?.totalEarned | currency:'USD'}}</span>
+                            </div>
+                          </a>
+
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                              <img src="/../../../assets/images/age.png" />
+                              <div class="info">
+                                  <p>Age</p>
+                                  <span>{{user?.profile.age}} Years Old</span>
+                              </div>
+                            </a>
+
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                                <img src="/../../../assets/images/language.png" />
+                                <div class="info">
+                                    <p>Language</p>
+                                    <span>{{user?.profile.languages}}</span>
+                                </div>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                                <img src="/../../../assets/images/education.png" />
+                                <div class="info">
+                                    <p>Jobs</p>
+                                    <span>{{user?.jobDoneCount}}</span>
+                                </div>
+                              </a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                                  <img src="/../../../assets/images/education.png" />
+                                  <div class="info">
+                                      <p>Rate</p>
+                                      <div class="rate">
+                                      <i class="fa fa-star" *ngFor="let star of getStars(user?.stars)" ></i>
+                                    </div>
+                                  </div>
+                                </a>
+                                </li>
+
+                    </ul>
+
+                  </div>
+                  <div class="sidebar-contact" *ngIf="typeUser==='client' ">
+
+                  <h5>Contact</h5>
+                    <form (ngSubmit)="onSubmit(sendEmail)" #sendEmail="ngForm">
+                        <div class="input-group mb-3">
+                         <input type="email" class="form-control" ngModel name="from" placeholder="Write Gmail Email" >
+                        </div>
+                        <div class="input-group mb-3">
+                         <input type="password" class="form-control" ngModel name="password" placeholder="Write Password Of Gmail" >
+                        </div>
+                          <div class="input-group mb-3">
+                           <input type="text" class="form-control" ngModel name="subject" placeholder="Subject" >
+                          </div>
+                          <div class="input-group mb-3">
+                           <textarea type="text" class="form-control" ngModel name="message" placeholder="write your message" ></textarea>
+                          </div>
+                          <button mat-raised-button color="warn" class="btn-rounded btn-block" type="submit">Send Email</button>
+                          <p class="text-center">You accepts our <span>Terms and Condition</span></p>
+                    </form>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

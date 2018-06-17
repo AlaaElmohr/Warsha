@@ -1,0 +1,234 @@
+<app-header></app-header>
+<section class="content home">
+      <div class="categories">
+        <div class="container">
+          <h5 class="text-center">Popular Categories</h5>
+          <p class="text-center">{{jobLength}} jobs live</p>
+          <div class="row ">
+            <div  class="col-md-3 col-sm-6" [class.b-r]="categories.indexOf(category) !==3 && categories.indexOf(category) !==7" [class.b-t]="categories.indexOf(category) > 3" *ngFor="let category of categories;let i =index">
+                <div class="category ">
+                    <div class="icon">
+                      <i [class]="class[i]"></i>
+                    </div>
+                    <h6 class="text-center">{{category.name}}</h6>
+                    <p class="text-center">( {{category.count}} open positions)</p>
+                </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary">Browse All Categories</button>
+        </div>
+      </div>
+      <div class="account">
+        <div class="overlay">
+          <div class="container">
+                  <h5 class="text-center">Make a Difference with Your Online Resume!</h5>
+                  <p class="text-center">Your resume in minutes with JobHunt resume assistant is ready!</p>
+                  <button class="btn btn-primary" [routerLink]="['SignUp']"> Create An Account</button>
+          </div>
+        </div>
+      </div>
+      <div class="jobs">
+        <div class="container">
+          <h5 class="text-center">Featured Jobs</h5>
+          <p class="text-center">Leading Employers already using job and talent.</p>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="list">
+                    <ul class="list-group" *ngFor="let job of jobs;let i =index">
+                       <li class="list-group-item">
+                         <div class="flex">
+                           <img [src]="userImage[i]" />
+                           <div class="info">
+                            <p>{{job.title}}</p><br />
+                            <span>{{job.client.name}}</span>
+                           </div>
+                         </div>
+                            <div class="map">
+                                 <img src="/../../assets/images/map2.png">
+                                 <span>{{job.city}} / {{job.country}}</span>
+                             </div>
+                             <div class="time">
+                               <button mat-raised-button [color]="jobType[i]">
+                                  {{job.jobType}}
+                               </button>
+                             </div>
+                       </li>
+
+                     </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="testimonial">
+          <div class="overlay">
+             <div class="container">
+               <h5 class="text-center">Kind Words From Happy Candidates</h5>
+               <p class="text-center">What other people thought about the service provided by JobHunt</p>
+                 <div class="row">
+                   <ngb-carousel>
+                      <ng-template ngbSlide>
+                        <div class="row p-t-50">
+                          <div class="col-lg-5 col-md-10 ">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-1.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-10 second">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-2.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </ng-template>
+                      <ng-template ngbSlide>
+                        <div class="row p-t-50">
+                          <div class="col-lg-5 col-md-10">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-1.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-10 second">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-2.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </ng-template>
+                      <ng-template ngbSlide>
+                        <div class="row p-t-50">
+                        <div class="col-lg-5 col-md-10">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-1.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="col-lg-5 col-md-10 second">
+                            <div class="slide">
+                              <div class="slide-img">
+                                <img src="../../assets/images/review-2.png">
+                                <div class="icon">
+                                  <i class="fa fa-quote-right"></i>
+                                </div>
+                              </div>
+                              <div class="slide-info">
+                                  <h6>Augusta Silva<span>Web designer</span></h6>
+                                  <p>Without JobHunt i’d be homeless, they found me a job and got me sorted out
+                                    quickly with everything!  Can’t quite believe the service level that they offer!</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </ng-template>
+                    </ngb-carousel>
+                 </div>
+             </div>
+          </div>
+      </div>
+      <div class="blog">
+        <h5>Quick Career Tips</h5>
+        <p>Found by employers communicate directly with hiring managers and recruiters.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let post of posts">
+                  <div class="card" >
+                    <div class="card-img">
+                      <img class="card-img-top" src="../../assets/images/blog-1.png">
+                      <div class="card-info">
+                          <span>{{post?.time | date}} | {{post?.commentsCount}} Comments</span>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title">{{post?.title[0]}}</h6>
+                      <p class="card-text">{{post?.description[0] | slice:0:160}}</p>
+                      <a class="btn btn-block"  [routerLink]="['../Blog/BlogPost', post.postId]">Read More</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    <div class="companies">
+        <div class="container">
+          <h5>Companies We've Helped</h5>
+          <p>Some of the companies we've helped recruit excellent applicants over the years.</p>
+            <div class="row">
+              <div class="col-lg-2 col-md-6 col-sm-6 offset-lg-1">
+                <img src="../../assets/images/company-1.png">
+              </div>
+              <div class="col-lg-2 col-md-6 col-sm-6">
+                <img src="../../assets/images/company-2.png">
+              </div>
+              <div class="col-lg-2 col-md-6 col-sm-6">
+                <img src="../../assets/images/company-3.png">
+              </div>
+              <div class="col-lg-2 col-md-6 col-sm-6">
+                <img src="../../assets/images/company-4.png">
+              </div>
+              <div class="col-lg-2 col-md-6 offset-lg-0 offset-md-3 offset-sm-3  col-sm-6">
+                <img src="../../assets/images/company-5.png">
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="question">
+        <div class="container">
+            <h5 class="text-center">Gat a question?</h5>
+            <p class="text-center">We're here to help. Check out our FAQs, send us an email or call us at 1 (800) 555-5555</p>
+        </div>
+    </div>
+</section>

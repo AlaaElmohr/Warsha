@@ -1,0 +1,123 @@
+@import '../../assets/sass/variables';
+footer{
+  .logo {
+    display: flex;
+    float:left;
+    img{
+      height: 150px;
+    }
+     h4{
+       color:$white;
+       font-family:$SegoePrint;
+       margin-left: 10px
+     }
+  }
+  .column-1 p{
+    font-family: $openSans;
+    font-size: 16px;
+    color:$footerfont;
+    line-height: 2em;
+  }
+  h5{
+    font-family: $openSans;
+    font-size: 13px;
+    color:$white;
+
+    margin-bottom: 20px
+  }
+  .social-icon ul{
+    display: flex;
+    li{
+      padding: 10px;
+
+      a{
+        text-decoration: none !important;
+        color:$footerfont !important;
+        i{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+.content {
+  li{
+    @include transition(0.4s,ease-out);
+    &::before{
+  position: absolute;
+  margin: 14px 0 0 -20px;
+  vertical-align: middle;
+  display:block;
+  width: 10px;
+  height: 1px;
+  background: $footerfont;
+  content: "";
+   }
+   &:hover{
+     @include transition(0.4s,ease-in);
+     padding-left:10px;
+     &::before{
+       width: 20px;
+       background:$white
+     }
+     a{
+      padding-left: 10px;
+       color:$white;
+     }
+   }
+ }
+  }
+}
+
+.footer{
+background-color: $footer;
+padding:55px 0px;
+}
+.Address{
+    margin-top: 50px
+}
+a{
+
+  font-family: $openSans;
+  font-size: 13px;
+  color:$footerfont;
+  line-height: 2em;
+  text-decoration: none;
+}
+.info{
+  display: block;
+  margin-left: 20px;
+  p{
+    color: $white;
+    font-family: $openSans;
+    font-size: 14px;
+    float: left;
+    line-height: 0.5em;
+    display: block;
+
+  }
+  span{
+    color: $footerfont;
+    font-family: $openSans;
+    font-size: 13px;
+    float: left;
+  }
+}
+.button-mobApp{
+display: flex;
+
+}
+img{
+  max-width: 100%;
+  height: auto;
+
+}
+.copyRight{
+  background-color: $copyRight;
+  padding:20px;
+  p{
+    color: #6a7d9b;
+    font-family: $openSans;
+    font-size: 13px;
+    font-weight: 500
+  }
+}

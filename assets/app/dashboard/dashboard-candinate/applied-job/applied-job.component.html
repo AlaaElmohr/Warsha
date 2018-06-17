@@ -1,0 +1,38 @@
+<div class="applied-job">
+    <div class="header">
+        <h3>Applied Jobs</h3>
+    </div>
+    <div class="content">
+      <table class="table">
+    <thead>
+      <tr>
+        <th>Applied Jobs</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let contract of contracts | paginate: { itemsPerPage: 5, currentPage: p }" (mouseenter)="makeActive=contract" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==contract}">
+      <tr>
+        <td>
+          <p>{{contract?.title}}</p>
+          <img src="/../../../../assets/images/user2.png" />
+          <span>Hired By {{contract?.client.name}}</span>
+
+        </td>
+        <td>
+          <div class="money"><img src="/../../../../assets/images/money.png" /><span>{{contract?.budget | currency:'USD'}}</span></div>
+          <div class="rate" *ngFor="let feedback of contract.feedback" >
+            <div *ngIf="feedback.status==='fromClientToUser'">
+            <i class="fa fa-star" *ngFor="let star of getStars(feedback?.stars)"></i>
+          </div></div></td>
+        <td><p>{{contract?.startTime | date}}</p><p>{{contract?.finishTime | date}}</p></td>
+        <td>     <span matTooltip="Give FeedBack" matTooltipClass="primary-tooltip"><img src="/../../../../assets/images/edit.png" (click)="goTo(contract)" /></span></td>
+      </tr>
+    </tbody>
+
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

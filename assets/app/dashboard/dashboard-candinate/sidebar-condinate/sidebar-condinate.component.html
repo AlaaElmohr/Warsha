@@ -1,0 +1,42 @@
+<div class="sidebar-user">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+          <i class="fas fa-user-circle"></i>
+          <span>My Profile</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="AppliedJobs" routerLinkActive="active">
+        <i class="fas fa-briefcase"></i>
+        <span>Applied Job</span>
+      </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link"  routerLink="ShortlistedJobs" routerLinkActive="active">
+       <i class="fas fa-heart"></i>
+        <span>Shortlisted Job</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="Proposals" routerLinkActive="active">
+        <i class="fas fa-briefcase"></i>
+        <span>Proposals</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="ChangePassword" routerLinkActive="active">
+        <i class="fas fa-key"></i>
+        <span>Change Password</span>
+      </a>
+    </li>
+    <li class="nav-item" (click)="logOut()">
+      <a class="nav-link">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Log Out</span>
+      </a>
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,24 @@
+@import '../../../../assets/sass/variables';
+.sidebar-client{
+
+  .nav{
+    padding-top: 50px
+  }
+
+  ul{
+    li{
+      margin-top: 20px;
+      .fa-briefcase,.fa-location-arrow,.fa-key,.fa-sign-out-alt ,.fa-exchange-alt,.fa-user-circle{
+        color:$iconGrey;
+        font-size: 20px;
+      }
+      span{
+        font-size: 14px;
+        color:#9b9b9b;
+        margin-left: 30px;
+        font-family: $openSans;
+      }
+    }
+  }
+
+}

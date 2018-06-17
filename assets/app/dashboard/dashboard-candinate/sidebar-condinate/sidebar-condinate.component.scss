@@ -1,0 +1,45 @@
+@import '../../../../assets/sass/variables';
+.sidebar-user{
+
+  .nav{
+    padding-top: 50px
+  }
+
+  ul{
+    li{
+      margin-top: 20px;
+      .fa-briefcase,.fa-file-alt,.fa-key,.fa-sign-out-alt ,.fa-exchange-alt,.fa-heart,.fa-user-circle{
+        color:$iconGrey;
+        font-size: 20px;
+      }
+      span{
+        font-size: 14px;
+        color:#9b9b9b;
+        margin-left: 30px;
+        font-family: $openSans;
+      }
+    }
+  }
+  a.active{
+    span{
+      color:$lightPurple !important
+    }
+    svg{
+      color:$lightPurple !important
+    }
+  }
+  a{
+    @include transition(0.4s,ease-out);
+    &:hover{
+    padding-left:30px;
+    @include transition(0.4s,ease-in);
+    span{
+      color:$lightPurple !important
+    }
+    svg{
+      color:$lightPurple !important
+    }
+  }
+}
+
+}

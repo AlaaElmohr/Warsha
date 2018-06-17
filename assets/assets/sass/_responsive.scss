@@ -1,0 +1,611 @@
+@mixin transition($in,$ease){
+  -webkit-transition: all $in $ease 0s;
+  -moz-transition: all $in $ease 0s;
+  -ms-transition: all $in $ease 0s;
+  -o-transition: all $in $ease 0s;
+  transition: all $in $ease 0s;
+}
+@media only screen and (max-width:350px){
+  .posts .card .card-info{
+    margin-left: 8% !important
+  }
+}
+@media only screen and (max-width:480px){
+  .overlay-header{
+    height: auto !important;
+    padding-bottom: 40px;
+  }
+header {
+    padding-top: 30px !important;
+    padding-left: 10px !important;
+}
+main .search {
+    margin-top: 40px !important;
+}
+main p{
+font-size: 30px !important;
+}
+
+.sidebar-blog .tags{
+  margin-bottom: 30px
+}
+/**.go-down {
+    margin-top: 15% !important;
+}**/
+
+.posts .card .card-info{
+  margin-left: 20%
+}
+.candinateList .list .list-group-item button {
+    display: inline-block !important;
+    margin-left: -4px !important;
+    margin-top: 20px !important;
+}
+.candinateList .list .list-group-item .map{
+  margin-top: 20px;
+}
+.profile .profile-tag{
+  margin-top: 10px;
+  margin-left: 0% !important
+}
+.profile .profile-tag{
+  position: static !important;
+}
+.ngx-pagination{
+  margin-left: -70px !important;
+  padding-top: 40px !important;
+
+}
+}
+@media only screen and (min-width:1401px){
+.navbar-mobile{
+  display: none;
+}
+.card-info{
+
+  margin-left: 15%;
+}
+}
+@media only screen and (max-width:590px){
+  .table {
+    width: 700px !important;
+
+}
+.dashboard .content {
+  overflow-x: scroll;
+}
+main p{
+  padding: 0 10px;
+}
+}
+@media only screen  and (min-width:480px){
+  .ngx-pagination {
+      display: table !important;
+       margin: 0 auto !important;
+      padding-top: 40px !important;
+  }
+}
+
+@media only screen and (min-width:767px){
+
+
+  .sidebar{
+a.active{
+  span{
+    color:$lightPurple !important
+  }
+  svg{
+    color:$lightPurple !important
+  }
+}
+a{
+  @include transition(0.4s,ease-out);
+  &:hover{
+  padding-left:30px;
+  @include transition(0.4s,ease-in);
+  span{
+    color:$lightPurple !important
+  }
+  svg{
+    color:$lightPurple !important
+  }
+}
+}
+}
+}
+@media only screen and (max-width:663px){
+  .content .jobs .list .list-group-item{
+    justify-content: space-between !important;
+  }
+  .content .jobs .list .list-group-item .time{
+    display: none;
+  }
+  .content .testimonial .overlay .col-lg-5, .content .testimonial .overlay .col-md-10{
+    width:80%
+  }
+  .content .testimonial .overlay .slide .slide-img .icon{
+    margin-left: 60% !important;
+    margin-top: 10px !important;
+  }
+}
+@media only screen and (max-width:336px){
+
+.inner-menu .logo{
+  float: none !important;
+
+}
+.inner-menu .navbar-mobile{
+  float: none !important;
+  margin-top: 10px;
+}
+
+.inner-menu{
+  display: block !important;
+  margin: 0 auto !important
+}
+}
+@media only screen and (max-width:300px){
+.content .testimonial .overlay .col-lg-5, .content .testimonial .overlay .col-md-10{
+ margin-left: 20px !important
+}
+.content .testimonial .overlay .slide .slide-img .icon{
+  display: none;
+}
+.content .testimonial .overlay .slide .slide-info span{
+  display: none;
+}
+.content .testimonial .overlay .slide .slide-info h6{
+  margin-left: 20px !important;
+}
+.content .blog .card .card-info{
+  display: none;
+}
+.blog .card {
+    margin-top: 20px;
+    width: 160%;
+    margin-left: -40px;
+}
+}
+@media only screen and (max-width:400px){
+  .How-it-works[_ngcontent-c6] .how[_ngcontent-c6] .how-description[_ngcontent-c6] .box[_ngcontent-c6]{
+    width: 99% !important
+  }
+  .How-it-works[_ngcontent-c6] .how[_ngcontent-c6] .how-description[_ngcontent-c6] .box[_ngcontent-c6] img[_ngcontent-c6]{
+    margin-top: 0px !important
+  }
+    .How-it-works .flex{
+      display: block !important;
+    }
+  .content .blog .card .card-info{
+    display: none;
+  }
+  .content .testimonial .overlay .slide .slide-img .icon{
+    display: none;
+  }
+  .content .jobs .list .list-group-item .flex{
+    display: block !important;
+  }
+  .testimonial .overlay .slide{
+    margin-left: 0px !important
+  }
+  .content .testimonial .overlay .col-lg-5, .content .testimonial .overlay .col-md-10{
+    margin-left: 40px !important
+  }
+  .home .container {
+    width: 100% !important;
+}
+.content .testimonial .overlay .slide .slide-info h6{
+  margin-left: -15px ;
+}
+.content .jobs p{
+  margin-top: 0px !important
+}
+.content .jobs .list .list-group-item .info {
+     margin-left: 0px !important;
+}
+}
+@media only screen and (max-width:500px){
+
+.content .jobs .list .list-group-item div{
+  margin-right: 0px !important
+}
+}
+@media only screen and (max-width:767px){
+
+  .content .categories .row .col-sm-6 {
+       border: 1px solid $borderGrey !important;
+  }
+  .home .container{
+    width:98% !important
+  }
+  .content .blog .card .card-info{
+    margin-left: 30%;
+  }
+  .sidebar-blog .photo {
+  display: none !important
+   }
+  .posts .card .card-info{
+    margin-left: 30%
+  }
+  .dashboard .main{
+    margin-top: 40px;
+    border-top: 1px solid $borderGrey;
+    padding-top: 10px;
+  }
+.employerProfile .header .job-info .job-title .job-details{
+  display: inline-grid !important;
+}
+  //dashboard client
+  .items .row .col-md-4{
+    border:1px solid $borderGrey
+  }
+  .dashboard .sidebar .nav-link {
+      margin-left: 20px !important;}
+    .dashboard   .sidebar .nav-link {
+      background-color: $lightPurple !important;
+  }
+  .dashboard .sidebar ul li span{
+    color:$white !important
+  }
+  .dashboard  .sidebar ul li svg{
+    color:$white !important
+  }
+  .sidebar {
+    border-right: 1px solid $white !important;
+}
+.sidebar{
+  a{
+    @include transition(0.4s,ease-out);
+    &:hover{
+    padding-left:30px;
+    @include transition(0.4s,ease-in);
+    span{
+      color:$white !important
+    }
+    svg{
+      color:$white !important
+    }
+  }
+}
+a.active{
+  span{
+    color:$white !important
+  }
+  svg{
+    color:$white !important
+  }
+}
+}
+.Done .content .alert-primary{
+  background-color: $pink !important;
+}
+.Done .content {
+    overflow-x: hidden !important;
+}
+  //How It Work
+
+  .How-it-works .how .how-img{
+    width:100% !important
+  }
+.How-it-works .how .how-description{
+  width:100% !important;
+  margin-top: 280px;
+}
+.How-it-works .how .how-description .box span.how-number{
+  display: none !important;
+}
+.How-it-works{
+  margin-top: 200px !important
+}
+.How-it-works .how{
+  margin-top: -150px !important
+}
+.How-it-works .how .how-description .box{
+  height:auto !important
+}
+.How-it-works .how{
+  display: block !important;
+}
+
+.How-it-works .how .how-description{
+  position: static !important;
+}
+//candinate profile
+.profile .social-network{
+  display: none;
+}
+.profile .profile-nav{
+  display: none;
+}
+.profile .leftSide{
+  border-top: 1px solid $borderGrey;
+}
+.profile .profile-tag{
+  margin-top: 0px !important;
+  margin-left: 30%;
+}
+//Dashboard Employer
+//My Profile
+.sidebar .nav-link {
+    margin-left: -20px;}
+    //post new jobs
+    .header-timeline{
+      display: none !important;
+    }
+  //about us
+  .about-us .services .service .description p {
+      max-width: 170px !important;
+  }
+  .about-us .blog .card .card-info{
+   margin-left: 33% !important
+  }
+
+  //employer profile
+  .employerProfile .header .job-info .job-title .job-details{
+    display: block;
+  }
+
+  .p-l-20{
+    margin-left: 0px !important;
+  }
+  .employerProfile .header .job-info .job-title .job-details ul{
+    margin-left: -40px !important;;
+  }
+  .employerProfile .header .row {
+    padding-bottom: 80px !important ;
+}
+.employerProfile .header .social-network ul{
+  margin-left: -50px !important
+}
+
+}
+@media only screen and (max-width:1175px){
+  .profile .social-network{
+    margin-left: -50px !important
+  }
+}
+@media only screen and (max-width:895px){
+  .mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip){
+    margin:10px !important
+  }
+  .profile .social-network{
+    margin-left: -100px !important
+  }
+}
+
+@media only screen and (max-width:875px){
+  //table
+  .table {
+    width: 700px !important;
+
+  }
+  .dashboard .content {
+  overflow-x: scroll;
+  }
+.Done .content {
+overflow-x: hidden !important;
+}
+.profile .content {
+overflow-x: hidden !important;
+}
+}
+@media only screen and (max-width:670px){
+//candinate list
+.candinateList .list .list-group-item .info{
+  margin-left: 0px !important;
+  padding-top: 5px !important;
+}
+.candinateList .list .list-group-item .flex {
+    display: inline-block !important;
+}
+}
+@media only screen and (max-width:512px){
+
+  .post .tags{
+    padding-bottom: 70px !important;
+    padding-top: 25px !important;
+  }
+  .post .comments .replay{
+    margin-left: 20px !important
+  }
+  .post .comments .comment .user-comment .flex{
+    display: block !important;
+  }
+}
+@media only screen and (max-width:556px){
+  .manage-job .overview{
+    display: grid !important;
+  }
+.profile .profile-tag{
+  margin-left: 20% !important
+}
+.candinateList .list .list-group-item .flex{
+ display: -webkit-inline-box !important;
+}
+.candinateList .list .list-group-item .info {
+    margin-left: 20px !important;
+    padding-top: 25px !important;
+}
+.candinateList .list .list-group-item button{
+  display: block;
+  margin: 0 auto;
+}
+}
+@media only screen and (max-width:575px){
+.jobPost .header .job-info .job-title .job-details{
+    margin-top: 40px !important;
+    margin-left: -100px;
+}
+.How-it-works .how {
+    margin-bottom: 220px !important;
+}
+.How-it-works .how .how-description{
+  margin-top: 190px !important;
+}
+.How-it-works .how .how-description .box span.how-number{
+  display: none !important;
+}
+.candinateList .list .list-group-item .map{
+  margin-top: 20px !important;
+}
+.employerProfile .header .social-network{
+  margin-top: 10px !important;
+  margin-left: 10%
+}
+//Dashboard Employer
+//My Profile
+.dashboard .sidebar .nav-link {
+    margin-left: 20px !important;}
+  .dashboard   .sidebar .nav-link {
+    background-color: $lightPurple !important;
+}
+.dashboard .sidebar ul li span{
+  color:$white !important
+}
+.dashboard  .sidebar ul li svg{
+  color:$white !important
+}
+}
+
+@media only screen and (max-width:1401px){
+  //header
+  header{
+    display: block !important;
+    padding: 40px;
+
+  }
+  main{
+    margin-top: 50px !important
+  }
+  .inner-menu{
+    display: block !important;
+  }
+  .inner-menu nav {
+    display: none;
+    margin: 0 0;
+  }
+
+//footer
+
+//Home
+ .blog .card {
+  margin-top: 20px;
+}
+ .blog .card .card-info span{
+  padding: 10px !important
+}
+.companies img{
+  margin-left: 40px;
+}
+/**.go-down{
+  margin-top: 0px ;
+}**/
+ .testimonial .overlay .slide{
+  width: 120% !important;
+  margin-left: -30px !important;
+}
+
+// Job list
+.jobList .sidebar{
+img{
+  display: none;
+}
+}
+.jobList .filter .chips{
+  width: 100%;
+}
+.mat-chip-list-wrapper{
+height: 30px;
+}
+.jobList .list .list-group-item .job-info{
+  display: inline-table !important;
+}
+.jobList .list .list-group-item .job-info .time{
+  display: none !important;
+}
+.jobList  .mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip){
+  margin-top: 10px !important
+}
+.jobList .list .list-group-item .client-info{
+  display: -webkit-inline-box !important;
+  margin-top: 80px !important;
+}
+.jobList .filter {
+    margin-top: -10px !important;
+  }
+ .ngx-pagination li {
+    display: table-cell !important;
+}
+.jobList .filter .action{
+  width: 100%;
+  height: 34px !important;
+  margin-left: 20px;
+  margin-top: 7px !important;
+}
+//about us
+.about-us .services .service .description p {
+    max-width: 250px !important;
+}
+.about-us .blog .card .card-info{
+ margin-left: 3% !important
+}
+}
+@media only screen and (min-width:991px){
+
+  .posts .card .card-info{
+    margin-left: 23%
+  }
+  .content .testimonial .overlay .slide .slide-img .icon{
+    margin-left: 50% !important;
+    margin-top: 10px !important;
+  }
+}
+@media only screen and (max-width:991px){
+  .go-down{
+    display: none !important;
+  }
+  //footer
+ .our-store{
+       margin-left: -20px;
+ }
+  .footer .container
+  {
+    width: 100% !important
+  }
+  //Home
+  .testimonial .overlay .second, .testimonial .overlay .second {
+   margin-top: 70px !important
+ }
+ .content .blog .card .card-info{
+   margin-left: 4%;
+ }
+
+  //Dashboard Employer
+  //My Profile
+  .sidebar .nav-link {
+      margin-left: -20px;
+    }
+//How It Work
+.How-it-works .how{
+  margin-bottom: 150px !important
+}
+.How-it-works .how .how-description .box p{
+  padding: 10px 0px !important
+}
+.How-it-works .how .how-description .box{
+  padding:60px 50px !important;
+}
+.employerProfile .header .job-info .job-title .job-details{
+  display: -webkit-box;
+}
+.posts .card .card-info{
+  margin-left: 35%
+}
+}
+
+@media (max-width: 576px) {
+.container {
+    width: 98% !important;
+    max-width: 100%;
+}
+}

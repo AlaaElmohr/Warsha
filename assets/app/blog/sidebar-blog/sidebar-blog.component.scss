@@ -1,0 +1,103 @@
+@import '../../../assets/sass/variables';
+.sidebar-blog{
+  .input-group-text{
+    border-radius: 0px 10px 10px 0px;
+      background-color:transparent;
+      border: 3px solid transparent;
+      border-top: 2px solid $borderGrey;
+      border-bottom: 2px solid $borderGrey;
+      border-right: 2px solid $borderGrey;
+      border-left: none;
+  }
+  .input-group{
+    margin-top: 30px;
+  }
+  .form-control{
+      border-radius: 10px 0px 0px 10px;
+      border: 1px solid transparent;
+      border-top: 2px solid $borderGrey;
+      border-bottom: 2px solid $borderGrey;
+      border-left: 2px solid $borderGrey;
+      border-right: 2px solid transparent;
+      font-family: $openSans;
+      font-size: 13px;
+      color: #a7a7a7;
+  }
+  ::placeholder{
+    color: #a7a7a7;
+  }
+  .recent{
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+    }
+    ul{
+      list-style: none;
+      margin-left: -2em;
+      li{
+        display: -webkit-inline-box;
+        margin-top: 20px;
+        img{
+          border-radius: 10px;
+        }
+        .info{
+          margin-left: 10px;
+           p{
+             @include font($openSans,$black,13px);
+             width: 85%;
+             line-height: 1.5em;
+             margin-bottom: 0px;
+
+           }
+           span{
+             @include font($openSans,$grey,12px);
+           }
+        }
+      }
+    }
+  }
+  .photo{
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+    }
+    .row{
+      margin-top: 10px;
+      img{
+        border-radius: 10px;
+      }
+    }
+
+  }
+  .tags{
+    margin-top: 30px;
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+    }
+    .mat-chip:not(.mat-basic-chip){
+      background-color:transparent;
+     color:$pink;
+     border: 1px solid $pink;
+     margin-top: 10px
+    }
+  }
+  .widget{
+   h6{
+     @include font($Quicksand,$black,16px);
+     font-weight: bold;
+   }
+   ul{
+     list-style: none;
+     margin-left: -2em;
+     li{
+       padding:7px 0px;
+       @include font($openSans,$grey,14px);
+       .fa-angle-right{
+         color:$grey;
+         margin-right: 10px;
+       }
+     }
+   }
+  }
+}

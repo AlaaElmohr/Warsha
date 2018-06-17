@@ -1,0 +1,238 @@
+<div class="profile-user">
+    <div class="header">
+        <h3>My Profile</h3>
+    </div>
+    <div class="content">
+        <div class="image">
+        <div class="image-info">
+          <img [src]="url" class="img-circle" *ngIf="url" >
+          <span class="btn btn-default btn-file" >
+              Browse <input type="file" type="file" (change)="fileChangeEvent($event)">
+          </span>
+          <!--->
+            <button class="btn btn-secondary btn-rounded btn-lg">Browse</button>
+            <!--->
+            <p>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .png & .png</p>
+        </div>
+      </div>
+      <div class="resume-form">
+        <form (ngSubmit)="onSubmit(profileUser)" #profileUser="ngForm">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="exampleInputEmail1">Job Title</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.jobTitle" name="jobTitle" placeholder="Front End Developer" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <label for="exampleInputEmail1">Experience</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.experience" name="experience" placeholder="3 Years" >
+                </div>
+                <label for="exampleInputEmail1">Education Level</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.educationLevel" name="education" placeholder="Diploma" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <label for="exampleInputEmail1">Age</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.age" name="age" placeholder="20 Years" >
+                </div>
+                  <label for="exampleInputEmail1">Language</label>
+                  <div class="input-group ">
+                    <mat-form-field class="demo-chip-list">
+                        <mat-chip-list #chipList>
+                          <mat-chip *ngFor="let language of languages" [selectable]="selectable"
+                                   [removable]="removable" (remove)="removeLanguage(language)">
+                            {{language}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="addLanguage($event)" />
+                        </mat-chip-list>
+                      </mat-form-field>
+                  </div>
+
+              </div>
+            </div>
+            <label for="exampleInputEmail1">Categories</label>
+            <div class="input-group">
+              <mat-form-field placeholder="Categories">
+                <mat-select  ngModel name="categories">
+                  <mat-option *ngFor="let category of categories" [value]="category.value">
+                    {{ category.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <label for="exampleInputEmail1">Cover Letter</label>
+            <div class="input-group mb-3">
+             <textarea type="text" class="form-control" [ngModel]="profile?.coverLetter" name="coverLetter" rows="10" placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugos on Wall Street. Managed a small" ></textarea>
+            </div>
+            <div class="education">
+              <div class="header">
+                  <h3>Education</h3>
+              </div>
+                <label for="exampleInputEmail1">Title</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.educationTitle" name="educationTitle" placeholder="Tooms.." >
+                </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">From Date</label>
+                  <mat-form-field>
+                  <input matInput [matDatepicker]="picker"  (dateChange)="addEvent(0,$event)"  >
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">To Date</label>
+                  <mat-form-field>
+                  <input matInput [matDatepicker]="picker1"  (dateChange)="addEvent(1,$event)" >
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                </div>
+              </div>
+                <label for="exampleInputEmail1">Institue</label>
+
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.educationInstitue" name="educationInstitue" placeholder="Tooms.." >
+                </div>
+
+                <label for="exampleInputEmail1">Description</label>
+                <div class="input-group mb-3">
+                 <textarea type="text" class="form-control" cols="10" [ngModel]="profile?.educationDescription" name="educationDescription" placeholder="Tooms.." ></textarea>
+                </div>
+              </div>
+            <div class="work">
+              <div class="header">
+                  <h3>Work Experience</h3>
+              </div>
+                <label for="exampleInputEmail1">Title</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.workTitle" name="workTitle" placeholder="Tooms.." >
+                </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">From Date</label>
+                  <mat-form-field>
+                  <input matInput [matDatepicker]="picker3"   (dateChange)="addEvent(2,$event)" >
+                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">To Date</label>
+                  <mat-form-field>
+                  <input matInput [matDatepicker]="picker4"  (dateChange)="addEvent(3,$event)" >
+                  <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                  <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+                </div>
+              </div>
+                <label for="exampleInputEmail1">Company</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.workCompany" name="workCompany" placeholder="Tooms.." >
+                </div>
+
+                <label for="exampleInputEmail1">Description</label>
+                <div class="input-group mb-3">
+                 <textarea type="text" class="form-control" cols="10" [ngModel]="profile?.workDescription" name="workDescription" placeholder="Tooms.." ></textarea>
+                </div>
+
+            </div>
+            <div class="social-network-edit">
+              <div class="header">
+                  <h3>Social Network</h3>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                    <label for="exampleInputEmail1">Facebook</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" [ngModel]="profile?.facebookLink" name="facebookLink" placeholder="www.facebook.com/TeraPlaner" >
+                     <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fab fa-facebook-f" aria-hidden="true"></i></span>
+                     </div>
+                    </div>
+                    <label for="exampleInputEmail1">Google</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" [ngModel]="profile?.googleLink" name="googleLink" placeholder="www.gooogle.com/TeraPlaner" >
+                     <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fab fa-google" aria-hidden="true"></i></span>
+                     </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="exampleInputEmail1">Twitter</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" [ngModel]="profile?.twitterLink" name="twitterLink" placeholder="www.twitter.com/TeraPlaner" >
+                     <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fab fa-twitter" aria-hidden="true"></i></span>
+                     </div>
+                    </div>
+                    <label for="exampleInputEmail1">LinkedIn</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" [ngModel]="profile?.linkedinLink" name="linkedinLink" placeholder="www.Linkedin.com/TeraPlaner" >
+                     <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fab fa-linkedin" aria-hidden="true"></i></span>
+                     </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+            <div class="contact">
+              <div class="header">
+                  <h3>Contact</h3>
+              </div>
+              <div class="row">
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">Phone Number</label>
+                        <div class="input-group mb-3">
+                         <input type="text" class="form-control" [ngModel]="profile?.phoneNumber" name="phoneNumber" placeholder="+90 538 963 58 96" >
+
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">Website</label>
+                        <div class="input-group mb-3">
+                         <input type="text" class="form-control" [ngModel]="profile?.websiteLink" name="websiteLink" placeholder="www.jobhun.com" >
+                        </div>
+                      </div>
+                </div>
+             <div class="row">
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">Country</label>
+                  <div class="input-group mb-3">
+                   <input type="text" class="form-control" [ngModel]="profile?.country" name="country" placeholder="www.facebook.com/TeraPlaner" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">City</label>
+                  <div class="input-group mb-3">
+                   <input type="text" class="form-control" [ngModel]="profile?.city" name="city" placeholder="www.facebook.com/TeraPlaner" >
+                  </div>
+                </div>
+              </div>
+
+                <label for="exampleInputEmail1">Complete Address</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="profile?.address" name="address" placeholder="Collins Street West, Victoria 8007, Australia." >
+                </div>
+              </div>
+
+            <div class="update">
+                <button class="btn btn-primary" type="submit" >{{action}}</button>
+            </div>
+          </form>
+      </div>
+          </div>
+</div>

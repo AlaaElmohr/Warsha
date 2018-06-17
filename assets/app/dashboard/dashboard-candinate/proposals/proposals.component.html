@@ -1,0 +1,35 @@
+<div class="shortlisted-job">
+    <div class="header">
+        <h3>Proposals</h3>
+    </div>
+    <div class="content">
+      <table class="table">
+    <thead>
+      <tr>
+        <th>Applied Jobs</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let app of apps | paginate: { itemsPerPage: 5, currentPage: p }" (mouseenter)="makeActive=app" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==app}">
+      <tr>
+        <td>
+          <p>{{app.job.title}}</p>
+          <img src="/../../../../assets/images/user2.png" />
+          <span>Posted By {{app.job.client.name}}</span>
+        </td>
+        <td>
+        <div class="money"><img src="/../../../../assets/images/money.png" /><span>{{app.bid | currency:'USD'}}</span></div>
+        <td class="date"><p>{{app.status}}</td>
+        <td>
+          <span matTooltip="View Application" matTooltipClass="primary-tooltip"><img src="/../../../../assets/images/eye.png" (click)="goToApplication(app)"/></span>
+          <span matTooltip="Delete" matTooltipClass="primary-tooltip"><img src="/../../../../assets/images/delete.png" (click)="onDelete(app)" /></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

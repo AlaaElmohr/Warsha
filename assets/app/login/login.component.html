@@ -1,0 +1,53 @@
+<app-header></app-header>
+<section class="login">
+   <div class="container">
+    <div class="row">
+       <div class="col-md-12">
+         <p class="text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit odio duis risus at lobortis ullamcorper<br> aptent venenatis, mi sem posuere est consequat rutrum.
+        </p>
+        <div class="form col-md-4 offset-md-4">
+          <div class="userSelection">
+            <a class="btn btn-candinate" (click)="selectType('user')" [ngClass]="{activeCandinate : type=='user'}">Candinate</a>
+            <a class="btn btn-empolyer"  (click)="selectType('client')" [ngClass]="{activeEmpolyer : type=='client'}">Empolyer</a>
+          </div>
+              <form (ngSubmit)="onSubmit(signin)" #signin="ngForm">
+            <div class="input-group mb-3">
+             <input type="text" class="form-control" ngModel name="email" placeholder="Email"  required>
+             <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/email.png"></span>
+             </div>
+            </div>
+            <div class="input-group mb-3">
+             <input type="password" class="form-control" ngModel name="password" placeholder="*************" required>
+             <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/password.png"></span>
+             </div>
+            </div>
+            <div class="forgot">
+              <div class="custom-control custom-checkbox my-1 mr-sm-2">
+               <input type="checkbox" class="custom-control-input" id="customControlInline">
+               <label class="custom-control-label" for="customControlInline">Remember me</label>
+             </div>
+
+             <a>Forgot Password?</a>
+            </div>
+            <div class="message-error" *ngIf="error">
+              <div class="alert alert-danger" role="alert">
+                {{error}}
+              </div>
+            </div>
+            <button class="btn btn-block btn-warning" type="submit">Login</button>
+          </form>
+          <div class="or">
+             <div class="line"></div>
+            <p class="text-center">Or</p>
+          </div>
+          <div class="social-icon">
+            <button class="btn btn-facebook"><i class="fab fa-facebook-f" aria-hidden="true"> </i></button>
+            <button class="btn btn-google"><i class="fab fa-google" aria-hidden="true"> </i></button>
+          </div>
+        </div>
+       </div>
+    </div>
+   </div>
+</section>

@@ -1,0 +1,285 @@
+@import '../../assets/sass/variables';
+
+.cover-container {
+  background:url(/../../assets/images/header-home.png);
+  background-size: cover;
+  background-position: center center;
+  height:auto;
+  margin-bottom: 30px;
+}
+
+.overlay-header{
+  background:linear-gradient(45deg,  rgba(139,145,221,0.7) 0%,rgba(16,25,93,0.7) 71%,rgba(16,25,93,0.7) 100%) ;
+  height:600px;
+}
+.overlay-header::after{
+  position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    content: "";
+    background-image: url(/../../assets/images/lines.png);
+    z-index: 0;
+    opacity: 0.14;
+}
+.header-text{
+    line-height: 250px;
+}
+.message-alert{
+  width: 45px;
+  height: 45px;
+  border: 1px solid $white;
+  border-radius: 50%;
+  margin-left: 1.25em;
+  margin-top: -10px;
+  .fa-heart{
+    color:$white;
+    margin-top: 16px;
+    margin-left: 11px;  }
+ .number{
+   background: $lightPurple;
+   float: right;
+   color:$white;
+   height: 15px;
+   width: 15px;
+   line-height: 15px;
+   font-size: 12px;
+   border-radius: 50%;
+ }
+}
+.img-circle{
+  border-radius: 50%;
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  margin-top: -10px;
+  margin-left: 20px;
+  border: 2px solid $white;
+}
+.btn-danger{
+  background-color: transparent;
+  border-color: transparent;
+  color:$pink
+}
+.btn-danger:active, .btn-danger.active, .show > .btn-danger.dropdown-toggle {
+    color: $pink;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+  }
+header{
+  display: inline-block;
+  padding-top: 40px;
+  z-index: 2;
+position: relative;
+height: auto;
+}
+.user-info span{
+  margin-left: 10px
+}
+.inner-menu{
+    display: flex;
+    margin:0 auto;
+    .logo {
+      float:left;
+      width: 40%;
+      img{
+        width: 20%;
+       margin-top: -20px;
+      }
+       h3{
+         color:$white;
+         font-family:$SegoePrint;
+         margin-left: 10px
+       }
+    }
+    .navbar-mobile{
+      float: right;
+    }
+    nav{
+      float:right;
+      vertical-align: middle;
+      a{
+        display: -webkit-inline-box;
+        color:#fff;
+        @include font($Quicksand,$white,15px);
+        cursor: pointer;
+        &:hover{
+          color:#fff;
+        }
+        img{
+          margin-right: 10px
+        }
+      }
+    }
+    .nav-link{
+      padding:0 0;
+      margin-left: 1.5rem
+    }
+    .nav-masthead .nav-link {
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+    color:$white;
+    &:hover{
+      color:$white;
+    }
+   }
+   .nav-masthead .active {
+       border-bottom-color: $pink;
+   }
+   .space{
+     margin-left:50px;
+   }
+
+}
+main{
+  z-index: 1;
+  position: relative;
+  margin-top: 100px;
+   p{
+     color: $white;
+     font-family: $Quicksand;
+     font-weight: 500;
+     font-size: 40px
+   }
+   span{
+     color:$spanGrey;
+     font-family: $openSans;
+     font-size: 17px
+   }
+  .search{
+    margin-top: 80px;
+    button{
+      float: left;
+    }
+  }
+}
+.input-group-text{
+  background-color:$white;
+  border: 1px solid $white;
+}
+.form-control{
+    border: 1px solid $white;
+    font-family: $openSans;
+    font-size: 13px;
+    color: #c1c1c1;
+}
+::placeholder{
+font-family: $openSans;
+font-size: 13px;
+color: #c1c1c1;
+}
+.go-down{
+  display: none;
+   bottom:40px;
+   left: 45.65%;
+   position: absolute;
+  width:130px;
+  height: 130px;
+  border: 2px solid $white;
+  border-radius: 50%;
+  line-height: 60px;
+  vertical-align: middle;
+  padding-top: 35px;
+  transition: all 0.4s ease-out 0s;
+
+  &:hover{
+    border: 2px solid $pink;
+    .fa-arrow-down{
+      background-color: $pink;
+      color:$white;
+      transition: all 0.4s ease 0s;
+    }
+  }
+  .fa-arrow-down{
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+    padding:20px;
+   height:60px;
+   width: 60px;
+   background-color: $white;
+   border-radius: 50%;
+   color:$pink;
+  }
+}
+.dropdown-menu {
+  .dropdown-item{
+    &:hover{
+      background-color: $pink;
+      @include transition(0.4s,ease-out);
+      a{
+        @include transition(0.4s,ease-in);
+        color: $white !important;
+      }
+    }
+    a{
+      text-decoration: none;
+      @include transition(0.4s,ease-out);
+      &:hover{
+        @include transition(0.4s,ease-in);
+        padding-left:10px;
+      }
+    }
+  }
+  a{
+  color:$black !important;
+  font-size: 11px !important}
+}
+.show > .dropdown-menu{
+  display: grid;
+}
+.dropdown-submenu {
+    position: relative;
+    &:hover{
+      a{
+        text-decoration: none;
+        &:after{
+          border-left-color: #fff;
+        }
+      }
+    }
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a{
+  text-decoration: none;
+  &:after{
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown span{
+  color: $white;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}

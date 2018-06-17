@@ -1,0 +1,68 @@
+<section class="payment">
+     <div class="container">
+         <div class="header-timeline">
+           <div class="row">
+             <div class="items">
+                    <div class="item ">
+                      <p><i class="fas fa-exclamation-circle"></i></p>
+                      <span>Information</span>
+                    </div>
+                    <div class="item active">
+                      <p><i class="far fa-money-bill-alt"></i></p>
+                      <span>Payement</span>
+
+                    </div>
+                    <div class="item">
+                      <p><i class="far fa-check-circle"></i></p>
+                      <span>Done</span>
+                    </div>
+             </div>
+           </div>
+         </div>
+         <div class="post-form">
+             <form>
+             <div class="row">
+                 <div class="col-md-12">
+
+                    <label for="exampleInputEmail1">How Much Credit Would You like To add?</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" ngModel name="fullName" placeholder="30$" >
+                    </div>
+
+
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-6 offset-3 offset-sm-0">
+                   <div class="image">
+                       <img src="/../../../../../assets/images/VisaMastercard.png">
+                   </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-4">
+                   <label for="exampleInputEmail1">c.v Number</label>
+                   <div class="input-group mb-3">
+                    <input type="text" class="form-control" ngModel name="fullName" placeholder="1234" >
+                   </div>
+                 </div>
+                 <div class="col-md-4">
+                   <label for="exampleInputEmail1">Credit Card Number</label>
+                   <div class="input-group mb-3">
+                    <input type="text" class="form-control" ngModel name="fullName" placeholder="65787386354229" >
+                   </div>
+                 </div>
+                 <div class="col-md-4">
+                   <label for="exampleInputEmail1">Expire Date</label>
+                   <div class="input-group mb-3">
+                    <input type="text" class="form-control" ngModel name="fullName" placeholder="20/20" >
+                   </div>
+                 </div>
+             </div>
+             </form>
+             <div class="next">
+                 <button class="btn btn-primary" (click)="goNext()">Next</button>
+             </div>
+         </div>
+     </div>
+</section>

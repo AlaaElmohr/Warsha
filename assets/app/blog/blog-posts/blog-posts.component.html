@@ -1,0 +1,21 @@
+<section class="posts">
+  <div class="row" >
+
+    <div class="col-lg-6 col-md-12 col-sm-12" *ngFor="let post of posts | paginate: { itemsPerPage: 3, currentPage: p }" (mouseenter)="makeActive=post" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==post}">
+      <div class="card" >
+        <div class="card-img">
+          <img class="card-img-top" src="/../../../assets/images/blog-1.png">
+          <div class="card-info">
+              <span>{{post?.time | date}} | {{post?.commentsCount}} Comments</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title">{{post?.title[0]}}</h6>
+          <p class="card-text">{{post?.description[0] | slice:0:260}}</p>
+          <a class="btn btn-block"  [routerLink]="['../Blog/BlogPost', post.postId]">Read More</a>
+        </div>
+        </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</section>

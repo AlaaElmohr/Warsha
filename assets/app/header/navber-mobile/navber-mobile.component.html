@@ -1,0 +1,119 @@
+<div class="navbar-menu-mobile" *ngIf="!hideNavebar">
+  <div class="header flex">
+    <div class="logo ">
+      <img src="/../../../assets/images/logo.png">
+    </div>
+    <div>
+      <button  mat-raised-button color="primary" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>Close
+      </button>
+    </div>
+  </div>
+  <div class="signing flex">
+    <div class="post-job">
+        <button class="btn btn-primary btn-rounded">+ Post A Job</button>
+    </div>
+    <div class="register inline-block">
+      <a class="nav-link"  routerLink="Login" routerLinkActive="active"><img src="/../../../assets/images/login.png">Login</a>
+      <a class="nav-link"  routerLink="SignUp" routerLinkActive="active"><img src="/../../../assets/images/sign.png">Sign Up</a>
+    </div>
+  </div>
+  <div class="search">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+         <input type="text" class="form-control" placeholder="Job title, keywords or company name" >
+         <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2"><img src="/../../../assets/images/search.png"></span>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-mobile">
+   <a routerLink="Home" routerLinkActive="active">Home</a>
+   <a routerLink="/Blog" routerLinkActive="active" class="m-10">Blog</a>
+   <mat-accordion>
+   <mat-expansion-panel>
+     <mat-expansion-panel-header >
+       <mat-panel-title>
+         Pages
+       </mat-panel-title>
+     </mat-expansion-panel-header>
+      <div><a routerLink="/AboutUs" routerLinkActive="active">About Us</a></div>
+       <div><a routerLink="/ContactUs" routerLinkActive="active">Contact</a></div>
+       <div><a routerLink="/FAQ" routerLinkActive="active">FAQ</a></div>
+       <div><a routerLink="/TermAndCondition" routerLinkActive="active">Terms And Conditions</a></div>
+       <div><a routerLink="/HowItWorks" routerLinkActive="active">How It Works</a></div>
+   </mat-expansion-panel>
+   </mat-accordion>
+   <mat-accordion>
+   <mat-expansion-panel >
+     <mat-expansion-panel-header >
+       <mat-panel-title>
+         Employer
+       </mat-panel-title>
+     </mat-expansion-panel-header>
+      <div><a routerLink="/EmployerProfile" routerLinkActive="active">Employer Profile</a></div>
+       <div><a routerLink="/EmployerList" routerLinkActive="active">Employer List</a></div>
+       <div class="dropdown">
+         <mat-accordion>
+         <mat-expansion-panel expanded="true">
+           <mat-expansion-panel-header >
+             <mat-panel-title>
+               Dashboard
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+           <div><a tabindex="-1" routerLink="/DashboardClient/MyProfile">My Profile</a></div>
+           <div><a routerLink="/DashboardClient/PostJob">Post New Job</a></div>
+           <div><a routerLink="/DashboardClient/ManageJobs">Manage Jobs</a></div>
+           <div><a routerLink="/DashboardClient/Transactions">Transactions</a></div>
+           <div><a routerLink="/DashboardClient/ChangePassword">Change Password</a></div>
+         </mat-expansion-panel>
+       </mat-accordion>
+       </div>
+   </mat-expansion-panel>
+   </mat-accordion>
+   <mat-accordion>
+   <mat-expansion-panel >
+     <mat-expansion-panel-header >
+       <mat-panel-title>
+         Candinate
+       </mat-panel-title>
+     </mat-expansion-panel-header>
+      <div><a routerLink="/Candinate/Pofile">Candinate Profile</a></div>
+       <div><a routerLink="/CandinateList">Candinate List</a></div>
+       <div class="dropdown">
+         <mat-accordion>
+         <mat-expansion-panel expanded="true">
+           <mat-expansion-panel-header >
+             <mat-panel-title>
+               Dashboard
+             </mat-panel-title>
+           </mat-expansion-panel-header>
+           <div><a tabindex="-1" routerLink="/DashboardUser/MyProfile">My Profile</a></div>
+           <div><a routerLink="/DashboardUser/MyResume">My Resume</a></div>
+           <div><a routerLink="/DashboardUser/AppliedJobs">Applied Jobs</a></div>
+           <div><a routerLink="/DashboardUser/ShortlistedJobs">Shortlisted Jobs</a></div>
+           <div><a routerLink="/DashboardUser/Transactions">Transactions</a></div>
+           <div><a routerLink="/DashboardUser/ChangePassword">Change Password</a></div>
+         </mat-expansion-panel>
+       </mat-accordion>
+       </div>
+   </mat-expansion-panel>
+   </mat-accordion>
+   <mat-accordion>
+   <mat-expansion-panel>
+     <mat-expansion-panel-header >
+       <mat-panel-title>
+        Jobs
+       </mat-panel-title>
+     </mat-expansion-panel-header>
+      <div><a routerLink="/JobsList">Jobs List</a></div>
+       <div><a routerLink="/JobsPost">Job Post</a></div>
+   </mat-expansion-panel>
+   </mat-accordion>
+
+  </div>
+
+</div>

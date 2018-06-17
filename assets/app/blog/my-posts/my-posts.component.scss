@@ -1,0 +1,54 @@
+@import '../../../assets/sass/variables';
+.posts{
+  .row{
+    margin-top: 30px;
+  }
+  .post{
+    border-bottom: 1px solid $borderGrey;
+    padding-bottom:30px ;
+  }
+  .post-meta{
+    display:flex;
+    margin: 20px 0px;
+    div{
+      display: inline-block;
+      margin-right: 50px;
+    }
+    img{
+      border-radius: 50%;
+      width:40px;
+      height:40px;
+    }
+    span{
+      @include font($openSans,$grey,$fontspan);
+      margin-left: 14px;
+      color:$grey;
+    }
+     svg{
+       color:$grey;
+       cursor: pointer;
+     }
+    .lightpurple{
+      color:$lightPurple;
+    }
+  }
+  .post-thumb{
+    margin-top: 10px;
+    border-radius: 10px;
+    background:url(/../../../assets/images/post-1.png);
+    background-size: cover;
+  }
+  .post-description{
+    p{
+      @include font($openSans,$grey,14px);
+      line-height: 2em;
+     }
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+     }
+  }
+  .mat-raised-button{
+    border-radius: 10px
+  }
+}

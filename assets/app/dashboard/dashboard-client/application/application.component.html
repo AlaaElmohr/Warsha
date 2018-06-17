@@ -1,0 +1,68 @@
+<section class="application">
+  <div class="row">
+    <div class="header-application">
+            <div class="row">
+                <div class="col-md-8">
+                 <div class="job-info">
+                   <div class="client-img">
+                      <img [src]="userImage">
+                   </div>
+                   <div class="job-title">
+                     <div class="flex">
+                         <h6>{{app?.user.name}}</h6>
+
+                     </div>
+
+                    <div class="job-details">
+                        <ul class="p-l-2">
+                            <li><img src="/../../../../assets/images/money.png"></li>
+                            <li>Price :{{app?.bid | currency:'USD'}}</li>
+                        </ul>
+                        <ul>
+                            <li><img src="/../../../../assets/images/date.png"></li>
+                            <li>{{app?.duration}}</li>
+                        </ul>
+                    </div>
+
+                   </div>
+                 </div>
+
+                </div>
+                <div class="col-md-4">
+                  <div class="job-apply">
+                    <button mat-raised-button color="primary" class="btn btn-block apply" (click)="visitProfile()">
+                       <mat-icon aria-label="Example icon-button with a heart icon">send</mat-icon>
+                       Visit Profile
+                    </button>
+                    <button mat-raised-button color="primary" class="btn btn-block shortlist" (click)="makeContract()">
+                       <img src="/../../../../assets/images/heart.png">
+                      Hire
+                    </button>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+      <div class="content">
+          <h6>Proposal</h6>
+          <p>{{app?.coverLetter}}</p>
+
+        <h6>More Information About {{app?.user.name}}</h6>
+        <div class="overview">
+           <div class="flex">
+               <img src="/../../../../assets/images/jobs.png" />
+               <p>{{app?.user.contracts.length}} <span>Job </span></p>
+           </div>
+           <div class="flex">
+               <img src="/../../../../assets/images/money.png" />
+               <p>{{app?.user.totalEarned |  currency:'USD'}} <span> Total earned</span></p>
+           </div>
+           <div class="flex">
+               <img src="/../../../../assets/images/map3.png" />
+               <p><span>{{app?.user.profile.city}} , {{app?.user.profile.country}}</span></p>
+           </div>
+
+        </div>
+      </div>
+  </div>
+</section>

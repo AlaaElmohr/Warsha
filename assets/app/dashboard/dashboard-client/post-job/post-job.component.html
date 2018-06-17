@@ -1,0 +1,144 @@
+<section>
+     <div class="container">
+       <!-->
+         <div class="header-timeline">
+           <div class="row">
+             <div class="items">
+   					 				<div class="item active">
+   					 					<p><i class="fas fa-exclamation-circle"></i></p>
+   					 					<span>Information</span>
+   					 				</div>
+   					 				<div class="item">
+   					 					<p><i class="far fa-money-bill-alt"></i></p>
+                      <span>Payement</span>
+
+   					 				</div>
+   					 				<div class="item">
+   					 					<p><i class="far fa-check-circle"></i></p>
+   					 					<span>Done</span>
+   					 				</div>
+   					 </div>
+           </div>
+         </div>
+         <!--->
+         <div class="post-form">
+             <div class="row">
+                 <div class="col-md-12">
+                   <form (ngSubmit)="onSubmit(fpost)" #fpost="ngForm">
+                    <label for="exampleInputEmail1">Job Title</label>
+                    <div class="input-group mb-3">
+                     <input type="text" class="form-control" [ngModel]="post?.title" name="title" required placeholder="PSD to Html"  #title="ngModel">
+                    </div>
+                    <div class="message-error" *ngIf="title.invalid && (title.dirty || title.touched)">
+                      <div class="alert alert-danger" role="alert">
+                        Title is required
+                      </div>
+                    </div>
+                    <label for="exampleInputEmail1">Description</label>
+                    <div class="input-group mb-3">
+                     <textarea type="text" class="form-control" [ngModel]="post?.description" name="description" required #description="ngModel" rows="10" placeholder="Spent several years working on sheep on Wall Street. Had moderate success investing in Yugos on Wall Street. Managed a small team buying and selling pogo sticks for farmers. Spent several years licensing licorice in West Palm Beach, FL. Developed severalnew methods for working with banjos in the aftermarket. Spent a weekend importing banjos in West Palm Beach, FL.In this position, the Software Engineer ollaborates with Evention's Development team to continuously enhance our current software solutions as well as create new solutions to eliminate the back-office operations and manageme" ></textarea>
+                    </div>
+                    <div class="message-error" *ngIf="description.invalid && (description.dirty || description.touched)">
+                      <div class="alert alert-danger" role="alert">
+                        Description is required
+                      </div>
+                    </div>
+             <div class="row">
+               <div class="col-md-6">
+                 <label for="exampleInputEmail1">Job Type</label>
+                 <div class="input-group mb-3">
+                   <mat-form-field placeholder="Job Type">
+                     <mat-select  ngModel name="jobType">
+                       <mat-option *ngFor="let jobType of jobTypes" [value]="jobType.value">
+                         {{ jobType.viewValue }}
+                       </mat-option>
+                     </mat-select>
+                   </mat-form-field>
+                    </div>
+               </div>
+                 <div class="col-md-6">
+                   <label for="exampleInputEmail1">Category</label>
+                   <div class="input-group mb-3">
+                     <mat-form-field placeholder="Categories">
+                       <mat-select  ngModel name="categories">
+                         <mat-option *ngFor="let category of categories" [value]="category.value">
+                           {{ category.viewValue }}
+                         </mat-option>
+                       </mat-select>
+                     </mat-form-field>
+                   </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-12">
+                   <label for="exampleInputEmail1">Skills Requirment</label>
+                   <div class="input-group mb-3">
+                     <mat-form-field class="demo-chip-list">
+                         <mat-chip-list #chipList>
+                           <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                                    [removable]="removable" (remove)="removeSkill(skill)">
+                             {{skill}}
+                             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                           </mat-chip>
+                           <input
+                                  [matChipInputFor]="chipList"
+                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                  [matChipInputAddOnBlur]="addOnBlur"
+                                  (matChipInputTokenEnd)="addSkill($event)" />
+                         </mat-chip-list>
+                       </mat-form-field>
+                   </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-6">
+                   <label for="exampleInputEmail1">Offered Salary</label>
+                   <div class="input-group mb-3">
+                    <input type="text" class="form-control" [ngModel]="post?.salary" required  name="salary" placeholder="100$"  #salary="ngModel">
+                   </div>
+                   <div class="message-error" *ngIf="salary.invalid && (salary.dirty || salary.touched)">
+                     <div class="alert alert-danger" role="alert">
+                       Salary is required
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                   <label for="exampleInputEmail1">Application Deadline Date</label>
+                   <div class="input-group mb-3">
+                     <mat-form-field>
+                     <input matInput [matDatepicker]="picker"  (dateChange)="addEvent($event)" >
+                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                     <mat-datepicker #picker></mat-datepicker>
+                   </mat-form-field>
+                   </div>
+                 </div>
+
+             </div>
+             <div class="row">
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">Country</label>
+                  <div class="input-group mb-3">
+                   <input type="text" class="form-control" [ngModel]="post?.country" name="country" placeholder="www.facebook.com/TeraPlaner" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputEmail1">City</label>
+                  <div class="input-group mb-3">
+                   <input type="text" class="form-control" [ngModel]="post?.city" name="city" placeholder="www.facebook.com/TeraPlaner" >
+                  </div>
+                </div>
+              </div>
+
+                <label for="exampleInputEmail1">Complete Address</label>
+                <div class="input-group mb-3">
+                 <input type="text" class="form-control" [ngModel]="post?.address" name="address" placeholder="Collins Street West, Victoria 8007, Australia." >
+                </div>
+                <div class="next">
+                    <button class="btn btn-primary" type="submit">Post</button>
+                </div>
+              </form>
+            </div>
+        </div>
+         </div>
+     </div>
+</section>

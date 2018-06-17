@@ -1,0 +1,146 @@
+<app-header></app-header>
+<section class="jobList">
+ <div class="container">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" ngModel  placeholder="All Locations" #city (change)="filterJob(0,city.value)">
+       <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><img src="../../../assets/images/map.png"></span>
+       </div>
+      </div>
+      <div class="date">
+      </div>
+      <div class="type">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              Job Type
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div *ngFor="let jobType of jobTypes"><mat-checkbox   (change)="filterJob(2,jobType,$event)" >{{jobType}}</mat-checkbox></div>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <div class="byCategory">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Category
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div *ngFor="let category of categories"><mat-checkbox ngModel name="category"  (change)="filterJob(1,category,$event)" >{{category}}</mat-checkbox></div>
+        </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="byCategory">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Budget
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div *ngFor="let bud of budget"><mat-checkbox   (change)="filterJob(3,bud,$event)">${{bud}} - ${{bud+100}}</mat-checkbox></div>
+         <div><mat-checkbox   (change)="filterJob(3,500,$event)">Above $500</mat-checkbox></div>
+
+        </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+        <img src="../../../assets/images/banner.png">
+    </div>
+    <div class="col-md-9 content">
+      <!-->
+      <div class="filter">
+        <div class="input-group">
+          <div class="chips">
+            <mat-form-field class="demo-chip-list">
+                <mat-chip-list #chipList>
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (remove)="remove(fruit)">
+                    {{fruit.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)" />
+                </mat-chip-list>
+              </mat-form-field>
+          </div>
+          <div class="action">
+            <div class="save">
+              <img src="../../../assets/images/save.png">
+              <span>Save</span>
+            </div>
+              <div class="delete">
+                <img src="../../../assets/images/delete2.png">
+                <span>Delete</span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!--->
+       <div class="list">
+         <h3>{{jobLength}} Jobs & Vacancies</h3>
+         <ul class="list-group">
+            <li class="list-group-item" *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }" (mouseenter)="makeActive=job" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==job}">
+               <div class="job-info">
+                 <div class="info">
+                   <div class="img">
+                     <img src="../../../assets/images/company.png">
+                   </div>
+                   <div>
+                     <p>{{job.title}}</p>
+                      <span>Est.budget: {{job.salary | currency:'USD'}}</span>
+                   </div>
+                 </div>
+                   <div class="time">
+                     <div>
+                       <img src="../../../assets/images/heart.png">
+                       <button mat-raised-button color="warn">
+                          {{job.jobType}}
+                       </button>
+                     </div>
+                     <div class="text-center p-t-5"><span class="text-center">{{job.deadline | date}}</span></div>
+                   </div>
+               </div>
+                <div class="job-description">
+                  <p>{{job.description |  slice:0:250}}<a [routerLink]="['/JobsPost', job.jobId]"><span>more</span></a></p>
+                </div>
+                <div class="job-tags">
+                  <mat-chip-list>
+                    <mat-chip *ngFor="let skill of job?.skills">{{skill}}</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="client-info">
+                  <div class="money">
+                    <!-->
+                    //${{ job.client.profile.totalSpent}}
+                    <i class="fa fa-star" *ngFor="let star of getStars(job.client.profile.stars)" ></i>
+                    <!--->
+                    <img src="../../../assets/images/money.png" />{{job?.client.totalSpent | currency}}<span></span>
+                  </div>
+                  <div class="rate">
+                      <i class="fa fa-star" *ngFor="let i of getStars(job?.client.stars)" ></i>
+                  </div>
+
+                  <div class="map">
+                       <img src="../../../assets/images/map2.png">
+                       <span>{{job?.client.profile?.city}}/ {{job?.client.profile?.country}}</span>
+                   </div>
+                </div>
+            </li>
+          </ul>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+       </div>
+    </div>
+    </div>
+  </div>
+</section>

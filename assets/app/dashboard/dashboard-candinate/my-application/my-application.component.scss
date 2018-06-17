@@ -1,0 +1,120 @@
+@import '../../../../assets/sass/variables';
+.application{
+   padding-top: 40px;
+   padding-bottom: 80px;
+   .header-application {
+          width:100%;
+          .row{
+            border-bottom:1px solid $borderGrey;
+            padding-bottom: 10px;
+            margin-left: 30px;
+          }
+          .job-tag{
+            margin:15px 0px;
+          }
+          .job-info{
+            display: flex;
+            .client-img{
+              img{
+                border:2px solid $borderGrey;
+                border-radius:50%;
+                width:90px;
+                height:90px;
+              }
+            }
+            .job-title{
+              margin-left: 20px;
+              h6{
+                color:$pink;
+                font-size: 20px;
+                font-family:$Quicksand;
+                font-weight: bold;
+              }
+              button{
+                background-color: transparent !important;
+                border:1px solid $lightPurple !important;
+                color:$lightPurple !important;
+                border-radius:10px;
+                margin-left: 30px;
+                margin-top: -20px;
+            }
+              .job-details{
+                margin-top: 20px;
+                display: flex;
+
+                ul{
+                  &:first-child{
+                    margin-left: -2.5em;
+                  }
+                  list-style: none;
+                  display: flex;
+                  li{
+                    color:$grey;
+                    font-family: $openSans;
+                    font-size: 13px;
+                    img{
+                      margin-right: 10px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .job-apply{
+            button.apply{
+              background-color: $lightPurple !important;
+              border:1px solid $lightPurple !important;
+              color:$white !important;
+              border-radius:20px;
+              span{
+                color:$white !important;
+              }
+          }
+          button.shortlist{
+            background-color: transparent !important;
+            border:1px solid $lightPurple !important;
+            color:$grey !important;
+            border-radius:20px;
+            margin-top: 20px;
+            span{
+              color:$grey !important;
+            }
+        }
+          }
+        }
+        .content{
+          margin-left: 30px;
+          h6{
+            @include font($Quicksand,$black,20px);
+            margin-top: 20px;
+            font-weight: bold;
+          }
+          p{
+            @include font($Quicksand,$grey,14px);
+            line-height: 2.5em;
+          }
+          .overview{
+            border: 2px solid $lightGrey;
+            display: flex;
+            margin-top: 20px;
+            justify-content: space-around;
+            border-radius:10px;
+            padding-top:25px;
+            padding-bottom: 10px;
+            img{
+              margin-right: 15px;
+              height:30px;
+            }
+            p{
+              line-height: 2em;
+              color:$black;
+              font-size: 14px;
+              margin-right: 15px;
+            }
+            span{
+              color:$grey;
+              font-size: 14px;
+            }
+          }
+        }
+}

@@ -1,0 +1,164 @@
+@import '../../../assets/sass/variables';
+.post{
+  .post-thumb{
+    img{
+     border-radius: 10px;
+     width: 100%;
+    }
+  }
+  .post-meta{
+    display:-webkit-inline-box;
+    justify-content: space-around;
+    margin: 20px 0px;
+    div{
+      display: inline-block;
+      margin-right: 50px;
+    }
+    img{
+      border-radius: 50%;
+      width:40px;
+      height:40px;
+    }
+    span{
+      @include font($openSans,$grey,$fontspan);
+      margin-left: 14px;
+    }
+     .fa-calendar-alt,.fa-comments,.fa-list-alt{
+       color:$grey;
+     }
+    .lightpurple{
+      color:$lightPurple;
+    }
+  }
+  .post-description{
+    p{
+      @include font($openSans,$grey,14px);
+      line-height: 2em;
+     }
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+     }
+  }
+  .tags{
+    width: 100%;
+    display: inline-flex;
+    border-top: 1px solid $borderGrey;
+    border-bottom: 1px solid $borderGrey;
+    padding:25px 0px;
+    span{
+      @include font($Quicksand,$black,14px);
+      display:inline-block;
+      line-height: 4em;
+      margin-right: 30px;
+    }
+    .mat-chip:not(.mat-basic-chip){
+      display:inline-block;
+      background-color:transparent;
+     color:$grey;
+     border: 1px solid $grey;
+     margin-top: 10px;
+    }
+  }
+  .comments{
+    padding:30px 0px;
+
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+     }
+     .replay{
+       margin-left: 100px;
+       display: flex;     }
+     .comment{
+       display: flex;
+       justify-content: space-around;
+       border-bottom: 1px solid $borderGrey;
+       padding: 30px 0px;
+         svg{
+           color:$lightPurple;
+           margin-left: 5px
+         }
+
+       .user-image{
+         img{
+           border-radius:50%;
+         }
+       }
+       .user-comment{
+         margin-left: 30px;
+         margin-top: 10px;
+         .flex{
+           display: flex;
+           justify-content: space-between;
+         }
+         .user-info{
+            h5{
+              @include font($openSans,$black,16px);
+            }
+            span{
+              @include font($openSans,$lightPurple,13px);
+            }
+            .fa-calendar-alt{
+              color:$lightPurple;
+              margin-right: 10px;
+            }
+         }
+         p{
+           @include font($openSans,$grey,14px);
+           line-height: 2em;
+         }
+         .replay-button{
+           .fa-share{
+             color:$pink;
+           }
+           span{
+             @include font($openSans,$pink,13px);
+           }
+         }
+       }
+     }
+  }
+  .make-replay{
+    padding:30px 0px;
+
+    h6{
+      @include font($Quicksand,$black,16px);
+      font-weight: bold;
+     }
+     .form{
+       .form-control{
+           border-radius: 10px;
+           border: 1px solid transparent;
+           border-top: 1px solid $borderGrey;
+           border-bottom: 1px solid $borderGrey;
+           border-left: 1px solid $borderGrey;
+           border-right: 1px solid $borderGrey;
+           font-family: $openSans;
+           font-size: 13px;
+
+       }
+       ::placeholder{
+        color:#a7a7a7;
+        font-family: $openSans;
+        font-size: 13px;
+       }
+       textarea{
+         overflow-x: hidden;
+         overflow-y: hidden;
+       }
+       label{
+         padding-top: 10px;
+         color:$black;
+         font-family: $openSans;
+         font-size: 14px;
+       }
+       button{
+         margin-top: 20px;
+       }
+     }
+  }
+}
+.btn-rounded{
+  border-radius: 30px
+}

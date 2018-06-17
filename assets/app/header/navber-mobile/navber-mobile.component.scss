@@ -1,0 +1,105 @@
+@import '../../../assets/sass/variables';
+.navbar-menu-mobile{
+  width: 100%;
+  height: 600px;
+  overflow-y: scroll;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 999999999999999999999999;
+  padding: 30px;
+  background-color:#0b1b46;
+  .flex{
+    justify-content: space-between;
+  }
+  .header{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #38425f;
+    .logo {
+      display: flex;
+      float:left;
+      margin-top: -10px;
+      img{
+        width: 100%;
+      }
+
+    }
+  }
+  .signing{
+    padding: 20px 0px;
+    border-bottom: 1px solid #38425f;
+    .inline-block{
+      display: -webkit-box;
+    }
+    a.nav-link{
+      @include font($Quicksand,$white,15px);
+      img{
+        margin-right: 10px;
+      }
+    }
+  }
+  .search{
+    padding: 20px 0px;
+    .input-group-text{
+      background-color:#040e2b;
+      border: 1px solid #040e2b;
+    }
+    .form-control{
+      background-color: #040e2b;
+        border: 1px solid #040e2b;
+        font-family: $openSans;
+        font-size: 13px;
+        color: #c1c1c1;
+    }
+    ::placeholder{
+    font-family: $openSans;
+    font-size: 13px;
+    color: #c1c1c1;
+    }
+  }
+  .menu-mobile {
+    .m-10{
+      margin: 10px 0px;
+    }
+    a{
+      display: -webkit-box;
+      text-decoration: none;
+      font-weight: 500;
+      @include font($Quicksand,$grey,20px);
+    }
+  }
+}
+.dropdown{
+  .mat-expansion-panel-header{
+    height: 40px !important
+  }
+  .mat-expansion-panel-header-title{
+    @include font($Quicksand,$white,13px);
+    text-decoration: none;
+    font-weight: 100;
+  }
+}
+.navbar-menu-mobile .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+    div{
+      margin-left:20px;
+      a{
+        @include font($Quicksand,$white,13px);
+        font-weight: 100;
+        padding-top: 10px
+      }
+    }
+}
+.mat-expansion-panel-header-title{
+  @include font($Quicksand,$grey,20px);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent;
+    margin-left: -20px;}

@@ -1,0 +1,50 @@
+<section class="application">
+  <div class="row">
+    <div class="header-application">
+            <div class="row">
+                <div class="col-md-8">
+                 <div class="job-info">
+                   <div class="job-title">
+                     <div class="flex">
+                         <h6>Proposal</h6>
+                     </div>
+
+                    <div class="job-details">
+                        <ul class="p-l-2">
+                            <li><img src="/../../../../assets/images/money.png"></li>
+                            <li>Price :{{app?.bid | currency:'USD'}}</li>
+                        </ul>
+                        <ul>
+                            <li><img src="/../../../../assets/images/date.png"></li>
+                            <li>{{app?.duration}}</li>
+                        </ul>
+                    </div>
+
+                   </div>
+                 </div>
+
+                </div>
+            </div>
+        </div>
+      <div class="content">
+          <p>{{app?.coverLetter}}</p>
+
+        <h6>More Information About Client</h6>
+        <div class="overview">
+           <div class="flex">
+               <img src="/../../../../assets/images/jobs.png" />
+               <p>{{app?.job.client.jobs.length}} <span>Job </span></p>
+           </div>
+           <div class="flex">
+               <img src="/../../../../assets/images/money.png" />
+               <p>{{app?.job.client.totalSpent  | currency:'USD'}} <span> Total earned</span></p>
+           </div>
+           <div class="flex">
+               <img src="/../../../../assets/images/map3.png" />
+               <p><span>{{app?.job.client.profile.city}} , {{app?.job.client.profile.country}}</span></p>
+           </div>
+
+        </div>
+      </div>
+  </div>
+</section>

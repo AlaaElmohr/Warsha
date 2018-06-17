@@ -1,0 +1,240 @@
+@import '../../assets/sass/variables';
+.about-us{
+  margin-top: 20px;
+  padding-bottom: 40px;
+  .about{
+    margin-top: 50px;
+  }
+  p{
+    @include font($openSans,$grey,$fontp);
+    line-height: 2em;
+  }
+  h5{
+   @include font($Quicksand,$black,$fonth);
+   font-weight: bold;
+   margin-bottom: 30px;
+  }
+  .social-network {
+    top: 50%;
+    display: flex;
+    height: 100px;
+    span{
+      @include font($openSans,$black,$fontspan);
+      line-height: 4em;
+    }
+  ul{
+  display: flex;
+  li{
+   margin-left:20px;
+  }
+  li.google{
+    text-align: center;
+    border: 2px solid $pink;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    padding:0.60em;
+  }
+  li.facebook{
+    text-align: center;
+    border: 2px solid $darkPurple;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    padding:0.60em;
+  }
+  li.twitter{
+    text-align: center;
+    border: 2px solid #50b6f5;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    padding:0.60em;
+  }
+
+  .fa-google{
+    color:$pink;
+
+  }
+  .fa-facebook-f{
+    color:$darkPurple !important;
+  }
+  .fa-twitter{
+    color:#50b6f5
+  }
+  }
+}
+  .services{
+    .service{
+      display:-webkit-box;
+      margin-top: 20px;
+      .icon{
+        height: 80px;
+        width:80px;
+        line-height: 76px;
+        color: $grey;
+        border-radius: 50%;
+        border: 1px solid $borderGrey;
+        font-size: 30px;
+        vertical-align: top;
+        padding-left: 23px;
+      }
+      .description{
+        margin-left: 25px;
+        h6{
+          @include font($openSans,$black,$fontp);
+        }
+        p{
+          max-width: 270px;
+        }
+
+      }
+    }
+  }
+  .testimonial{
+    background: url('/../../assets/images/testimonail.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height:auto;
+    margin-top: 40px;
+    .overlay{
+      background-color: rgba(139, 145, 221,0.9);
+      height:auto;
+      padding:80px 0px;
+      .col-lg-5 , .col-md-10{
+      background-color: $white;
+      border-radius: 20px;
+      margin-left: 70px;
+      }
+      h5{
+        @include font($Quicksand,$white,30px);
+        font-weight: bold;
+
+      }
+      p{
+        @include font($openSans,$white,16px);
+        padding-bottom: 40px;
+      }
+      .p-t-50{
+        padding-top: 50px;
+      }
+      .slide{
+        height:auto;
+        width:100%;
+        padding-left:30px;
+        padding-right: 30px;
+
+        .slide-img{
+          display:flex;
+          overflow: visible;
+          img{
+            margin-top: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+          }
+          .icon{
+              margin-left: 70%;
+            .fa-quote-right{
+              padding-left: 10%;
+              color: $lightPurple;
+              font-size: 30px;
+            }
+          }
+        }
+        .slide-info{
+          margin-top: 40px;
+          h6{
+            @include font($openSans,$black,18px);
+            span{
+              @include font($openSans,$grey,$fontp);
+              margin-left: 25px;
+            }
+          }
+          p{
+            @include font($openSans,$grey,$fontp);
+            line-height: 2.5em;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+  .statistics{
+    padding:50px;
+    h6{
+      @include font($Quicksand,$lightPurple,60px);
+      font-weight: bold;
+      text-align: center;
+
+    }
+    p{
+      @include font($Quicksand,$black,18px);
+      text-align: center;
+    }
+  }
+  .blog{
+    background: url('/../../assets/images/blog.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height:auto;
+    padding:50px;
+    h5{
+      @include font($Quicksand,$black,30px);
+      font-weight: bold;
+      text-align: center;
+
+    }
+    p{
+      @include font($openSans,$grey,16px);
+      text-align: center;
+    }
+    .card{
+      &:hover{
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+      }
+      .card-info{
+        margin-top: -15px;
+        background-color: transparent;
+        margin-left: 15%;
+        span{
+          @include font($openSans,$pink,$fontspan);
+          text-align: center;
+          background: $white;
+          border-radius: 10px;
+          padding:25px 25px;
+        }
+      }
+      .card-body{
+
+        h6{
+          @include font($openSans,$black,16px);
+          text-align: center;
+        }
+        p{
+          @include font($openSans,$grey,$fontp);
+          text-align: center;
+        }
+        a{
+          @include font($openSans,$pink,$fontspan);
+          text-align: center;
+          border-top: 1px solid $borderGrey
+        }
+      }
+    }
+
+  }
+  .companies{
+    padding:50px;
+    h5{
+      @include font($Quicksand,$black,30px);
+      font-weight: bold;
+      text-align: center;
+
+    }
+    p{
+      @include font($openSans,$grey,16px);
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<div class="manage-job">
+    <div class="header">
+        <h3>Contract</h3>
+    </div>
+    <!--->
+    <div class="overview">
+       <div class="flex">
+           <img src="/../../../../assets/images/jobs.png" />
+           <p>9 <span>Job Posted</span></p>
+       </div>
+       <div class="flex">
+           <img src="/../../../../assets/images/application.png" />
+           <p>20 <span>Applications</span></p>
+       </div>
+       <div class="flex">
+           <img src="/../../../../assets/images/interview.png" />
+           <p>18 <span>Hired People</span></p>
+       </div>
+
+    </div>
+    <!-->
+    <div class="content-contract">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Job Title</th>
+        <th>Budget</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let contract of contracts | paginate: { itemsPerPage: 10, currentPage: p }" (mouseenter)="makeActive=contract" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==contract}">
+      <tr >
+        <td>
+          <p>{{contract.title}}</p>
+          <img src="/../../../../assets/images/user2.png" />
+          <span>Applied By {{contract.user.name}}</span>
+        </td>
+        <td>
+        <div class="money"><span>{{contract.budget | currency:'USD' }}</span></div>
+        <td class="date"><p>{{contract?.startTime | date}}</p></td>
+        <td>
+          <span>{{contract.status}}</span>
+          <div class="rate" *ngFor="let feedback of contract.feedback" >
+            <div *ngIf="feedback.status==='fromUserToClient'">
+            <i class="fa fa-star" *ngFor="let star of getStars(feedback?.stars)"></i>
+          </div></div>
+        </td>
+        <td>
+          <span matTooltip="Finish Contract" matTooltipClass="primary-tooltip"><img src="/../../../../assets/images/edit.png" (click)="finishContract(contract)" /></span>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

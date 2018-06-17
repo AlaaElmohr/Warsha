@@ -1,0 +1,327 @@
+@import '../../../assets/sass/variables';
+.employerProfile{
+   padding-top: 40px;
+   padding-bottom: 80px;
+   .header-empolyer {
+     .row{
+       border-bottom:1px solid $borderGrey;
+       padding-bottom: 30px;
+
+     }
+     .social-network {
+       position: absolute;
+       top: 50%;
+       height: 100px;
+       margin-top: -50px;
+     ul{
+     display: flex;
+     li{
+      margin-left:20px;
+     }
+     li.google{
+       text-align: center;
+       border: 2px solid $pink;
+       border-radius: 50%;
+       width:50px;
+       height:50px;
+       line-height: 45px;
+     }
+     li.facebook{
+       text-align: center;
+       border: 2px solid $darkPurple;
+       border-radius: 50%;
+       width:50px;
+       height:50px;
+       line-height: 45px;
+     }
+     li.twitter{
+       text-align: center;
+       border: 2px solid #50b6f5;
+       border-radius: 50%;
+       width:50px;
+       height:50px;
+       line-height: 45px;
+     }
+     i{
+      padding-top: 33%;
+     }
+     .fa-google{
+       color:$pink;
+
+     }
+     .fa-facebook-f{
+       color:$darkPurple;
+     }
+     .fa-twitter{
+       color:#50b6f5
+     }
+     }
+   }
+     .job-tag{
+       margin:15px 0px;
+     }
+     .job-info{
+       display: flex;
+       .client-img{
+         img{
+           height: 84px;
+           width:84px;
+           border:2px solid $borderGrey;
+           border-radius:10px;
+         }
+       }
+       .job-title{
+         margin-left: 20px;
+         h6{
+           color:$black;
+           font-size: 20px;
+           font-family:$Quicksand;
+           font-weight: bold;
+         }
+         button{
+           background-color: transparent !important;
+           border:1px solid $lightPurple !important;
+           color:$lightPurple !important;
+           border-radius:10px;
+           margin-left: 30px;
+           margin-top: -20px;
+       }
+         .job-details{
+           margin-top: 20px;
+           display: -webkit-inline-box;
+
+           ul{
+             &:first-child{
+               margin-left: -2.5em;
+             }
+             list-style: none;
+             display: flex;
+             li{
+               color:$grey;
+               font-family: $openSans;
+               font-size: 13px;
+               img{
+                 margin-right: 10px;
+               }
+             }
+           }
+         }
+       }
+     }
+     .job-apply{
+       button.apply{
+         background-color: $lightPurple !important;
+         border:1px solid $lightPurple !important;
+         color:$white !important;
+         border-radius:20px;
+         span{
+           color:$white !important;
+         }
+     }
+     button.shortlist{
+       background-color: transparent !important;
+       border:1px solid $lightPurple !important;
+       color:$grey !important;
+       border-radius:20px;
+       margin-top: 20px;
+       span{
+         color:$grey !important;
+       }
+   }
+     }
+   }
+   .content{
+     .skills{
+       ul{
+         list-style: none;
+          width: 100%;
+          float: left;
+          margin-left: -2.5em;
+          margin-top: 25px;
+          margin-bottom: 20px;
+         li{
+           float: left;
+            width: 100%;
+            margin: 0;
+            margin-bottom: 0px;
+            position: relative;
+            padding-left: 23px;
+            line-height: 21px;
+            margin-bottom: 10px;
+            @include font($Quicksand,$grey,14px);
+
+         &::before{
+             position: absolute;
+            left: 0;
+            top: 13px;
+            width: 10px;
+            height: 1px;
+            background: #888888;
+            content: "";
+
+         }
+       }
+       }
+     }
+     h3{
+       color:$black;
+       font-family: $Quicksand;
+       font-size: 20px;
+       margin-top: 30px;
+     }
+     .work-history{
+       padding-top: 30px;
+       ul{
+         padding-top: 30px;
+       }
+       .feedback-empolyer{
+         width:100%;
+         display: flex;
+         h6{
+           color:$black;
+           font-family: $openSans;
+           font-size: 14px;
+         }
+         .feedback-right{
+           float: right;
+           width:30%;
+           span{
+             color:$grey;
+             font-family: $openSans;
+             font-size: 13px;
+           }
+           p{
+             margin-bottom: 0.25em;
+             color:$lightPurple;
+             font-family: $openSans;
+             font-size: 13px;
+           }
+           img{
+             margin-right: 10px;
+           }
+         }
+         .feedback-left{
+           float: left;
+            width:70%;
+           .rate {
+             padding-top: 5px;
+             svg{
+               color:#ffd700;
+             }
+            span{
+              color:$grey;
+              font-family: $openSans;
+              font-size: 13px;
+            }
+           }
+         }
+       }
+
+
+     }
+     .desc{
+            p{
+              color:$grey;
+              padding-top: 20px;
+              font-size: 14px;
+              line-height: 2.5em;
+              font-family: $openSans;
+            }
+          }
+   }
+   .mat-chip:not(.mat-basic-chip){
+     background-color:transparent;
+    color:$pink;
+    border: 1px solid $pink;
+   }
+   .sidebar-empolyer{
+
+     h5{
+       color:$black;
+        font-family: $Quicksand;
+        font-size:20px;
+        margin-top: 30px;
+     }
+ .sidebar-overview{
+   margin-top: 20px;
+   padding:30px 30px;
+   border:2px solid $borderGrey;
+   border-radius: 10px;
+    img{
+      margin-top: 10px;
+    }
+    .nav-link{
+          display: -webkit-inline-box;
+          .rate{
+            svg{
+              color:#888
+            }
+          }
+    }
+   .info{
+     display: inline-grid !important;
+     margin-left: 40px;
+     p{
+      margin-bottom: 0.25rem;
+      color:$black;
+       font-family: $openSans;
+       font-size:14px;
+     }
+     span{
+       color:#888;
+        font-family: $openSans;
+        font-size:14px;
+     }
+   }
+ }
+ .sidebar-contact{
+   margin-top: 20px;
+   border:2px solid $borderGrey;
+   border-radius: 10px;
+   padding:35px;
+   p{
+     color:#888;
+      font-family: $openSans;
+      font-size:14px;
+      margin-top: 25px;
+   }
+   span{
+     color:$black;
+      font-family: $openSans;
+      font-size:14px;
+   }
+   .mat-fab.mat-warn, .mat-mini-fab.mat-warn, .mat-raised-button.mat-warn{
+     margin-top: 20px;
+     border-radius: 30px;
+     background:linear-gradient(to right, rgba(63,93,180,0.6), rgba(67,77,143,0.8)) !important;
+     span{
+       color:$white !important;
+     }
+   }
+   .form-control{
+       border-radius: 10px;
+       border: 1px solid transparent;
+       border-top: 1px solid $borderGrey;
+       border-bottom: 1px solid $borderGrey;
+       border-left: 1px solid $borderGrey;
+       border-right: 1px solid $borderGrey;
+       font-family: $openSans;
+       font-size: 13px;
+
+   }
+   ::placeholder{
+    color:#a7a7a7;
+    font-family: $openSans;
+    font-size: 13px;
+   }
+   textarea{
+     overflow-x: hidden;
+     overflow-y: hidden;
+   }
+ }
+}
+}
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+    margin-left: auto !important;
+}

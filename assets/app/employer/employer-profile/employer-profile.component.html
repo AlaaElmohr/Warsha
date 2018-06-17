@@ -1,0 +1,184 @@
+<app-header></app-header>
+<section class="employerProfile">
+  <div class="header-empolyer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 col-sm-8 col-xs-9">
+               <div class="job-info">
+                 <div class="client-img">
+                    <img [src]="clientImage">
+                 </div>
+                 <div class="job-title">
+                   <div class="flex">
+                       <h6>{{client?.name}}</h6>
+                   </div>
+                  <div class="job-details">
+                      <ul class="p-l-2">
+                          <li><img src="../../../assets/images/phone2.png"></li>
+                          <li>{{client?.profile.phoneNumber}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/email2.png"></li>
+                          <li> {{client?.email}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/map2.png"></li>
+                          <li>{{client?.profile.address}}</li>
+                      </ul>
+                  </div>
+
+                 </div>
+               </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-3">
+                <div class="job-apply">
+                  <div class="social-network">
+                    <ul class="list-unstyled text-small">
+                      <li class="facebook"><a [href]="client?.profile.facebookLink" target="_blank"> <i class="fab fa-facebook-f" aria-hidden="true"> </i></a></li>
+                      <li class="twitter"><a [href]="client?.profile.twitterLink"target="_blank"> <i class="fab fa-twitter" aria-hidden="true"> </i></a></li>
+                      <li class="google"><a [href]="client?.profile.googleLink" target="_blank"> <i class="fab fa-google" aria-hidden="true"> </i></a></li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+              <h3> Description</h3>
+              <div class="desc">
+                <p>
+                  {{client?.profile.description}}
+                </p>
+              </div>
+              <!--->
+              <div class="skills">
+                <ul>
+                    <li>Ability to write code – HTML & CSS (SCSS flavor of SASS preferred when writing CSS)</li>
+                    <li>Proficient in Photoshop, Illustrator, bonus points for familiarity with Sketch (Sketch is our preferred concepting)</li>
+                    <li>Cross-browser and platform testing as standard practice</li>
+                    <li>Experience using Invision a plus</li>
+                </ul>
+              </div>
+      <!--->
+              <div class="work-history">
+                <h3>Client's Work History and Feedback ({{client?.jobDoneCount}})</h3>
+                <ul class="list-group" *ngFor="let contract of client?.contracts">
+                  <li class="list-group-item">
+                    <div class="feedback-empolyer">
+                      <div class="feedback-left">
+                           <h6>{{contract.title}}</h6>
+                           <div class="rate" *ngFor="let feedback of contract?.feedbacks">
+                             <div *ngIf="feedback.status==='fromUserToClient'">
+                               <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
+                                <span>{{feedback.comment}}</span>
+                             </div>
+                           </div>
+                      </div>
+                      <div class="feedback-right">
+                          <p>{{contract?.startTime | date}} - {{contract?.finishTime | date}}</p>
+                          <img src="../../../assets/images/money.png" /><span>{{contract?.budget | currency:'USD'}}</span>
+                      </div>
+                    </div>
+                  </li>
+                 </ul>
+              </div>
+            </div>
+            <div class="col-md-4 sidebar-empolyer">
+              <h5>Client Information</h5>
+              <div class="sidebar-overview">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                      <img src="../../../assets/images/since.png" />
+                      <div class="info">
+                          <p>Since</p>
+                          <span>{{client?.memberSince | date}}</span>
+                      </div>
+                    </a>
+
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                        <img src="../../../assets/images/money.png" />
+                        <div class="info">
+                            <p>Total Spent</p>
+                            <span>{{client?.totalSpent | currency:'USD'}}</span>
+                        </div>
+                      </a>
+
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                          <img src="../../../assets/images/hired.png" />
+                          <div class="info">
+                              <p>Hired People</p>
+                              <span>{{client?.jobDoneCount}}</span>
+
+                          </div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                            <img src="../../../assets/images/posted.png" />
+                            <div class="info">
+                                <p>Posted Job</p>
+                                <span>{{client?.jobPostedCount}}</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                            <img src="../../../assets/images/education.png" />
+                            <div class="info">
+                                <p>Jobs</p>
+                                <span>{{client?.jobDoneCount}}</span>
+                            </div>
+                          </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" routerLink="MyProfile" routerLinkActive="active">
+                              <img src="../../../assets/images/language.png" />
+                              <div class="info">
+                                  <p>Rate</p>
+                                  <div class="rate">
+                                  <i class="fa fa-star" *ngFor="let star of getStars(client?.stars)" ></i>
+                                </div>
+                              </div>
+                            </a>
+                            </li>
+
+                </ul>
+
+              </div>
+              <div class="sidebar-contact" *ngIf="typeUser==='user' ">
+              <h5>Contact</h5>
+                <form (ngSubmit)="onSubmit(sendEmail)" #sendEmail="ngForm">
+                    <div class="input-group mb-3">
+                     <input type="email" class="form-control" ngModel name="from" placeholder="Write Gmail Email" >
+                    </div>
+                    <div class="input-group mb-3">
+                     <input type="password" class="form-control" ngModel name="password" placeholder="Write Password Of Gmail" >
+                    </div>
+                      <div class="input-group mb-3">
+                       <input type="text" class="form-control" ngModel name="subject" placeholder="Subject" >
+                      </div>
+                      <div class="input-group mb-3">
+                       <textarea type="text" class="form-control" ngModel name="message" placeholder="write your message" ></textarea>
+                      </div>
+                      <button mat-raised-button color="warn" class="btn-rounded btn-block" type="submit">Send Email</button>
+                      <p class="text-center">You accepts our <span>Terms and Condition</span></p>
+                </form>
+              </div>
+
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>

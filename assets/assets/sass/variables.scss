@@ -1,0 +1,53 @@
+@import './colors';
+@import './fonts';
+@import './responsive';
+
+$fonth:20px;
+$fontp:14px;
+$fontspan:13px;
+.btn-primary{
+background-color: $pink;
+border-color: $pink;
+}
+.btn-rounded{
+  border-radius: 30px;
+  margin-top:-5px;
+}
+.btn-secondary{
+  background-color: $lightPurple;
+  border-color: $lightPurple;
+}
+.btn-rounded-small{
+  border-radius: 10px;
+
+}
+.p-t-10{
+  margin-top: 20px
+}
+.btn-success{
+  margin-top: 20px;
+    width:250px;
+    padding-right: 30px;
+    border-color:#f3f2ed;
+    background-color: transparent;
+}
+.btn-warning{
+  background-color: $darkPurple;
+  border-color: $darkPurple;
+  font-size: 18px;
+  font-family:$openSans;
+  font-weight: bold;
+
+}
+@mixin font($font-family,$color,$font-size){
+    font-family: $font-family;
+    color:$color;
+    font-size:$font-size;
+}
+@mixin transition($in,$ease){
+  -webkit-transition: all $in $ease 0s;
+  -moz-transition: all $in $ease 0s;
+  -ms-transition: all $in $ease 0s;
+  -o-transition: all $in $ease 0s;
+  transition: all $in $ease 0s;
+}

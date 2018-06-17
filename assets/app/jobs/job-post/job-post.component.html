@@ -1,0 +1,175 @@
+<app-header></app-header>
+<section class="jobPost">
+  <div class="header-post">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 col-md-9 col-xs-12 col-xs-12">
+               <div class="job-info">
+                 <div class="client-img">
+                    <img src="../../../assets/images/company.png">
+                 </div>
+                 <div class="job-title">
+                   <div class="flex">
+                       <h6>{{job?.title}}</h6>
+                       <button mat-raised-button color="warn">
+                          {{job?.jobType}}
+                       </button>
+                   </div>
+
+                  <div class="job-details">
+                      <ul class="p-l-2">
+                          <li><img src="../../../assets/images/money.png"></li>
+                          <li>Bugdet :{{job?.salary | currency:'USD'}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/date.png"></li>
+                          <li> {{job?.deadline | date}}</li>
+                      </ul>
+                      <ul>
+                          <li><img src="../../../assets/images/application2.png"></li>
+                          <li>{{job?.appCount}}+ Application</li>
+                      </ul>
+                  </div>
+
+                 </div>
+               </div>
+               <div class="job-tag">
+                 <mat-chip-list>
+                   <mat-chip *ngFor="let skill of job?.skills">{{skill}}</mat-chip>
+                 </mat-chip-list>
+               </div>
+              </div>
+              <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+                <div class="job-apply">
+                  <button mat-raised-button color="primary" class="btn btn-block apply" [routerLink]="['/ApplyJob', job?.jobId]">
+                     <mat-icon aria-label="Example icon-button with a heart icon">send</mat-icon>
+                     Apply For Job
+                  </button>
+                  <button mat-raised-button color="primary" class="btn btn-block shortlist">
+                     <img src="../../../assets/images/heart.png">
+                     Shortlist
+                  </button>
+                </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+              <h3>Job Description</h3>
+              <div class="desc">
+                <p>
+                  {{job?.description}}
+              </p>
+              </div>
+              <div class="work-history">
+                <h3>Client's Work History and Feedback ({{jobCount}})</h3>
+                <ul class="list-group">
+                   <li class="list-group-item" *ngFor=" let contract of job?.client.contracts">
+                     <div *ngIf="contract.status==='finished'">
+                       <div class="feedback-employer" *ngFor="let feedback of contract.feedbacks" >
+                          <div *ngIf="feedback.status==='fromUserToClient' ">
+                            <div class="feedback-left">
+                                 <h6>{{contract.title}}</h6>
+                                 <div class="rate">
+                                   <i class="fa fa-star" *ngFor="let i of  getStars(feedback.stars)"></i>
+                                    <span>{{feedback.comment}}</span>
+                                 </div>
+                            </div>
+                             <div class="feedback-right">
+                                 <p>{{contract.startTime | date}} - {{contract.finishTime | date}}</p>
+                                 <img src="../../../assets/images/money.png" /><span>{{contract.budget | currency:'USD'}}</span>
+                             </div>
+                          </div>
+                       </div>
+                     </div>
+                   </li>
+                 </ul>
+              </div>
+            </div>
+            <div class="col-md-4 sidebar-post">
+              <h5>Client Information</h5>
+              <div class="sidebar-overview">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link">
+                        <img src="../../../assets/images/money.png" />
+                        <div class="info">
+                            <p>Total spent</p>
+                            <span>{{job?.client.totalSpent | currency:'USD'}}</span>
+                        </div>
+                      </a>
+
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link">
+                          <img src="../../../assets/images/age.png" />
+                          <div class="info">
+                              <p>Age</p>
+                              <span>{{job?.client.profile.age}} Years Old</span>
+                          </div>
+                        </a>
+
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link">
+                            <img src="../../../assets/images/map3.png" />
+                            <div class="info">
+                                <p>From</p>
+                                <span>{{job?.client.profile.city}} / {{job?.client.profile.country}}</span>
+                            </div>
+                          </a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link">
+                            <img src="../../../assets/images/education.png" />
+                            <div class="info">
+                                <p>Number Of Jobs</p>
+                                <span>{{jobCount}}</span>
+                            </div>
+                          </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link">
+                              <img src="../../../assets/images/language.png" />
+                              <div class="info">
+                                  <p>Rate</p>
+                                  <div class="rate">
+                                  <i class="fa fa-star" *ngFor="let star of getStars(job?.client.stars)" ></i>
+                                </div>
+                              </div>
+                            </a>
+                            </li>
+
+                </ul>
+
+              </div>
+              <h5>Contact</h5>
+              <div class="sidebar-contact" *ngIf="typeUser==='user' ">
+                <form (ngSubmit)="onSubmit(sendEmail)" #sendEmail="ngForm">
+                    <div class="input-group mb-3">
+                     <input type="email" class="form-control" ngModel name="from" placeholder="Write Gmail Email" >
+                    </div>
+                    <div class="input-group mb-3">
+                     <input type="password" class="form-control" ngModel name="password" placeholder="Write Password Of Gmail" >
+                    </div>
+                      <div class="input-group mb-3">
+                       <input type="text" class="form-control" ngModel name="subject" placeholder="Subject" >
+                      </div>
+                      <div class="input-group mb-3">
+                       <textarea type="text" class="form-control" ngModel name="message" placeholder="write your message" ></textarea>
+                      </div>
+                      <button mat-raised-button color="warn" class="btn-rounded btn-block" type="submit">Send Email</button>
+                      <p class="text-center">You accepts our <span>Terms and Condition</span></p>
+                </form>
+              </div>
+
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>

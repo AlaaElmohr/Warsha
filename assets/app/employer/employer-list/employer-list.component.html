@@ -1,0 +1,132 @@
+<app-header></app-header>
+<section class="employerList">
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-12 col-sm-12 sidebar">
+      <div class="input-group mb-3">
+       <input type="text" class="form-control" ngModel placeholder="By Name" >
+       <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><img src="../../../assets/images/search2.png"></span>
+       </div>
+      </div>
+      <div class="input-group mb-3">
+       <input type="password" class="form-control" ngModel  placeholder="All Locations" >
+       <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><img src="../../../assets/images/map.png"></span>
+       </div>
+      </div>
+      <div class="byCategory">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Category
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div><mat-checkbox>Accountancy (2)</mat-checkbox></div>
+         <div><mat-checkbox>Charity & Voluntary (3)</mat-checkbox></div>
+         <div><mat-checkbox>Banking (2) </mat-checkbox></div>
+         <div><mat-checkbox>Estate Agency (3)</mat-checkbox></div>
+         <div><mat-checkbox>Graduate (2)</mat-checkbox></div>
+         <div><mat-checkbox>IT Contractor (7)</mat-checkbox></div>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <div class="experience">
+        <mat-accordion>
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              By Experience
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div><mat-checkbox>1-2 Years</mat-checkbox></div>
+         <div><mat-checkbox>1-3 Years</mat-checkbox></div>
+         <div><mat-checkbox>Above 3 Years</mat-checkbox></div>
+         <div><mat-checkbox>Above 5</mat-checkbox></div>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <div class="age">
+        <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              Verfied
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+         <div><mat-checkbox>Payment Verfied</mat-checkbox></div>
+         <div><mat-checkbox>Payment Unverfied</mat-checkbox></div>
+
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <div class="price">
+        <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              Since
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-slider class="cdk-focused" min="2015" max="2018" step="0.5" value="2017" thumbLabel tickInterval="1.5"></mat-slider>
+        </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-12 col-sm-12">
+      <div class="list">
+            <div class="row"  *ngFor="let item of collection | paginate: { itemsPerPage: 4, currentPage: p }" (mouseenter)="makeActive=item" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==item}">
+              <div class="col-md-4" >
+                <div class="box">
+                    <h6 class="text-right">4 jobs</h6>
+                    <div class="avatar">
+                        <img src="../../../assets/images/company4.png">
+                    </div>
+                    <h5>King LLC</h5>
+                    <p>Accountancy, Human Resources</p>
+                    <div class="map">
+                        <img src="../../../assets/images/map2.png">
+                        <span>Toronto, Ontario</span>
+                    </div>
+                 </div>
+                </div>
+                  <div class="col-md-4" >
+                    <div class="box">
+                        <h6 class="text-right">4 jobs</h6>
+                        <div class="avatar">
+                            <img src="../../../assets/images/company3.png">
+                        </div>
+                        <h5>King LLC</h5>
+                        <p>Accountancy, Human Resources</p>
+                        <div class="map">
+                            <img src="../../../assets/images/map2.png">
+                            <span>Toronto, Ontario</span>
+                        </div>
+                     </div>
+                    </div>
+                  <div class="col-md-4" >
+                    <div class="box">
+                        <h6 class="text-right">4 jobs</h6>
+                        <div class="avatar">
+                            <img src="../../../assets/images/company5.png">
+                        </div>
+                        <h5>King LLC</h5>
+                        <p>Accountancy, Human Resources</p>
+                        <div class="map">
+                            <img src="../../../assets/images/map2.png">
+                            <span>Toronto, Ontario</span>
+                        </div>
+                     </div>
+                    </div>
+              </div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>

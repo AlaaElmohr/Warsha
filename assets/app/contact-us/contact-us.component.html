@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<section class="contact-us">
+  <div class='container'>
+    <div class="row">
+        <div class="col-md-12 map">
+          <agm-map [latitude]="lat" [longitude]="lng" [styles]="style">
+          <agm-marker [latitude]="lat" [longitude]="lng"  [iconUrl]="iconUrl"></agm-marker>
+          </agm-map>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-lg-6 col-md-5 col-sm-5 col-xs-12">
+          <h3>Keep In Touch</h3>
+          <div class="form">
+            <form>
+            <label for="exampleInputEmail1">Full Name</label>
+            <div class="input-group mb-3">
+             <input type="text" class="form-control" ngModel name="fullName" placeholder="Alaa Ali Elmohr" >
+            </div>
+            <label for="exampleInputEmail1">Email</label>
+            <div class="input-group mb-3">
+             <input type="text" class="form-control" ngModel name="fullName" placeholder="alaa.elmohr@gmail.com" >
+            </div>
+            <label for="exampleInputEmail1">Subject</label>
+            <div class="input-group mb-3">
+             <input type="text" class="form-control" ngModel name="fullName" placeholder="Ask Question" >
+            </div>
+            <label for="exampleInputEmail1">Message</label>
+            <div class="input-group mb-3">
+             <textarea type="text" class="form-control" ngModel name="fullName" rows="10"></textarea>
+            </div>
+            <button class="btn btn-primary">Send</button>
+
+            </form>
+          </div>
+
+        </div>
+        <div class="col-lg-6 vol-md-7 col-sm-7 col-xs-12">
+           <div class="contact-info">
+             <h3>JobHunt Office</h3>
+               <div class="info">
+                   <img src="/../../assets/images/contact-map.png">
+                   <p>Jobify Inc. 555 Madison Avenue, Suite F-2 Manhattan,<br/>
+                       New York 10282 </p>
+               </div>
+               <div class="info">
+                   <img src="/../../assets/images/contact-phone.png">
+                   <p>Call Us : 0934 343 343</p>
+               </div>
+               <div class="info">
+                   <img src="/../../assets/images/contact-fax.png">
+                   <p>Fax : 0934 343 343</p>
+               </div>
+               <div class="info">
+                   <img src="/../../assets/images/contact-email.png">
+                   <p>Email : info@jobhunt.com</p>
+               </div>
+           </div>
+        </div>
+    </div>
+  </div>
+</section>

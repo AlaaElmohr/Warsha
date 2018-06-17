@@ -1,0 +1,70 @@
+<div class="post">
+    <div class="post-thumb">
+      <img src="/../../../assets/images/post-1.png">
+    </div>
+    <div class="post-meta">
+        <div>
+          <img src="/../../../assets/images/profile2.png">
+          <span>{{post?.userName}}</span>
+        </div>
+        <div>
+          <i class="far fa-calendar-alt"></i>
+          <span>{{post?.time | date}}</span>
+        </div>
+        <div>
+          <i class="far fa-comments"></i>
+          <span class="lightpurple">comments</span>
+        </div>
+        <div>
+          <i class="far fa-list-alt"></i>
+          <span>{{ post?.categories}}</span>
+        </div>
+    </div>
+    <div class="post-description" *ngFor="let title of post?.title ; let i=index">
+
+      <h6>{{title}}</h6>
+      <p>{{post?.description[i]}}</p>
+    </div>
+    <div class="tags">
+        <span>tags</span>
+        <mat-chip-list >
+          <mat-chip *ngFor="let tag of post?.tags">{{tag}}</mat-chip>
+        </mat-chip-list>
+    </div>
+    <div class="comments">
+        <h6>Comments</h6>
+        <div class="comment"  *ngFor="let comment of post?.comments">
+          <div class="user-image">
+            <img src="/../../../assets/images/profile4.png">
+          </div>
+          <div class="user-comment">
+            <div class="user-info flex">
+              <h5>{{comment?.name}}</h5>
+              <div><i class="far fa-calendar-alt"></i><span>{{comment?.time | date:'yyyy-MM-dd HH:mm a z':'+0900'}}</span></div>
+            </div>
+            <p>{{comment?.description}} <span *ngIf="post?.userId._id === userId || comment.user === userId " matTooltip="Delete Comment" matTooltipClass="primary-tooltip" (click)="onDelete(comment)"><i class="fas fa-trash-alt"></i></span></p>
+          </div>
+        </div>
+    </div>
+    <div class="make-replay" *ngIf=" post?.userId._id !== userId">
+      <h6>Leave a Replay</h6>
+      <div class="form">
+          <form  (ngSubmit)="onSubmit(commentf)" #commentf="ngForm">
+             <label for="exampleInputEmail1">Description</label>
+              <div class="input-group mb-3">
+               <textarea type="text" class="form-control" rows="7" ngModel  name="description"  ></textarea>
+              </div>
+              <label for="exampleInputEmail1">Full Name</label>
+              <div class="input-group mb-3">
+               <input type="text" class="form-control" ngModel name="name">
+              </div>
+              <label for="exampleInputEmail1">Email</label>
+              <div class="input-group mb-3">
+               <input type="text" class="form-control" ngModel name="email">
+              </div>
+
+              <button mat-raised-button color="warn" class="btn-rounded btn-block" type="submit">Post Comment</button>
+        </form>
+      </div>
+    </div>
+</div>

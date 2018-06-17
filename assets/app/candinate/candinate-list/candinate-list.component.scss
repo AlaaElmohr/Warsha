@@ -1,0 +1,152 @@
+@import '../../../assets/sass/variables';
+.candinateList{
+  padding-bottom: 100px;
+.sidebar{
+  border-right:1px solid $lightGrey;
+  padding-top: 50px;
+  .input-group-text{
+    border-radius: 0px 10px 10px 0px;
+      background-color:transparent;
+      border: 3px solid transparent;
+      border-top: 2px solid $borderGrey;
+      border-bottom: 2px solid $borderGrey;
+      border-right: 2px solid $borderGrey;
+      border-left: none;
+  }
+  .input-group{
+    margin-top: 30px;
+  }
+  .form-control{
+      border-radius: 10px 0px 0px 10px;
+      border: 1px solid transparent;
+      border-top: 2px solid $borderGrey;
+      border-bottom: 2px solid $borderGrey;
+      border-left: 2px solid $borderGrey;
+      border-right: 2px solid transparent;
+      font-family: $openSans;
+      font-size: 13px;
+      color: #a7a7a7;
+  }
+  ::placeholder{
+    color: #a7a7a7;
+  }
+  .rate{
+  margin-left: 10px
+  }
+}
+.col-md-8{
+  padding-left: 0px;
+}
+.list{
+
+  li{
+    border-bottom: 1px solid $borderGrey;
+  }
+  padding-top: 50px;
+  .list-group-item.active{
+    background-color: transparent;
+    color:$black;
+    border-color:$borderGrey;
+    -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    -o-box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    -webkit-transition:  box-shadow .3s ease-in;
+
+
+  }
+  .list-group-item{
+    padding: 30px;
+    border-left:none;
+    border-right:none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .money{
+      img{
+        margin-right: 10px;
+      }
+    }
+    .flex{
+      display: flex;
+      align-items: center;
+    }
+    div{
+      margin-right: 20px;
+    }
+  img.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius:10px;
+    border: 2px solid $borderGrey;
+   padding: 3px;
+  }button{
+    width: 140px;
+    -webkit-transition: background-color .3s ease-out;
+    background-color: transparent !important;
+    border-color: $lightPurple !important;
+    color:$lightPurple !important;
+    -webkit-transition: background-color .3s ease-in;
+    border-radius: 30px;
+        height: 50px;
+    &:hover{
+      background-color: transparent !important;
+      border-color: $lightPurple !important;
+      color:$lightPurple !important;
+      -webkit-transition: background-color .3s ease-in;
+    }
+  }
+  .info{
+    margin-left: 20px;
+    padding-top: 25px;
+    display: grid;
+
+    p{
+      font-family: $openSans;
+      font-size: 14px;
+      color:$black;
+      margin-bottom: 0px;
+    }
+    span{
+      font-family: $openSans;
+      font-size: 14px;
+      color: $lightPurple;
+    }
+  }
+  .rate {
+    padding-top: 5px;
+    padding-left: 15px;
+    svg{
+      color:#ffd700;
+    }
+
+  }
+   .map{
+     span{
+       font-family: $openSans;
+       font-size: 13px;
+       color: #888;
+     }
+   }
+}
+}
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+    border: 1px solid #eee;
+    margin: 15px 0px;
+    border-radius: 20px;
+}
+.mat-expansion-panel-header-title{
+  font-family: $openSans;
+  font-size: 16px;
+  color: $black;
+
+}
+}
+.mat-checkbox-frame{
+  border-color: #e6e8ef;
+}
+.mat-expansion-panel{
+  margin-top: 20px !important;
+}

@@ -1,0 +1,11 @@
+@import './fontFace';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:300,400,500,700|Roboto');
+@include font('Quicksand Dash', '/quick-dash.otf');
+@include font('Segoe Print', '/Segoe_Print_Bold.ttf');
+
+
+$Quicksand:'Quicksand', sans-serif;
+$QuicksandDash:'Quicksand Dash';
+$SegoePrint:'Segoe Print';
+$roboto:'Roboto', sans-serif;
+$openSans:'Quicksand', sans-serif;
