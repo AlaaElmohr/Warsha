@@ -1,11 +1,11 @@
 {
-  "name": "GraduationProject",
+  "name": "warsha",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node server.js",
     "build": "del-cli public/js/app && webpack --config webpack.config.dev.js --progress --profile --watch",
-    "build:prod": "del-cli public/js/app && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && del-cli 'assets/app/**/*.js' 'assets/app/**/*.ngsummary.json' 'assets/app/**/*.ngstyle.*'"
+    "build:prod": "del-cli public/js/app &&  ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && del-cli 'assets/app/**/*.js' 'assets/app/**/*.ngsummary.json' 'assets/app/**/*.ngstyle.*'"
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
@@ -56,29 +56,20 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.7.2",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/language-service": "^5.2.0",
     "@ngtools/webpack": "^1.8.0",
     "@types/core-js": "0.9.36",
+    "@types/jasmine": "~2.8.3",
+    "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.45",
     "angular-router-loader": "^0.5.0",
     "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^3.1.2",
+    "codelyzer": "^4.0.1",
     "css-loader": "^0.28.11",
     "del-cli": "^0.2.0",
     "html-loader": "^0.4.4",
-    "node-sass": "^4.8.3",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "to-string-loader": "^1.1.5",
-    "ts-loader": "^2.0.3",
-    "typescript": "^2.4.2",
-    "webpack": "^2.2.1",
-    "webpack-merge": "^4.1.0",
-    "@angular/compiler-cli": "^5.2.0",
-    "@angular/language-service": "^5.2.0",
-    "@types/jasmine": "~2.8.3",
-    "@types/jasminewd2": "~2.0.2",
-    "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -86,7 +77,16 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.8.3",
     "protractor": "~5.1.2",
-    "ts-node": "~4.1.0"
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "to-string-loader": "^1.1.5",
+    "ts-loader": "^2.0.3",
+    "ts-node": "~4.1.0",
+    "typescript": "^2.6.2",
+    "webpack": "^2.2.1",
+    "webpack-merge": "^4.1.0"
   }
 }

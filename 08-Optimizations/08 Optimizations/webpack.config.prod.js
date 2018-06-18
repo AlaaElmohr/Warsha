@@ -16,16 +16,12 @@ module.exports = webpackMerge.smart(commonConfig, {
         publicPath: '/js/app/',
         chunkFilename: '[id].[hash].chunk.js'
     },
-
+    mode: 'production',
     module: {
         rules: [
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 loader: '@ngtools/webpack'
-            },
-            {
-              test: /\.scss$/,
-              loaders: ["to-string-loader","style-loader","css-loader","sass-loader"]
             },
             {
                 test: /\.ts$/,
@@ -42,9 +38,6 @@ module.exports = webpackMerge.smart(commonConfig, {
     new ngw.AngularCompilerPlugin({
       tsConfigPath: './tsconfig.aot.json',
       entryModule: './assets/app/app.module#AppModule'
-    }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false
-        })
+    })
     ]
 });
