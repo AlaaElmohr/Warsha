@@ -14,7 +14,6 @@ var storage = multer.diskStorage({
   }
 });
 var upload = multer({ storage: storage });
-
 router.post('/signup', function (req, res, next) {
   User.find({email:req.body.email}).exec(function (err, user) {
     if (err) {
