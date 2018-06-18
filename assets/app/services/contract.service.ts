@@ -16,7 +16,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://app-warsha.herokuapp.com/contract' + token, body, {headers: headers})
+      return this.http.post('https://app-warsha.herokuapp.com/contract' + token, body, {headers: headers})
           .map((response: Response) => {
             const result = response.json();
             console.log("response"+ result.obj._id);
@@ -31,7 +31,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.patch('http://app-warsha.herokuapp.com/contract' + token, body, {headers: headers})
+      return this.http.patch('https://app-warsha.herokuapp.com/contract' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -42,7 +42,7 @@ export class ContractService{
           ? 'token=' + localStorage.getItem('token')
           : '';
           const typeQuery= '?query=' + type + '&' + token;
-        return this.http.get('http://app-warsha.herokuapp.com/contract' +  typeQuery)
+        return this.http.get('https://app-warsha.herokuapp.com/contract' +  typeQuery)
             .map((response: Response) => {
               const contracts= response.json().obj;
               let contractValue: Contract[] = [];
@@ -71,7 +71,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha.herokuapp.com/contract/' +id+  token)
+        return this.http.get('https://app-warsha.herokuapp.com/contract/' +id+  token)
             .map((response: Response) => {
               const contract= response.json().obj;
                   let contractValue=new Contract(
@@ -95,7 +95,7 @@ export class ContractService{
           ? '?token=' + localStorage.getItem('token')
           : '';
           console.log(id);
-      return this.http.delete('http://app-warsha.herokuapp.com/application/' + id + token)
+      return this.http.delete('https://app-warsha.herokuapp.com/application/' + id + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -105,7 +105,7 @@ export class ContractService{
           : '';
         let  id=app.appId;
 
-      return this.http.patch('http://app-warsha.herokuapp.com/application/' + id + token,app)
+      return this.http.patch('https://app-warsha.herokuapp.com/application/' + id + token,app)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -116,7 +116,7 @@ export class ContractService{
           : '';
           var typeParam= '?type=' + type;
           console.log(typeParam);
-      return this.http.post('http://app-warsha.herokuapp.com/feedback/' + id + typeParam  ,feedback)
+      return this.http.post('https://app-warsha.herokuapp.com/feedback/' + id + typeParam  ,feedback)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -124,7 +124,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha.herokuapp.com/feedback/' + id + '/' +  status + token)
+        return this.http.get('https://app-warsha.herokuapp.com/feedback/' + id + '/' +  status + token)
             .map((response: Response) => {
               const feedbacks= response.json().obj;
               let feedbackValue:FeedBack[]=[];

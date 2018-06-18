@@ -10,12 +10,12 @@ constructor(private http: Http) {}
 changePassword(password){
   const body = {password:password};
   const  id = localStorage.getItem('clientId');
-  return this.http.patch('http://app-warsha.herokuapp.com/client/changepassword/' + id, body)
+  return this.http.patch('https://app-warsha.herokuapp.com/client/changepassword/' + id, body)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
 }
 getClients(){
-  return this.http.get('http://app-warsha.herokuapp.com/client')
+  return this.http.get('https://app-warsha.herokuapp.com/client')
       .map((response: Response) => {
           const clients = response.json().obj;
           let transformedClients: Client[] = [];
@@ -37,7 +37,7 @@ getClient(id){
       ? '?token=' + localStorage.getItem('token')
       : '';
 let result;
-  result= this.http.get('http://app-warsha.herokuapp.com/client/'+id+token);
+  result= this.http.get('https://app-warsha.herokuapp.com/client/'+id+token);
     return result.map((response: Response) => {
               const client = response.json().obj[0];
                 const jobPostedCount = response.json().obj[1];

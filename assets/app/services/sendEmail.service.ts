@@ -14,7 +14,7 @@ export class SendEmailService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://app-warsha.herokuapp.com/sendEmail' + token, body, {headers: headers})
+      return this.http.post('https://app-warsha.herokuapp.com/sendEmail' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
