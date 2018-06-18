@@ -49,8 +49,7 @@ export class PostService{
             .map((response: Response) => {
                 const posts = response.json().obj[0];
                 const CommentCount= response.json().obj[1];
-
-                   let  Posts: Post[] = [];
+                let  Posts: Post[] = [];
                 for (let post of posts) {
                   console.log(post);
                     Posts.push(new Post(

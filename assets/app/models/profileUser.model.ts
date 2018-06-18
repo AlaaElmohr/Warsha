@@ -4,7 +4,7 @@ export class ProfileUser {
                public jobTitle?: string,
                public educationLevel?: string,
                public age?: number,
-               public languages?: [],
+               public languages?: any[],
                 public experience?: number,
                 public coverLetter?: string,
                 public phoneNumber?: number,

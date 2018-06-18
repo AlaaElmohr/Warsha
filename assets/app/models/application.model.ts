@@ -1,4 +1,4 @@
-import {Profile} from './user.model';
+import {User} from './user.model';
 import {Job} from '../models/job.model';
 
 export class Application {
@@ -7,7 +7,7 @@ export class Application {
               public bid: number,
               public duration: number,
               public job?:Job,
-              public user?:Profile,
+              public user?:User,
               public appId?:string,
               public status?:string,
               public contractId?:string

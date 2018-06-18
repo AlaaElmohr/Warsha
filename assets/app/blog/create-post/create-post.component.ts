@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { Router,ActivatedRoute  } from "@angular/router";
+import { Router,ActivatedRoute  , Params} from "@angular/router";
 import { PostService } from '../../services/post.service';
 import { Post } from "../../models/post.model";
-import {MatChipInputEvent } from '@angular/material';
+import {MatChipInputEvent,MatDatepickerInputEvent } from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import { FormGroup,FormControl,FormArray ,Validators} from '@angular/forms';
 
@@ -14,8 +14,8 @@ import { FormGroup,FormControl,FormArray ,Validators} from '@angular/forms';
 })
 export class CreatePostComponent implements OnInit {
   id;
- description:[]=[];
-  title:[]=[];
+ description:any[]=[];
+  title:any[]=[];
  editMode=false;
  visible: boolean = true;
   selectable: boolean = true;
@@ -25,7 +25,7 @@ export class CreatePostComponent implements OnInit {
   action='Set';
   CreatePost : FormGroup;
   editModeAction:string;
-
+FromToDate;
   constructor(private postService: PostService, private route: ActivatedRoute,private router: Router ) {}
   addTag(event: MatChipInputEvent): void {
     let input = event.input;

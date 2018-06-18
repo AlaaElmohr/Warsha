@@ -11,7 +11,7 @@ export class User {
               public totalEarned?:number,
               public stars?:number,
               public contracts?:Contract[],
-              public id?:string
+              public _id?:string
               ) {
               }
 }

@@ -1,13 +1,11 @@
-@import '../../../../assets/sass/variables';
-
 .feedback{
    padding: 50px 0px;
   .header{
-    border-bottom: 1px solid $lightGrey;
+    border-bottom: 1px solid #edeff7;
     padding-bottom: 20px;
     h3{
-      color:$black;
-      font-family: $Quicksand;
+      color:#202020;
+      font-family: 'Quicksand', sans-serif;
       font-size: 20px;
     }
   }
@@ -20,17 +18,17 @@
   .form-control{
       border-radius: 10px;
       border: 1px solid transparent;
-      border-top: 1px solid $borderGrey;
-      border-bottom: 1px solid $borderGrey;
-      border-left: 1px solid $borderGrey;
-      border-right: 1px solid $borderGrey;
-      font-family: $openSans;
+      border-top: 1px solid #e6e8ef;
+      border-bottom: 1px solid #e6e8ef;
+      border-left: 1px solid #e6e8ef;
+      border-right: 1px solid #e6e8ef;
+      font-family: 'Quicksand', sans-serif;
       font-size: 13px;
 
   }
   ::placeholder{
    color:#a7a7a7;
-   font-family: $openSans;
+   font-family: 'Quicksand', sans-serif;
    font-size: 13px;
   }
   .update{
@@ -39,14 +37,14 @@
   }
   label{
     padding-top: 10px;
-    color:$black;
-    font-family: $openSans;
+    color:#202020;
+    font-family: 'Quicksand', sans-serif;
     font-size: 14px;
   }
   .btn-primary{
     background-color: transparent !important;
-    border-color: $pink;
-    color:$pink;
+    border-color: #fb236a;
+    color:#fb236a;
     width: 140px;
     float: right;
 

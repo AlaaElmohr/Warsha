@@ -1,4 +1,4 @@
-import {Profile} from './user.model';
+import {User} from './user.model';
 import {Client} from './client.model';
 import {FeedBack} from './feedback.model';
 export class Contract {
@@ -8,7 +8,7 @@ export class Contract {
               public finishTime?: Date,
               public budget?: number,
               public status?: string,
-              public user?:Profile,
+              public user?:User,
               public contractId?:string,
               public jobId?:string,
               public client?:Client,

@@ -6,9 +6,6 @@ import { AgmCoreModule } from '@agm/core';
 import { HttpModule } from "@angular/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
-import { AngularFireModule } from 'angularfire2';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {FormsModule} from '@angular/forms';
 import {RouterModule,Routes} from '@angular/router';
 import * as firebase from 'firebase';
@@ -213,9 +210,6 @@ const appRoutes: Routes = [
    ReactiveFormsModule,
     MatDatepickerModule,
     MatSelectModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     FormsModule,
     HttpModule ,
     RouterModule.forRoot(appRoutes),

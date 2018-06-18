@@ -19,12 +19,14 @@ export class MyPostsComponent implements OnInit {
     this.postService.getPosts().subscribe(
           (posts: Post[]) => {
             for(let post of posts){
+              console.log("Posts"+post);
             if(post.userId._id === this.userId){
               this.posts.push(post);
             }
           }
-      );
- }
+  }
+);
+}
  onDelete(post) {
    this.posts.splice(this.posts.indexOf(post),1);
      this.postService.deletePost(post)
@@ -32,5 +34,4 @@ export class MyPostsComponent implements OnInit {
              result => console.log(result)
          );
  }
-
 }

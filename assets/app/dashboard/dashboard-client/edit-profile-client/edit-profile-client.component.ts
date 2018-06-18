@@ -33,31 +33,32 @@ export class EditProfileClientComponent implements OnInit {
   }
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
-  if (event.target.files && event.target.files[0]) {
+  if (fileInput.target.files && fileInput.target.files[0]) {
     var reader = new FileReader();
     reader.onload = (event:any) => {
       this.url = event.target.result;
     }
 
-    reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(fileInput.target.files[0]);
   }
 
   //  this.product.photo = fileInput.target.files[0]['name'];
   }
   onSubmit(form:NgForm){
+      let profileData;
       const formData: any = new FormData();
       const files: Array<File> = this.filesToUpload;
         if(files[0]==undefined && this.editMode===true){
-          const profileData=new ProfileClient(this.imageName,form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+         profileData=new ProfileClient(this.imageName,form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
            form.value.twitterLink,form.value.googleLink,form.value.linkedinLink,form.value.country,form.value.city,form.value.address);
         }
         else if(files[0]==undefined && this.editMode===false){
-          const profileData=new ProfileClient('',form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+           profileData=new ProfileClient('',form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
            form.value.twitterLink,form.value.googleLink,form.value.linkedinLink,form.value.country,form.value.city,form.value.address);
         }
         else{
           formData.append("uploads[]", files[0], files[0]['name']);
-          const profileData=new ProfileClient(files[0]['name'],form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+           profileData=new ProfileClient(files[0]['name'],form.value.age,form.value.description,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
            form.value.twitterLink,form.value.googleLink,form.value.linkedinLink,form.value.country,form.value.city,form.value.address);
         }
          var profile=JSON.stringify(profileData);
@@ -77,7 +78,7 @@ export class EditProfileClientComponent implements OnInit {
                 error => console.error(error)
              );
         }
-        this.router.navigate(['Employer/Profile',app.appId]);
+        this.router.navigate(['Employer/Profile']);
 }
 
 }

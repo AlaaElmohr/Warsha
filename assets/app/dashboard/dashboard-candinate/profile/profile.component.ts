@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent,MatDatepickerInputEvent} from '@angular/material';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {ProfileUser} from "../../../models/profileUser.model";
 import {ProfileUserService} from '../../../services/profileUser.service'
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit{
    selectable: boolean = true;
    removable: boolean = true;
    addOnBlur: boolean = true;
-  FromToDate: string[] = [];
+  FromToDate: any[] = [];
   languages = [];
   url;
   category;
@@ -46,14 +46,13 @@ export class ProfileComponent implements OnInit{
    }
    fileChangeEvent(fileInput: any) {
      this.filesToUpload = <Array<File>>fileInput.target.files;
-   if (event.target.files && event.target.files[0]) {
+   if (fileInput.target.files && fileInput.target.files[0]) {
      var reader = new FileReader();
 
      reader.onload = (event:any) => {
        this.url = event.target.result;
      }
-
-     reader.readAsDataURL(event.target.files[0]);
+     reader.readAsDataURL(fileInput.target.files[0]);
    }
 
    //  this.product.photo = fileInput.target.files[0]['name'];
@@ -75,10 +74,11 @@ export class ProfileComponent implements OnInit{
                    this.category=category.value;
                  }
                }
-               this.educationFrom=new Date(data.educationFrom);
-               this.educationTo=new Date(data.educationTo);
-               this.workFrom=new Date(data.workFrom);
-               this.workTo=new Date(data.workTo);
+               console.log(new Date(parseInt(data.educationFrom.toString())));
+               this.educationFrom=new Date(parseInt(data.educationFrom.toString()));
+               this.educationTo=new Date(parseInt(data.educationTo.toString()));
+               this.workFrom=new Date(parseInt(data.workFrom.toString()));
+               this.workTo=new Date(parseInt(data.workTo.toString()));
 
                this.url="/assets/uploads/"+data.userImage;
                this.imageName=data.userImage;
@@ -87,6 +87,7 @@ export class ProfileComponent implements OnInit{
          );
    }
 onSubmit(form:NgForm){
+      let profileData;
       const formData: any = new FormData();
       const files: Array<File> = this.filesToUpload;
       let categoryValue;
@@ -95,19 +96,26 @@ onSubmit(form:NgForm){
            categoryValue=category.viewValue;
         }
       }
+      let indexes=[0,1,2,3];
+      let dateValues=[this.educationFrom,this.educationTo,this.workFrom,this.workTo];
+      for(let i of indexes){
+      if(this.editMode===true && (this.FromToDate[i]=='' || this.FromToDate[i]==undefined)){
+        this.FromToDate[i]=Date.parse(dateValues[i]);
+      }
+    }
       if(files[0]==undefined && this.editMode===true){
-        const profileData=new ProfileUser(this.imageName,form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+         profileData=new ProfileUser(this.imageName,form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
         form.value.twitterLink,form.value.googleLink,form.value.linkdinLink,form.value.country,form.value.city,form.value.address,categoryValue,form.value.educationTitle,this.FromToDate[0],this.FromToDate[1],form.value.educationInstitue,
         form.value.educationDescription,form.value.workTitle,this.FromToDate[2],this.FromToDate[3],form.value.workCompany,form.value.workDescription);
       }
       else if(files[0]==undefined && this.editMode===false){
-        const profileData=new ProfileUser('',form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+         profileData=new ProfileUser('',form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
         form.value.twitterLink,form.value.googleLink,form.value.linkdinLink,form.value.country,form.value.city,form.value.address,categoryValue,form.value.educationTitle,this.FromToDate[0],this.FromToDate[1],form.value.educationInstitue,
         form.value.educationDescription,form.value.workTitle,this.FromToDate[2],this.FromToDate[3],form.value.workCompany,form.value.workDescription);
       }
       else{
         formData.append("uploads[]", files[0], files[0]['name']);
-        const profileData=new ProfileUser(files[0]['name'],form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
+        profileData=new ProfileUser(files[0]['name'],form.value.jobTitle,form.value.educationLevel,form.value.age,this.languages,form.value.experience,form.value.coverLetter,form.value.phoneNumber,form.value.websiteLink,form.value.facebookLink,
         form.value.twitterLink,form.value.googleLink,form.value.linkdinLink,form.value.country,form.value.city,form.value.address,categoryValue,form.value.educationTitle,this.FromToDate[0],this.FromToDate[1],form.value.educationInstitue,
         form.value.educationDescription,form.value.workTitle,this.FromToDate[2],this.FromToDate[3],form.value.workCompany,form.value.workDescription);
       }
@@ -145,25 +153,9 @@ onSubmit(form:NgForm){
    removeLanguage(value: any): void {
      let index = this.languages.indexOf(value);
      if (index >= 0) {
-       this.language.splice(index, 1);
+       this.languages.splice(index, 1);
      }
    }
-   addCategory(event: MatChipInputEvent): void {
 
-     let input = event.input;
-     let value = event.value;
-     if ((value || '').trim()) {
-       this.categories.push(value.trim());
-     }
-     if (input) {
-       input.value = '';
-     }
-   }
-   removeCategory(value: any): void {
-     let index = this.categories.indexOf(value);
-     if (index >= 0) {
-      this.categories.splice(index, 1);
-     }
-   }
 
 }

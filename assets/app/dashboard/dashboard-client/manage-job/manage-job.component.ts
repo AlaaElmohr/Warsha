@@ -26,7 +26,7 @@ clientId=localStorage.getItem('clientId');
             }
           }
       );
-      this.clientService.getClient(this.clientId,'id').subscribe(
+      this.clientService.getClient(this.clientId).subscribe(
         (clients: Client[]) => {
            this.client=clients[0];
         }
