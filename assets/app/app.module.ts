@@ -26,14 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardCandinateComponent } from './dashboard/dashboard-candinate/dashboard-candinate.component';
 import { SidebarCondinateComponent } from './dashboard/dashboard-candinate/sidebar-condinate/sidebar-condinate.component';
 import { ProfileComponent } from './dashboard/dashboard-candinate/profile/profile.component';
-import { ResumeComponent } from './dashboard/dashboard-candinate/resume/resume.component';
 import { ChangePasswordComponent } from './dashboard/dashboard-candinate/change-password/change-password.component';
 import { AppliedJobComponent } from './dashboard/dashboard-candinate/applied-job/applied-job.component';
 import {ProposalsComponent} from './dashboard/dashboard-candinate/proposals/proposals.component';
 import {MyApplicationComponent} from './dashboard/dashboard-candinate/my-application/my-application.component';
 import { ShortlistedJobComponent } from './dashboard/dashboard-candinate/shortlisted-job/shortlisted-job.component';
 import { CandinateProfileComponent } from './candinate/candinate-profile/candinate-profile.component';
-import { TransactionsComponent } from './dashboard/dashboard-candinate/transactions/transactions.component';
 import { CandinateListComponent } from './candinate/candinate-list/candinate-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
@@ -63,10 +61,7 @@ import { DashboardClientComponent } from './dashboard/dashboard-client/dashboard
 import { SidebarClientComponent } from './dashboard/dashboard-client/sidebar-client/sidebar-client.component';
 import { PostJobComponent } from './dashboard/dashboard-client/post-job/post-job.component';
 import { ManageJobComponent } from './dashboard/dashboard-client/manage-job/manage-job.component';
-import { TransactionsClientComponent } from './dashboard/dashboard-client/transactions-client/transactions-client.component';
 import { EditProfileClientComponent } from './dashboard/dashboard-client/edit-profile-client/edit-profile-client.component';
-import { PaymentJobComponent } from './dashboard/dashboard-client/post-job/payment-job/payment-job.component';
-import { DonePostComponent } from './dashboard/dashboard-client/post-job/done-post/done-post.component';
 import { AllApplicationsComponent } from './dashboard/dashboard-client/all-applications/all-applications.component';
 import { ApplicationComponent } from './dashboard/dashboard-client/application/application.component';
 import { ApplyJobComponent } from './jobs/apply-job/apply-job.component';
@@ -127,7 +122,6 @@ const appRoutes: Routes = [
     {path:'MyProfile',component :ProfileComponent},
     {path:'MyApplication/:id' ,component :MyApplicationComponent},
     {path:'Proposals',component :ProposalsComponent},
-    {path:'Transactions',component :TransactionsComponent},
     {path:'FeedBackToClient/:id/:type',component :FeedBackToClientComponent},
     {path:'ChangePassword',component :ChangePasswordComponent},
   ]},
@@ -136,14 +130,12 @@ const appRoutes: Routes = [
     {path:'ChangePassword',component :ChangePasswordClientComponent},
     {path:'PostJob',component :PostJobComponent},
     {path:'PostJob/:id',component :PostJobComponent},
-    {path:'PayementSetting',component :PaymentJobComponent},
-    {path:'Done',component :DonePostComponent},
+
     {path:'AllApplications/:id',component :AllApplicationsComponent},
     {path:'Application/:id',component :ApplicationComponent},
     {path:'ManageJobs',component :ManageJobComponent},
     {path:'ActivatedContract',component :ContractComponent},
     {path:'FeedBackToUser/:id/:type',component :FeedBackToUserComponent},
-    {path:'Transactions',component :TransactionsClientComponent},
     {path:'MyProfile',component :EditProfileClientComponent}
   ]},
   {path:'**',component :Page404Component}
@@ -165,12 +157,10 @@ const appRoutes: Routes = [
     ProposalsComponent,
     SidebarCondinateComponent,
     ProfileComponent,
-    ResumeComponent,
     ChangePasswordComponent,
     AppliedJobComponent,
     ShortlistedJobComponent,
     CandinateProfileComponent,
-    TransactionsComponent,
     CandinateListComponent,
     JobListComponent,
     JobPostComponent,
@@ -181,10 +171,7 @@ const appRoutes: Routes = [
     SidebarClientComponent,
     PostJobComponent,
     ManageJobComponent,
-    TransactionsClientComponent,
     EditProfileClientComponent,
-    PaymentJobComponent,
-    DonePostComponent,
     AllApplicationsComponent,
     ApplicationComponent,
     ApplyJobComponent,

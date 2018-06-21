@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <form (ngSubmit)="onSubmit(feedback)" #feedback="ngForm">
         <label for="exampleInputEmail1">Stars</label>
-         <div class="input-group mb-3">
+         <div class="input-group mb-3 .inline">
            <mat-form-field placeholder="Job Type">
              <mat-select  ngModel name="stars">
                <mat-option *ngFor="let star of stars" [value]="star">
@@ -14,6 +14,7 @@
                </mat-option>
              </mat-select>
            </mat-form-field>
+
         </div>
         <label for="exampleInputEmail1">Comment</label>
         <div class="input-group mb-3">

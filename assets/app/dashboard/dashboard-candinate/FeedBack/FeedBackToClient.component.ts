@@ -13,7 +13,9 @@ export class FeedBackToClientComponent implements OnInit {
 id;
 type;
 stars = [1,2,3,4,5];
+// /stars;
   onSubmit(form:NgForm){
+
    const feedback=new FeedBack(form.value.stars,form.value.comment);
    this.contractService.addFeedBack(this.id,feedback,this.type)
       .subscribe(

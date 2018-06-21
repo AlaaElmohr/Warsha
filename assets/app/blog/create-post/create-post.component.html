@@ -8,8 +8,8 @@
            </button>
          </div>
       <div formArrayName="titleAndDesc">
-        <div *ngFor="let titleanddesc of  CreatePost.get('titleAndDesc').controls;let i =index" [formGroupName]="i" >
-            <label for="exampleInputEmail1">Title</label>
+        <div *ngFor="let titleanddesc of  CreatePost.get('titleAndDesc').controls;let i =index" [formGroupName]="i">
+            <label for="exampleInputEmail1" class="p-t-40">Title</label>
             <div class="input-group mb-3">
              <input type="text" class="form-control"  name="title" formControlName="title" placeholder="Front End Developer" >
             </div>
@@ -22,7 +22,7 @@
           <div class="col-md-12 p-t-20">
             <label for="exampleInputEmail1">Category</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control"  name="categories" formControlName="categories">
+              <input type="text" class="form-control"  name="categories" formControlName="categories" placeholder="Travel2">
             </div>
           </div>
         </div>

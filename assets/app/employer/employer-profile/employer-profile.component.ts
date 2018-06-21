@@ -31,6 +31,7 @@ export class EmployerProfileComponent implements OnInit {
        );
   }
   getStars(number){
+    console.log("a7a"+number);
     return new Array(number);
   }
   onSubmit(form:NgForm){

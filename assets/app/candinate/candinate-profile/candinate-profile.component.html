@@ -28,8 +28,8 @@
         </div>
         <div class="col-md-4 col-sm-12">
           <div class="profile-tag">
-            <mat-chip-list >
-              <mat-chip >{{user?.profile.categories}}</mat-chip>
+            <mat-chip-list  >
+              <mat-chip  *ngFor="let language of user?.profile.languages">{{ language }}</mat-chip>
             </mat-chip-list>
           </div>
 
@@ -41,16 +41,16 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#about">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Education</a>
+                    <a class="nav-link" href="#education">Education</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Work Experience</a>
+                    <a class="nav-link" href="#work">Work Experience</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                   </li>
 
                 </ul>
@@ -93,8 +93,8 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="work-history">
-                      <h3>User's Work History and Feedback ({{usert?.jobDoneCount}})</h3>
+                    <div class="work-history" id="work">
+                      <h3>User's Work History and Feedback ({{user?.jobDoneCount}})</h3>
                       <ul class="list-group" *ngFor="let contract of user?.contracts">
                         <li class="list-group-item">
                           <div class="feedback-empolyer">
@@ -102,7 +102,7 @@
                                  <h6>{{contract.title}}</h6>
                                  <div class="rate" *ngFor="let feedback of contract?.feedbacks">
                                    <div *ngIf="feedback.status==='fromClientToUser'">
-                                     <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
+                                      <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
                                       <span>{{feedback.comment}}</span>
                                    </div>
                                  </div>
@@ -185,7 +185,7 @@
                     </ul>
 
                   </div>
-                  <div class="sidebar-contact" *ngIf="typeUser==='client' ">
+                  <div class="sidebar-contact" *ngIf="typeUser==='client' " id="contact">
 
                   <h5>Contact</h5>
                     <form (ngSubmit)="onSubmit(sendEmail)" #sendEmail="ngForm">

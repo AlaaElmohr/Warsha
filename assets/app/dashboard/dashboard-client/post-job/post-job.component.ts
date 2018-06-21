@@ -106,7 +106,6 @@ export class PostJobComponent implements OnInit {
 
                    data => {
                      this.post=data;
-
                      for(let category of this.categories ){
                        if(category.viewValue === data.categories){
                          this.category=category.value;
