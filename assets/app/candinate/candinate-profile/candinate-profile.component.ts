@@ -43,6 +43,9 @@ export class CandinateProfileComponent implements OnInit {
        });
   }
   getStars(number){
+    if(number%2 != 0){
+      number=Math.ceil(number);
+    }
     return new Array(number);
   }
   onSubmit(form:NgForm){

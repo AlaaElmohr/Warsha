@@ -41,6 +41,9 @@ export class CandinateListComponent implements OnInit{
     this.router.navigate(['Candinate/Profile/', user._id]);
   }
   getStars(number){
+    if(number%2 != 0){
+      number=Math.ceil(number);
+    }
     return new Array(number);
   }
   search(name){

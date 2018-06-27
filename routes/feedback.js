@@ -45,7 +45,7 @@ router.post('/:id', function (req, res, next) {
             Client.findById(contract.client)
           .exec(function (err, client) {
             client.feedbacks.push(feedback);
-            client.stars= (client.stars + req.body.stars) / (client.jobDoneCount);
+            client.stars= ((client.stars*(client.jobDoneCount-1)) + req.body.stars) / (client.jobDoneCount);
             client.save()
           })
           }
@@ -54,8 +54,7 @@ router.post('/:id', function (req, res, next) {
             User.findById(contract.user)
              .exec(function (err, user) {
             user.feedbacks.push(feedback);
-              user.stars= (user.stars / user.jobDoneCount) + ( req.body.stars / user.jobDoneCount)
-
+            user.stars= ((user.stars*(user.jobDoneCount-1)) + req.body.stars) / (user.jobDoneCount);
             user.save()
           })
           }

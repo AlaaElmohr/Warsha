@@ -31,11 +31,12 @@ export class EmployerProfileComponent implements OnInit {
        );
   }
   getStars(number){
-    console.log("a7a"+number);
+    if(number%2 != 0){
+      number=Math.ceil(number);
+    }
     return new Array(number);
   }
   onSubmit(form:NgForm){
-    console.log("heheheh");
              const email=new Email(form.value.from,this.client.email,form.value.subject,form.value.message,form.value.password);
              this.emailService.sendEmail(email).subscribe(
                  data=>console.log(data),

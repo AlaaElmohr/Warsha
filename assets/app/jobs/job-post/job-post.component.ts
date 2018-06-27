@@ -19,6 +19,9 @@ job:Job;
 editMode=false;
 jobCount:Number;
 getStars(number){
+  if(number%2 != 0){
+    number=Math.ceil(number);
+  }
   return new Array(number);
 }
 ngOnInit(){

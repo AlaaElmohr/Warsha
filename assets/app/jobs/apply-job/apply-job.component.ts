@@ -23,6 +23,9 @@ durationTypes = [
  {value: '2', viewValue: 'Month'},
 ];
 getStars(number){
+  if(number%2 != 0){
+    number=Math.ceil(number);
+  }
   return new Array(number);
 }
   onSubmit(form:NgForm){
@@ -40,8 +43,8 @@ getStars(number){
           data => console.log(data),
          error => console.error(error)
       );
-this.router.navigate(['DashboardUser/Proposals']);
  form.reset();
+ this.router.navigate(['DashboardUser/Proposals']);
 
 }
 reset(form:NgForm){

@@ -110,7 +110,7 @@
                    </div>
                </div>
                 <div class="job-description">
-                  <p>{{job.description |  slice:0:250}}<a [routerLink]="['/JobsPost', job.jobId]"><span>more</span></a></p>
+                <a [routerLink]="['/JobsPost', job.jobId]">  <p>{{job.description |  slice:0:250}} <span>more</span></p></a>
                 </div>
                 <div class="job-tags">
                   <mat-chip-list>
@@ -127,6 +127,9 @@
                   </div>
                   <div class="rate">
                       <i class="fa fa-star" *ngFor="let i of getStars(job?.client.stars)" ></i>
+                      <p *ngIf="job?.client.stars%2 != 0">
+                        {{job?.client.stars}} from 5
+                      </p>
                   </div>
 
                   <div class="map">

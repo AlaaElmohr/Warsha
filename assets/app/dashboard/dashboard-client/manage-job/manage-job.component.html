@@ -17,7 +17,7 @@
        </div>
     </div>
     <div class="content">
-  <table class="table">
+  <table class="table" >
     <thead>
       <tr>
         <th>Applied Jobs</th>
@@ -28,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let job of jobs">
+      <tr  *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }" (mouseenter)="makeActive=job" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==job}">
         <td>
           <p>{{job?.title}}</p>
         </td>
@@ -44,5 +44,7 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
     </div>
 </div>

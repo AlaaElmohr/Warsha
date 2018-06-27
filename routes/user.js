@@ -154,6 +154,9 @@ router.get('/', function (req, res, next) {
 }
          User.find(findQuery)
         .exec(function (err, users) {
+          for(let user of users){
+            console.log("Done Job"+user.jobDoneCount)
+          }
             if (err) {
                 return res.status(500).json({
                     title: 'An error occurred',

@@ -57,7 +57,12 @@
 
                <div class="money">
                  <div class="earned"><img src="/../../../assets/images/money.png" /><span>{{user?.totalEarned | currency:'USD'}}</span></div>
-                 <div class="rate"><i  *ngFor="let i of getStars(user?.stars)" class="fa fa-star"></i></div>
+                 <div class="rate">
+                   <i  *ngFor="let i of getStars(user?.stars)" class="fa fa-star"></i>
+                   <p *ngIf="user?.stars%2 != 0">
+                     {{user?.stars}} from 5
+                   </p>
+                 </div>
                </div>
               <div class="map">
                    <img src="/../../../assets/images/map2.png">

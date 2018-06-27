@@ -24,6 +24,7 @@ export class ProposalsComponent implements OnInit {
        );
   }
   onDelete(app) {
+    this.apps.splice(this.apps.indexOf(app),1);
       this.appService.deleteApp(app.appId)
           .subscribe(
               result => console.log(result)

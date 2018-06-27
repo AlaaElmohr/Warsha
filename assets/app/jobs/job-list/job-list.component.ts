@@ -57,6 +57,11 @@ budget=[0,100,200,300,400];
          );
  }
  getStars(number){
+   if(number%2 != 0){
+
+     number=Math.ceil(number);
+     console.log("hi")
+   }
    return new Array(number);
  }
   panelOpenState: boolean = false;

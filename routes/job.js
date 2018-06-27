@@ -8,7 +8,6 @@ router.get('/', function (req, res, next) {
   let findQuery;
   var filter1=req.query.query;
   var filter=JSON.parse(filter1);
-    console.log(filter.title)
   if(filter.city === undefined){
    findQuery={};
   }
@@ -36,7 +35,6 @@ router.get('/', function (req, res, next) {
    delete findQuery.jobType;
   }
 }
-console.log(findQuery);
    appCount=[];
     Job.find(findQuery)
         .populate({path:'client'})

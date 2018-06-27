@@ -92,14 +92,14 @@ export class PostJobComponent implements OnInit {
          );
     }
     form.reset();
+    this.router.navigate(['JobsList']);
+
      }
 
    ngOnInit(){
      this.route.params.subscribe(params => {
           this.id = params['id']; // (+) converts string 'id' to a number
-          console.log(params);
-          console.log(params['id']);
-           console.log(this.id);
+
           if(this.id){
            this.editMode=true;
            this.jobService.getPostById(this.id).subscribe(

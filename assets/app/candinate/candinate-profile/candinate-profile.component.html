@@ -177,6 +177,9 @@
                                       <p>Rate</p>
                                       <div class="rate">
                                       <i class="fa fa-star" *ngFor="let star of getStars(user?.stars)" ></i>
+                                      <p *ngIf="user?.stars%2 != 0">
+                                        {{user?.stars}} from 5
+                                      </p>
                                     </div>
                                   </div>
                                 </a>

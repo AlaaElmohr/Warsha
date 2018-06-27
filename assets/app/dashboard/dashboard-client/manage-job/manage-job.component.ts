@@ -20,15 +20,16 @@ clientId=localStorage.getItem('clientId');
           (jobs: Job[]) => {
             for(let job of jobs){
               if(client === job.clientId){
-                console.log(jobs);
                   this.jobs.push(job);
               }
             }
           }
       );
       this.clientService.getClient(this.clientId).subscribe(
-        (clients: Client[]) => {
-           this.client=clients[0];
+        (client: Client) => {
+          console.log(this.clientId);
+          console.log(client);
+          this.client=client;
         }
       )
  }
@@ -36,7 +37,6 @@ clientId=localStorage.getItem('clientId');
      this.jobService.deleteJob(job)
          .subscribe(
              result =>{
-               console.log(result);
                this.jobs.splice(this.jobs.indexOf(job),1);
              }
          );

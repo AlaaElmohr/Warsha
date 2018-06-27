@@ -11,12 +11,12 @@ export class AuthService {
          const body = JSON.stringify(user);
          const headers = new Headers({'Content-Type': 'application/json'});
          if(type==='user'){
-           return this.http.post('http://localhost:3000/user/signup', body, {headers: headers})
+           return this.http.post('https://warsha-2.herokuapp.com/user/signup', body, {headers: headers})
                .map((response: Response) => {console.log(response.json().token); return response.json()})
                .catch((error: Response) => Observable.throw(error.json()));
          }
            if(type==='client'){
-             return this.http.post('http://localhost:3000/client/signup', body, {headers: headers})
+             return this.http.post('https://warsha-2.herokuapp.com/client/signup', body, {headers: headers})
                  .map((response: Response) => response.json())
                  .catch((error: Response) => Observable.throw(error.json()));
            }
@@ -25,7 +25,7 @@ export class AuthService {
          const body = JSON.stringify(user);
          const headers = new Headers({'Content-Type': 'application/json'});
            if(type==='user'){
-             return this.http.post('http://localhost:3000/user/signin', body, {headers: headers})
+             return this.http.post('https://warsha-2.herokuapp.com/user/signin', body, {headers: headers})
                  .map((response: Response) => {
                   this.nameUser=response.json().name;
                   return response.json()
@@ -33,7 +33,7 @@ export class AuthService {
                  .catch((error: Response) => {console.log(error.json()); return Observable.throw(error.json())});
            }
             if(type==='client'){
-              return this.http.post('http://localhost:3000/client/signin', body, {headers: headers})
+              return this.http.post('https://warsha-2.herokuapp.com/client/signin', body, {headers: headers})
                   .map((response: Response) => response.json())
                   .catch((error: Response) => Observable.throw(error.json()));
             }
@@ -50,13 +50,13 @@ export class AuthService {
            : '';
            if(localStorage.getItem('userId') !==null){
              const  userId = localStorage.getItem('userId');
-                 return this.http.delete('http://localhost:3000/user/' + userId + token)
+                 return this.http.delete('https://warsha-2.herokuapp.com/user/' + userId + token)
                      .map((response: Response) => response.json())
                      .catch((error: Response) => Observable.throw(error.json()));
           }
             if(localStorage.getItem('clientId') !==null){
               const  clientId = localStorage.getItem('clientId');
-                  return this.http.delete('http://localhost:3000/client/' + clientId + token)
+                  return this.http.delete('https://warsha-2.herokuapp.com/client/' + clientId + token)
                       .map((response: Response) => response.json())
                       .catch((error: Response) => Observable.throw(error.json()));
             }

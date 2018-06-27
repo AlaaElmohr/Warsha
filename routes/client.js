@@ -55,7 +55,7 @@ router.get('/:id', function (req, res, next) {
            path:'feedbacks'
          }})
         .exec(function (err, client) {
-          console.log("client"+client);
+          console.log("client2"+client);
             this.JobPostedCount=client.jobPostedCount;
             this.JobDoneCount=client.jobDoneCount;
             if (err) {

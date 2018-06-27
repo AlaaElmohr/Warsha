@@ -138,7 +138,10 @@
                               <div class="info">
                                   <p>Rate</p>
                                   <div class="rate">
-                                  <i class="fa fa-star" *ngFor="let star of getStars(job?.client.stars-1)" ></i>
+                                  <i class="fa fa-star" *ngFor="let star of getStars(job?.client.stars)" ></i>
+                                  <p *ngIf="job?.client.stars%2 != 0">
+                                    {{job?.client.stars}} from 5
+                                  </p>
                                 </div>
                               </div>
                             </a>
