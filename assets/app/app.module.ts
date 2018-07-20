@@ -62,6 +62,8 @@ import { SidebarClientComponent } from './dashboard/dashboard-client/sidebar-cli
 import { PostJobComponent } from './dashboard/dashboard-client/post-job/post-job.component';
 import { ManageJobComponent } from './dashboard/dashboard-client/manage-job/manage-job.component';
 import { EditProfileClientComponent } from './dashboard/dashboard-client/edit-profile-client/edit-profile-client.component';
+import { TransactionsClientComponent } from './dashboard/dashboard-client/transactions-client/transactions-client.component';
+import { TransactionsComponent } from './dashboard/dashboard-candinate/transactions/transactions.component';
 import { AllApplicationsComponent } from './dashboard/dashboard-client/all-applications/all-applications.component';
 import { ApplicationComponent } from './dashboard/dashboard-client/application/application.component';
 import { ApplyJobComponent } from './jobs/apply-job/apply-job.component';
@@ -88,12 +90,16 @@ import {PostService} from './services/post.service';
 import {AppService} from './services/app.service';
 import {ContractService} from './services/contract.service';
 import {CommentService} from './services/comment.service';
-import {MyPostsComponent } from './blog/my-posts/my-posts.component'
+import {MyPostsComponent } from './blog/my-posts/my-posts.component';
+import {MessangerComponent} from './messanger/messanger.component';
+import{MessangerRoomComponent} from './messanger/messanger-room/messanger-room.component';
+import{MessangerListComponent} from './messanger/messanger-list/messanger-list.component';
 const appRoutes: Routes = [
   {path:'',component :HomeComponent},
   {path:'Home',component :HomeComponent},
   {path:'Login',component :LoginComponent},
   {path:'SignUp',component :SignUpComponent},
+  {path:'Messanger',component :MessangerComponent},
   {path:'Candinate/Profile',component :CandinateProfileComponent,canActivate: [AuthGuard]},
   {path:'Candinate/Profile/:id',component :CandinateProfileComponent,canActivate: [AuthGuard]},
   {path:'CandinateList',component :CandinateListComponent,canActivate: [AuthGuard]},
@@ -120,6 +126,8 @@ const appRoutes: Routes = [
     {path:'AppliedJobs',component :AppliedJobComponent},
     {path:'ShortlistedJobs',component :ShortlistedJobComponent},
     {path:'MyProfile',component :ProfileComponent},
+    {path:'Transactions',component :TransactionsComponent },
+
     {path:'MyApplication/:id' ,component :MyApplicationComponent},
     {path:'Proposals',component :ProposalsComponent},
     {path:'FeedBackToClient/:id/:type',component :FeedBackToClientComponent},
@@ -130,7 +138,7 @@ const appRoutes: Routes = [
     {path:'ChangePassword',component :ChangePasswordClientComponent},
     {path:'PostJob',component :PostJobComponent},
     {path:'PostJob/:id',component :PostJobComponent},
-
+    {path:'Transactions',component :TransactionsClientComponent},
     {path:'AllApplications/:id',component :AllApplicationsComponent},
     {path:'Application/:id',component :ApplicationComponent},
     {path:'ManageJobs',component :ManageJobComponent},
@@ -155,6 +163,8 @@ const appRoutes: Routes = [
     SignUpComponent,
     DashboardCandinateComponent,
     ProposalsComponent,
+    TransactionsClientComponent,
+    TransactionsComponent ,
     SidebarCondinateComponent,
     ProfileComponent,
     ChangePasswordComponent,
@@ -189,6 +199,9 @@ const appRoutes: Routes = [
     SidebarBlogComponent,
     BlogPostsComponent,
     NavberMobileComponent,
+    MessangerComponent,
+    MessangerListComponent,
+    MessangerRoomComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+@import '../../assets/sass/variables';
+
+.messages{
+      margin-left: 15px;
+
+   .list{
+     background: #48235a;
+     width: 30%;
+       height: 100%;
+     position: fixed;
+    overflow-x: hidden;
+     overflow-y: scroll;
+   }
+   .room{
+     background: $white;
+      width: 70%;
+      height: 100%;
+      margin-left: 30%;
+      position: fixed;
+     overflow-x: hidden;
+      overflow-y: scroll;
+   }
+}

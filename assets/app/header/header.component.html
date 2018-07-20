@@ -64,6 +64,10 @@
             <a class="nav-link"  routerLink="/Login" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/login.png">Login</a>
             <a class="nav-link"  routerLink="/SignUp" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/sign.png">Sign Up</a>
             <a class="dropdown user-info"  ngbDropdown *ngIf="userName" >
+              <div  class="message-alert" routerLink="/Messanger">
+                <div  class="number">3</div>
+                <i  class="fas fa-heart"></i>
+              </div>
               <img [src]="userImage" class="img-circle" *ngIf="userImage"/>
               <span >{{userName}}</span>
               <a class="nav-link dropdown-toggle"  ngbDropdownToggle role="button" data-toggle="dropdown"  >

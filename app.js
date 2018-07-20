@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var compression = require('compression');
 
 var appRoutes = require('./routes/app');
 var messageRoutes = require('./routes/messages');
@@ -19,12 +20,13 @@ var feedbackRoutes = require('./routes/feedback');
 var contractRoutes = require('./routes/contract');
 var sendEmailRoutes = require('./routes/sendEmail');
 var app = express();
-//mongoose.connect('mongodb://localhost:27017/Graduation-Project');
+mongoose.connect('mongodb://localhost:27017/Graduation-Project');
 
-mongoose.connect('mongodb://test-user:alaa1234@ds263740.mlab.com:63740/warsha');
+//mongoose.connect('mongodb://test-user:alaa1234@ds263740.mlab.com:63740/warsha');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(compression()); //use compression
 app.use(express.static('assets'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
