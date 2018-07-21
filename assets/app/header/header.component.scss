@@ -17,10 +17,10 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: auto;
+    height: 600px;
     content: "";
     background-image: url(http://warsha-c9d2.kxcdn.com/assets/images/lines.png);
-    z-index: 0;
+    z-index: 99999999999999;
     opacity: 0.14;
 }
 .header-text{
@@ -171,7 +171,6 @@ font-size: 13px;
 color: #c1c1c1;
 }
 .go-down{
-  display: none;
    bottom:40px;
    left: 45.65%;
    position: absolute;
