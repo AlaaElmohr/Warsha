@@ -1,7 +1,7 @@
 @import '../../assets/sass/variables';
 
 .cover-container {
-  background:url(/../../assets/images/header-home.png);
+  background:url(http://warsha-c9d2.kxcdn.com/assets/images/header-home.png);
   background-size: cover;
   background-position: center center;
   height:auto;
@@ -19,7 +19,7 @@
     width: 100%;
     height: auto;
     content: "";
-    background-image: url(/../../assets/images/lines.png);
+    background-image: url(http://warsha-c9d2.kxcdn.com/assets/images/lines.png);
     z-index: 0;
     opacity: 0.14;
 }

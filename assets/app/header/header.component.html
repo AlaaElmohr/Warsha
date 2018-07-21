@@ -61,8 +61,8 @@
          <a class="nav-link" routerLink="/JobsList" routerLinkActive="active" >Jobs List</a>
             <a class="nav-link space"  routerLink="/Blog/createPost" *ngIf="typeUser()==='user'"><button class="btn btn-primary btn-rounded">make a Post </button></a>
             <a class="nav-link space"  routerLink="/DashboardClient/PostJob" *ngIf="typeUser()==='client'"><button class="btn btn-primary btn-rounded">+ Post A Job</button></a>
-            <a class="nav-link"  routerLink="/Login" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/login.png">Login</a>
-            <a class="nav-link"  routerLink="/SignUp" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="/../../assets/images/sign.png">Sign Up</a>
+            <a class="nav-link"  routerLink="/Login" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="http://warsha-c9d2.kxcdn.com/assets/images/login.png">Login</a>
+            <a class="nav-link"  routerLink="/SignUp" routerLinkActive="active" *ngIf="!isLoggedIn()"><img src="http://warsha-c9d2.kxcdn.com/assets/images/sign.png">Sign Up</a>
             <a class="dropdown user-info"  ngbDropdown *ngIf="userName" >
               <div  class="message-alert" routerLink="/Messanger">
                 <div  class="number">3</div>
@@ -91,7 +91,7 @@
                   <div class="input-group mb-3">
                    <input type="text" class="form-control" ngModel name="title" placeholder="Job title, keywords or company name" >
                    <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/keyboard.png"></span>
+                    <span class="input-group-text" id="basic-addon2"><img src="http://warsha-c9d2.kxcdn.com/assets/images/keyboard.png"></span>
                    </div>
                   </div>
                 </div>
@@ -99,12 +99,12 @@
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" ngModel name="city"  placeholder="City, province or region" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2"><img src="/../../assets/images/map.png"></span>
+                      <span class="input-group-text" id="basic-addon2"><img src="http://warsha-c9d2.kxcdn.com/assets/images/map.png"></span>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-2">
-                  <button class="btn btn-secondary btn-rounded-small" type="submit"><img src="/../../assets/images/search.png"></button>
+                  <button class="btn btn-secondary btn-rounded-small" type="submit"><img src="http://warsha-c9d2.kxcdn.com/assets/images/search.png"></button>
                 </div>
               </div>
             </form>
