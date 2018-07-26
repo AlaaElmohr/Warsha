@@ -15,7 +15,7 @@ export class AppService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://app-warsha-1.herokuapp.com/application' + token, body, {headers: headers})
+      return this.http.post('http://app-warsha-1.herokuapp.comapplication' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -25,7 +25,7 @@ export class AppService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha-1.herokuapp.com/application/' + id + '?query=' + type )
+        return this.http.get('http://app-warsha-1.herokuapp.comapplication/' + id + '?query=' + type )
             .map((response: Response) => {
                 const apps = response.json().obj;
                 let applications: Application[] = [];
@@ -52,7 +52,7 @@ export class AppService{
           ? '?token=' + localStorage.getItem('token')
           : '';
           console.log(id);
-      return this.http.delete('http://app-warsha-1.herokuapp.com/application/' + id + token)
+      return this.http.delete('http://app-warsha-1.herokuapp.comapplication/' + id + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -62,7 +62,7 @@ export class AppService{
           : '';
         let  id=app.appId;
 
-      return this.http.patch('http://app-warsha-1.herokuapp.com/application/' + id + token,app)
+      return this.http.patch('http://app-warsha-1.herokuapp.comapplication/' + id + token,app)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
