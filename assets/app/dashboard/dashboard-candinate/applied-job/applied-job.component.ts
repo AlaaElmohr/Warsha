@@ -13,10 +13,17 @@ export class AppliedJobComponent implements OnInit {
   contracts:Contract[]=[];
   feedback:FeedBack;
   p: number = 1;
-  getStars(number){
-    return new Array(number);
-  }
+
  constructor(private router:Router,private contractService:ContractService){}
+ isInteger(value){
+   return Number.isInteger(value)
+ }
+ getStars(number){
+  if( !this.isInteger(number) ){
+    number=Math.floor(number);
+  }
+  return new Array(number);
+ }
  ngOnInit(){
    const userId = localStorage.getItem('userId');
     this.contractService.getContracts('user').subscribe(

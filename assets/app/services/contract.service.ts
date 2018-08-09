@@ -11,15 +11,13 @@ export class ContractService{
     constructor(private http: Http) {}
     addContract(contract){
       const body = JSON.stringify(contract);
-      console.log("body"+body);
       const headers = new Headers({'Content-Type': 'application/json'});
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://app-warsha-1.herokuapp.comcontract' + token, body, {headers: headers})
+      return this.http.post('http://localhost:3000/contract' + token, body, {headers: headers})
           .map((response: Response) => {
             const result = response.json();
-            console.log("response"+ result.obj._id);
             return result.obj._id;
           }
      )
@@ -31,7 +29,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.patch('http://app-warsha-1.herokuapp.comcontract' + token, body, {headers: headers})
+      return this.http.patch('http://localhost:3000/contract' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -42,7 +40,7 @@ export class ContractService{
           ? 'token=' + localStorage.getItem('token')
           : '';
           const typeQuery= '?query=' + type + '&' + token;
-        return this.http.get('http://app-warsha-1.herokuapp.comcontract' +  typeQuery)
+        return this.http.get('http://localhost:3000/contract' +  typeQuery)
             .map((response: Response) => {
               const contracts= response.json().obj;
               let contractValue: Contract[] = [];
@@ -61,7 +59,6 @@ export class ContractService{
                    )
                   );
               }
-              console.log("contract"+contractValue);
               return contractValue;
 
             })
@@ -71,7 +68,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha-1.herokuapp.comcontract/' +id+  token)
+        return this.http.get('http://localhost:3000/contract/' +id+  token)
             .map((response: Response) => {
               const contract= response.json().obj;
                   let contractValue=new Contract(
@@ -85,7 +82,6 @@ export class ContractService{
                      contract.job,
                      contract.client,
                    );
-              console.log(contractValue);
               return contractValue;
             })
           .catch((error: Response) => Observable.throw(error.json()));
@@ -94,8 +90,7 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-          console.log(id);
-      return this.http.delete('http://app-warsha-1.herokuapp.comapplication/' + id + token)
+      return this.http.delete('http://localhost:3000/application/' + id + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -105,18 +100,16 @@ export class ContractService{
           : '';
         let  id=app.appId;
 
-      return this.http.patch('http://app-warsha-1.herokuapp.comapplication/' + id + token,app)
+      return this.http.patch('http://localhost:3000/application/' + id + token,app)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
     addFeedBack(id,feedback,type){
-      console.log("type" + type);
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
           var typeParam= '?type=' + type;
-          console.log(typeParam);
-      return this.http.post('http://app-warsha-1.herokuapp.comfeedback/' + id + typeParam  ,feedback)
+      return this.http.post('http://localhost:3000/feedback/' + id + typeParam  ,feedback)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -124,14 +117,13 @@ export class ContractService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha-1.herokuapp.comfeedback/' + id + '/' +  status + token)
+        return this.http.get('http://localhost:3000/feedback/' + id + '/' +  status + token)
             .map((response: Response) => {
               const feedbacks= response.json().obj;
               let feedbackValue:FeedBack[]=[];
               for(let feedback of  feedbacks){
                 feedbackValue.push(new FeedBack(feedback.stars,feedback.comment));
               }
-              console.log(feedbackValue);
               return feedbackValue;
             })
           .catch((error: Response) => Observable.throw(error.json()));

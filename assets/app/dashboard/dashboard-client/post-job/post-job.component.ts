@@ -79,7 +79,7 @@ export class PostJobComponent implements OnInit {
       const post=new Job(form.value.title,form.value.description,categoryValue,form.value.salary,type,this.skills,this.deadline,form.value.country,form.value.city,form.value.address);
       this.jobService.addPost(post)
          .subscribe(
-             data => console.log(data),
+             data => {console.log(data);  this.router.navigate(['JobsList']);},
             error => console.error(error)
          );
     }
@@ -87,12 +87,13 @@ export class PostJobComponent implements OnInit {
       const post=new Job(form.value.title,form.value.description,form.value.categories,form.value.salary,type,this.skills,this.deadline,form.value.country,form.value.city,form.value.address,this.post.clientId,this.post.jobId);
       this.jobService.editPost(post,this.id)
          .subscribe(
-             data => console.log(data),
+           data => {console.log(data);  this.router.navigate(['JobsList']);},
+
             error => console.error(error)
          );
     }
     form.reset();
-    this.router.navigate(['JobsList']);
+
 
      }
 

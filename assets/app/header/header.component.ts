@@ -29,6 +29,7 @@ typeUser(){
  ngOnInit() {
    this.text=this.headerService.getText();
    let type=this.typeUser();
+   if(type){
    if(type=='client'){
      const clientId=localStorage.getItem('clientId');
      this.clientService.getClient(clientId)
@@ -52,9 +53,10 @@ typeUser(){
              this.userImage ="/assets/uploads/"+user[0].profile.userImage;
            }
         },
-           error => console.error(error)
         );
+
    }
+ }
   }
   onSubmit(f:NgForm){
  this.router.navigate(['JobsList/',f.value.title,f.value.city]);

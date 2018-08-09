@@ -138,10 +138,17 @@
                               <div class="info">
                                   <p>Rate</p>
                                   <div class="rate">
-                                  <i class="fa fa-star" *ngFor="let star of getStars(job?.client.stars)" ></i>
-                                  <p *ngIf="job?.client.stars%2 != 0">
-                                    {{job?.client.stars}} from 5
-                                  </p>
+                                    <div [ngClass]="{'m-t-20' : getStars(job?.client.stars) == 0.5}">
+                                        <fieldset class="rating">
+                                          <div class="m-t-10">
+                                            <input type="radio" /><label *ngIf="job?.client.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                                          </div>
+                                          <div *ngFor="let in of  getStars(job?.client.stars)">
+                                            <input type="radio" /><label class="full"></label>
+                                            <input type="radio"  /><label  *ngIf="isInteger(job?.client.stars) == false"  [ngClass]="{'half' :  isInteger(job?.client.stars) == false}" ></label>
+                                          </div>
+                                        </fieldset>
+                                    </div>
                                 </div>
                               </div>
                             </a>

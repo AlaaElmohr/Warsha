@@ -51,23 +51,33 @@
                 <img [src]="userImage[i]" class="avatar" />
                 <div class="info">
                  <p>{{user?.name}}</p>
-                 <span>{{user?.profile.jobTitle}}</span>
+                 <span>{{user?.profile?.jobTitle}}</span>
                 </div>
               </div>
 
                <div class="money">
                  <div class="earned"><img src="/../../../assets/images/money.png" /><span>{{user?.totalEarned | currency:'USD'}}</span></div>
                  <div class="rate">
-                   <i  *ngFor="let i of getStars(user?.stars)" class="fa fa-star"></i>
-                   <p *ngIf="user?.stars%2 != 0">
-                     {{user?.stars}} from 5
-                   </p>
+                   <div [ngClass]="{'m-t-20' : getStars(user?.stars) == 0.5}">
+                       <fieldset class="rating">
+                         <div class="m-t-10">
+                           <input type="radio" /><label *ngIf="user?.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                         </div>
+                         <div *ngFor="let in of  getStars(user?.stars)">
+                           <input type="radio" /><label class="full"></label>
+                           <input type="radio"  /><label  *ngIf="isInteger(user?.stars) == false"  [ngClass]="{'half' :  isInteger(user?.stars) == false}" ></label>
+                         </div>
+                       </fieldset>
+                   </div>
+
                  </div>
                </div>
+               <!--->
               <div class="map">
                    <img src="/../../../assets/images/map2.png">
-                   <span>{{user?.profile.city}} / {{user?.profile.country}}</span>
+                   <span>{{user?.profile?.city}} / {{user?.profile?.country}}</span>
                </div>
+               <!--->
                <button mat-raised-button color="warn" class="btn-rounded" (click)="visitProfile()">
                    <mat-icon aria-label="Example icon-button with a heart icon">email</mat-icon>
                   Contact</button>

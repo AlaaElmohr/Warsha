@@ -8,14 +8,12 @@ import { Application } from "../models/application.model";
 export class AppService{
     constructor(private http: Http) {}
     addApplication(app:Application){
-        console.log(app);
       const body = JSON.stringify(app);
-      console.log(body);
       const headers = new Headers({'Content-Type': 'application/json'});
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://app-warsha-1.herokuapp.comapplication' + token, body, {headers: headers})
+      return this.http.post('http://localhost:3000/application' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -25,11 +23,10 @@ export class AppService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.get('http://app-warsha-1.herokuapp.comapplication/' + id + '?query=' + type )
+        return this.http.get('http://localhost:3000/application/' + id + '?query=' + type )
             .map((response: Response) => {
                 const apps = response.json().obj;
                 let applications: Application[] = [];
-                console.log(applications);
                 for (let app of apps) {
                     applications.push(new Application(
                       app.coverLetter,
@@ -41,7 +38,6 @@ export class AppService{
                        app.status
                      )
                     );
-                    console.log('service'+app);
                 }
                 return applications;
             })
@@ -51,8 +47,7 @@ export class AppService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-          console.log(id);
-      return this.http.delete('http://app-warsha-1.herokuapp.comapplication/' + id + token)
+      return this.http.delete('http://localhost:3000/application/' + id + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }

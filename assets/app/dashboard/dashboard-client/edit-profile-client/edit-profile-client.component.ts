@@ -19,7 +19,9 @@ export class EditProfileClientComponent implements OnInit {
   constructor(private profileService: ProfileClientService,private router:Router) {}
   ngOnInit(){
      this.profileService.getProfile().subscribe(
+
             data => {
+            if(data != undefined){
               this.profile=data;
               if(data){
                 this.editMode=true;
@@ -27,6 +29,7 @@ export class EditProfileClientComponent implements OnInit {
               }
               this.url="/assets/uploads/"+data.clientImage
               this.imageName=data.clientImage;
+            }
             },
            error => console.error(error)
         );
@@ -66,7 +69,7 @@ export class EditProfileClientComponent implements OnInit {
         if(this.editMode===false){
           this.profileService.addProfile(formData)
              .subscribe(
-                 data => console.log(data),
+               data =>{console.log(data);this.router.navigate(['Employer/Profile']);},
                 error => console.error(error)
              );
         }
@@ -74,11 +77,11 @@ export class EditProfileClientComponent implements OnInit {
           console.log("update"+profile);
           this.profileService.updateProfile(formData)
              .subscribe(
-                 data => console.log(data),
+                 data =>{console.log(data);this.router.navigate(['Employer/Profile']);},
                 error => console.error(error)
              );
         }
-        this.router.navigate(['Employer/Profile']);
+
 }
 
 }

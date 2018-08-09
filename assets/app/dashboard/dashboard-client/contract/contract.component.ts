@@ -11,7 +11,17 @@ export class ContractComponent implements OnInit {
   id;
   p: number = 1;
  contracts:Contract[];
+
 constructor(private route:ActivatedRoute,private router:Router,private contractService:ContractService){}
+isInteger(value){
+  return Number.isInteger(value)
+}
+getStars(number){
+ if( !this.isInteger(number) ){
+   number=Math.floor(number);
+ }
+ return new Array(number);
+}
 ngOnInit(){
    let clientId = localStorage.getItem('clientId');
   this.route.params.subscribe(params => {
@@ -23,9 +33,7 @@ ngOnInit(){
      );
 });
 }
-getStars(number){
-  return new Array(number);
-}
+
 finishContract(contract){
   console.log(contract);
   this.contractService.finishContract(contract)

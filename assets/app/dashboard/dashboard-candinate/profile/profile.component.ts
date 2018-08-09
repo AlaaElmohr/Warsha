@@ -61,6 +61,7 @@ export class ProfileComponent implements OnInit{
      let id=localStorage.getItem('userId');
       this.profileUserService.getProfile(id).subscribe(
              data => {
+               if(data != undefined){
                this.profile=data;
                if(data.jobTitle){
                  this.editMode=true;
@@ -74,15 +75,20 @@ export class ProfileComponent implements OnInit{
                    this.category=category.value;
                  }
                }
-               console.log(new Date(parseInt(data.educationFrom.toString())));
+              if(data.workFrom != null && data.educationFrom != null) {
                this.educationFrom=new Date(parseInt(data.educationFrom.toString()));
                this.educationTo=new Date(parseInt(data.educationTo.toString()));
                this.workFrom=new Date(parseInt(data.workFrom.toString()));
                this.workTo=new Date(parseInt(data.workTo.toString()));
+             }
 
+                if(data == undefined){
                this.url="/assets/uploads/"+data.userImage;
-               this.imageName=data.userImage;
+                 this.imageName=data.userImage;
+               }
+             }
              },
+
             error => console.error(error)
          );
    }
@@ -124,7 +130,7 @@ onSubmit(form:NgForm){
       if(this.editMode===false){
         this.profileUserService.addProfile(formData)
            .subscribe(
-               data => console.log(data),
+               data => {console.log(data); this.router.navigateByUrl('Candinate/Profile')},
               error => console.error(error)
            );
       }
@@ -132,11 +138,11 @@ onSubmit(form:NgForm){
         console.log("update"+profile);
         this.profileUserService.updateProfile(formData)
            .subscribe(
-               data => console.log(data),
+               data => {console.log(data); this.router.navigateByUrl('Candinate/Profile')},
               error => console.error(error)
            );
       }
- this.router.navigate(['Candinate/Profile']);
+
 
 }
 

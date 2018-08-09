@@ -19,6 +19,15 @@ export class EmployerProfileComponent implements OnInit {
   typeUser=localStorage.getItem('type');
   clientImage;
   constructor(private profileService:ProfileClientService,private clientService:ClientService,private emailService:SendEmailService,private headerService:HeaderService) {}
+  isInteger(value){
+    return Number.isInteger(value)
+  }
+  getStars(number){
+   if( !this.isInteger(number) ){
+     number=Math.floor(number);
+   }
+   return new Array(number);
+  }
   ngOnInit() {
     this.headerService.addText('Employer Profile');
 
@@ -30,12 +39,7 @@ export class EmployerProfileComponent implements OnInit {
           error => console.error(error)
        );
   }
-  getStars(number){
-    if(number%2 != 0){
-      number=Math.ceil(number);
-    }
-    return new Array(number);
-  }
+
   onSubmit(form:NgForm){
              const email=new Email(form.value.from,this.client.email,form.value.subject,form.value.message,form.value.password);
              this.emailService.sendEmail(email).subscribe(

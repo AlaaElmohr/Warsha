@@ -24,28 +24,36 @@ filterJobType=[];
 filterBudget=[];
 jobTypes=['Full Time','Part Time','Contract'];
 budget=[0,100,200,300,400];
+
  constructor(private jobService:JobService,private headerService:HeaderService,private route:ActivatedRoute){}
+isInteger(value){
+  return Number.isInteger(value)
+}
+getStars(number){
+ if( !this.isInteger(number) ){
+   number=Math.floor(number);
+ }
+ return new Array(number);
+}
+
  ngOnInit(){
+   console.log(this.isInteger(3.5));
    this.headerService.addText('Job List');
    this.route.params.subscribe(params => {
         this.title= params['title'];
         this.city= params['city'];
         if(this.title){
           this.search={title:this.title,city:this.city}
-          console.log("search"+this.search.title)
         }
         else{
           this.search='';
-          console.log("search"+this.search.title)
 
         }
     this.jobService.getPosts(this.search).subscribe(
           (jobs: Job[]) => {
             this.jobLength=jobs.length;
-            for(let job of jobs){
-              console.log(job);
-            }
               this.jobs= jobs;
+
           }
       );
  })
@@ -56,14 +64,9 @@ budget=[0,100,200,300,400];
              result => console.log(result)
          );
  }
- getStars(number){
-   if(number%2 != 0){
 
-     number=Math.ceil(number);
-     console.log("hi")
-   }
-   return new Array(number);
- }
+
+
   panelOpenState: boolean = false;
   p: number = 1;
   collection: any[] = [1,2,4,5,6,7,7,9,9,9,9,9,9,9,9,9,1,2,4,5,6,7,7,9,9,9,9,9,9,9,9,9,1,2,4,5,6,7,7,9,9,9,9,9,9,9,9,9,1,2,4,5,6,7,7,9,9,9,9,9,9,9,9,9];
@@ -111,43 +114,34 @@ budget=[0,100,200,300,400];
      if(e.checked==true){
        this.filterCategory.push(value);
        this.filter.category=this.filterCategory;
-       console.log(e);
      }
      if(e.checked==false){
        this.filterCategory.splice(this.filterCategory.indexOf(value),1);
        this.filter.category=this.filterCategory;
-       console.log(e);
      }
    }
    if(by=== 2){
      if(e.checked==true){
        this.filterJobType.push(value);
        this.filter.jobType=this.filterJobType;
-       console.log(e);
      }
      if(e.checked==false){
        this.filterJobType.splice(this.filterJobType.indexOf(value),1);
        this.filter.jobType=this.filterJobType;
-       console.log(e);
      }
    }
    if(by=== 3){
      if(e.checked==true){
        this.filterBudget.push(value);
        this.filter.budget=this.filterBudget;
-       console.log(e);
      }
      if(e.checked==false){
        this.filterBudget.splice(this.filterBudget.indexOf(value),1);
        this.filter.budget=this.filterBudget;
-       console.log(e);
      }
    }
     this.jobService.getPosts(this.filter).subscribe(
       (jobs: Job[]) => {
-        for(let job of jobs){
-          console.log(job);
-        }
           this.jobs= jobs;
       }
     );

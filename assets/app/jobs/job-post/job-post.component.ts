@@ -18,11 +18,14 @@ id;
 job:Job;
 editMode=false;
 jobCount:Number;
+isInteger(value){
+  return Number.isInteger(value)
+}
 getStars(number){
-  if(number%2 != 0){
-    number=Math.ceil(number);
-  }
-  return new Array(number);
+ if( !this.isInteger(number) ){
+   number=Math.floor(number);
+ }
+ return new Array(number);
 }
 ngOnInit(){
   this.headerService.addText('Job Post');

@@ -22,11 +22,14 @@ durationTypes = [
  {value: '1', viewValue: 'Week'},
  {value: '2', viewValue: 'Month'},
 ];
+isInteger(value){
+  return Number.isInteger(value)
+}
 getStars(number){
-  if(number%2 != 0){
-    number=Math.ceil(number);
-  }
-  return new Array(number);
+ if( !this.isInteger(number) ){
+   number=Math.floor(number);
+ }
+ return new Array(number);
 }
   onSubmit(form:NgForm){
     let duration;
@@ -40,11 +43,11 @@ getStars(number){
    console.log("app"+app)
    this.appService.addApplication(app)
       .subscribe(
-          data => console.log(data),
+          data => {console.log(data);this.router.navigate(['DashboardUser/Proposals']);},
          error => console.error(error)
       );
  form.reset();
- this.router.navigate(['DashboardUser/Proposals']);
+
 
 }
 reset(form:NgForm){

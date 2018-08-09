@@ -22,6 +22,15 @@ export class CandinateListComponent implements OnInit{
   userImage=[];
   categories = [ 'Plumber','Carpenter','Wall Painter','Electricians','Television Engineer','Refrigeration Engineer','Air Conditioning Engineer','Washing Machine Engineer'];
   constructor(private userService:UserService,private headerService:HeaderService,private router:Router) { }
+  isInteger(value){
+    return Number.isInteger(value)
+  }
+  getStars(number){
+   if( !this.isInteger(number) ){
+     number=Math.floor(number);
+   }
+   return new Array(number);
+  }
   ngOnInit(){
     this.headerService.addText('Candinate List');
   this.userService.getUsers('').subscribe(
@@ -39,12 +48,6 @@ export class CandinateListComponent implements OnInit{
   }
   visitProfile(user){
     this.router.navigate(['Candinate/Profile/', user._id]);
-  }
-  getStars(number){
-    if(number%2 != 0){
-      number=Math.ceil(number);
-    }
-    return new Array(number);
   }
   search(name){
     console.log(name);

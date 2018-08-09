@@ -10,14 +10,14 @@ export class ProfileUserService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-            return this.http.post('http://app-warsha-1.herokuapp.comuser/profile' + token, formData )
+            return this.http.post('http://localhost:3000/user/profile' + token, formData )
                     .map(files => files.json())
       }
     updateProfile(formData) {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.patch('http://app-warsha-1.herokuapp.comuser/profile' + token, formData )
+        return this.http.patch('http://localhost:3000/user/profile' + token, formData )
                 .map(files => files.json())
     }
     getProfile(id) {
@@ -26,44 +26,46 @@ export class ProfileUserService {
             ? '?token=' + localStorage.getItem('token')
             : '';
           //  const id=localStorage.getItem('userId')
-            return this.http.get('http://app-warsha-1.herokuapp.comuser/profile/' + id +  token , {headers: headers})
+            return this.http.get('http://localhost:3000/user/profile/' + id +  token , {headers: headers})
             .map((response: Response) => {
               const user= response.json().obj;
               const profile= user.profile;
-              console.log(profile);
-              let profileValue=new ProfileUser(
-                profile.userImage,
-                profile.jobTitle,
-                profile.educationLevel,
-                profile.age,
-                profile.languages,
-                 profile.experience,
-                 profile.coverLetter,
-                 profile.phoneNumber,
-                 profile.websiteLink,
-                 profile.facebookLink,
-                 profile.twitterLink,
-                 profile.googleLink,
-                 profile.linkedinLink,
-                 profile.country,
-                 profile.city,
-                 profile.address,
-                 profile.categories,
-                profile.education.educationTitle,
-                 profile.education.from,
-                 profile.education.to,
-                 profile.education.institue,
-                 profile.education.description,
-                 profile.workExperience.title,
-                 profile.workExperience.from,
-                 profile.workExperience.to,
-                 profile.workExperience.company,
-                 profile.workExperience.description,
-                 user.name,
-                 user.email,
-                 user.memberSince
-                );
-              return profileValue;
+              if( profile != undefined){
+                let profileValue=new ProfileUser(
+                  profile.userImage,
+                  profile.jobTitle,
+                  profile.educationLevel,
+                  profile.age,
+                  profile.languages,
+                   profile.experience,
+                   profile.coverLetter,
+                   profile.phoneNumber,
+                   profile.websiteLink,
+                   profile.facebookLink,
+                   profile.twitterLink,
+                   profile.googleLink,
+                   profile.linkedinLink,
+                   profile.country,
+                   profile.city,
+                   profile.address,
+                   profile.categories,
+                  profile.education.educationTitle,
+                   profile.education.from,
+                   profile.education.to,
+                   profile.education.institue,
+                   profile.education.description,
+                   profile.workExperience.title,
+                   profile.workExperience.from,
+                   profile.workExperience.to,
+                   profile.workExperience.company,
+                   profile.workExperience.description,
+                   user.name,
+                   user.email,
+                   user.memberSince
+                  );
+                return profileValue;
+              }
+
             })
     }
 }

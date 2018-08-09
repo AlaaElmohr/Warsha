@@ -320,6 +320,36 @@
    }
  }
 }
+.rating {
+  border: none;
+  height: 40px;
+  margin-left: -10px;
+}
+.rating > div {
+  margin-right: 0px !important;
+      display: contents;
+}
+.rating > div >  input { display: none; }
+.rating >  div > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > div >  .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating >  div > label {
+  color: #FFD700;
+  float: left;
+}
+.m-t-20{
+  margin-top: -20px
+}
 }
 .mr-auto, .mx-auto {
     margin-right: auto!important;

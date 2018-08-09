@@ -12,9 +12,13 @@ export class FeedBackToUserComponent implements OnInit {
   constructor(private route: ActivatedRoute ,private contractService: ContractService,private router:Router) {}
 id;
 type;
-stars = [1,2,3,4,5];
+stars;
+// /stars;
+rate(value){
+  this.stars=value;
+}
   onSubmit(form:NgForm){
-   const feedback=new FeedBack(form.value.stars,form.value.comment);
+   const feedback=new FeedBack(this.stars,form.value.comment);
    this.contractService.addFeedBack(this.id,feedback,this.type)
       .subscribe(
          data => console.log(data),

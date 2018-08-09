@@ -75,7 +75,17 @@
                            <h6>{{contract.title}}</h6>
                            <div class="rate" *ngFor="let feedback of contract?.feedbacks">
                              <div *ngIf="feedback.status==='fromUserToClient'">
-                               <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
+                               <div [ngClass]="{'m-t-20' : getStars(feedback.stars) == 0.5}">
+                                   <fieldset class="rating">
+                                     <div class="m-t-10">
+                                       <input type="radio" /><label *ngIf="feedback?.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                                     </div>
+                                     <div *ngFor="let in of  getStars(feedback?.stars)">
+                                       <input type="radio" /><label class="full"></label>
+                                       <input type="radio"  /><label  *ngIf="isInteger(feedback?.stars) == false"  [ngClass]="{'half' :  isInteger(feedback?.stars) == false}" ></label>
+                                     </div>
+                                   </fieldset>
+                               </div>
                                 <span>{{feedback.comment}}</span>
                              </div>
                            </div>
@@ -146,12 +156,17 @@
                               <img src="../../../assets/images/language.png" />
                               <div class="info">
                                   <p>Rate</p>
-                                  <div class="rate">
-                                  <i class="fa fa-star" *ngFor="let star of getStars(client?.stars)" ></i>
-                                  <p *ngIf="client?.stars%2 != 0">
-                                    {{client?.stars}} from 5
-                                  </p>
-                                </div>
+                                  <div class="rate" [ngClass]="{'m-t-20' : getStars(client?.stars) == 0.5}">
+                                      <fieldset class="rating">
+                                        <div class="m-t-10">
+                                          <input type="radio" /><label *ngIf="client?.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                                        </div>
+                                        <div *ngFor="let in of  getStars(client?.stars)">
+                                          <input type="radio" /><label class="full"></label>
+                                          <input type="radio"  /><label  *ngIf="isInteger(client?.stars) == false"  [ngClass]="{'half' :  isInteger(client?.stars) == false}" ></label>
+                                        </div>
+                                      </fieldset>
+                                  </div>
                               </div>
                             </a>
                             </li>

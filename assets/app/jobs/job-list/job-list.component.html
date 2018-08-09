@@ -88,7 +88,7 @@
        <div class="list">
          <h3>{{jobLength}} Jobs & Vacancies</h3>
          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p }" (mouseenter)="makeActive=job" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==job}">
+            <li class="list-group-item" *ngFor="let job of jobs | paginate: { itemsPerPage: 5, currentPage: p } ; let i = index" (mouseenter)="makeActive=job" (mouseleave)="makeActive=-1" [ngClass]="{active:makeActive==job}">
                <div class="job-info">
                  <div class="info">
                    <div class="img">
@@ -125,11 +125,16 @@
                     <!--->
                     <img src="../../../assets/images/money.png" />{{job?.client.totalSpent | currency}}<span></span>
                   </div>
-                  <div class="rate">
-                      <i class="fa fa-star" *ngFor="let i of getStars(job?.client.stars)" ></i>
-                      <p *ngIf="job?.client.stars%2 != 0">
-                        {{job?.client.stars}} from 5
-                      </p>
+                  <div class="rate" [ngClass]="{'m-t-20' : getStars(job?.client.stars) == 0.5}">
+                      <fieldset class="rating">
+                        <div class="m-t-10">
+                          <input type="radio" /><label *ngIf="job?.client.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                        </div>
+                        <div *ngFor="let in of  getStars(job?.client.stars)">
+                          <input type="radio" /><label class="full"></label>
+                          <input type="radio"  /><label  *ngIf="isInteger(job?.client.stars) == false"  [ngClass]="{'half' :  isInteger(job?.client.stars) == false}" ></label>
+                        </div>
+                      </fieldset>
                   </div>
 
                   <div class="map">

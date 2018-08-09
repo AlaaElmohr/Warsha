@@ -42,10 +42,11 @@ export class ApplicationComponent implements OnInit {
             this.app.contractId=result;
             console.log("result"+ result);
             console.log("result"+ this.app.contractId);
+            this.router.navigate(['DashboardClient/ActivatedContract'])
             // this.router.navigate(['activateContract', this.app.contractId]);
           }
         );
-        this.router.navigate(['DashboardClient/ActivatedContract'])
+
   }
 visitProfile(){
   this.router.navigate(['Candinate/Profile/', this.app.user._id]);

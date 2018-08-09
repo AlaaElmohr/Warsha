@@ -8,6 +8,7 @@ import { NgForm } from "@angular/forms";
 import {Email} from '../../models/email.model';
 import {SendEmailService} from '../../services/sendEmail.service';
 import {HeaderService} from '../../services/header.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-candinate-profile',
@@ -18,9 +19,19 @@ export class CandinateProfileComponent implements OnInit {
   user:User;
   id;
   profileId;
+  count=1;
   typeUser=localStorage.getItem('type');
   userImage;
-  constructor(private profileService:ProfileUserService,private route:ActivatedRoute,private userService:UserService,private emailService:SendEmailService,private headerService:HeaderService) {}
+  isInteger(value){
+    return Number.isInteger(value)
+  }
+  getStars(number){
+   if( !this.isInteger(number) ){
+     number=Math.floor(number);
+   }
+   return new Array(number);
+  }
+  constructor(private location: Location,private profileService:ProfileUserService,private route:ActivatedRoute,private userService:UserService,private emailService:SendEmailService,private headerService:HeaderService) {}
   ngOnInit() {
     this.headerService.addText('Candinate Profile');
     this.route.params.subscribe(params => {
@@ -33,20 +44,15 @@ export class CandinateProfileComponent implements OnInit {
          }
          this.userService.getUser(this.profileId,'id').subscribe(
              (user:User[])=> {
-               console.log(user[0]);
                this.user=user[0];
               this.userImage ="/assets/uploads/"+this.user.profile.userImage;
-              console.log(this.userImage)
                },
                error => console.error(error)
             );
        });
   }
-  getStars(number){
-    if(number%2 != 0){
-      number=Math.ceil(number);
-    }
-    return new Array(number);
+  load() {
+  location.reload();
   }
   onSubmit(form:NgForm){
              const email=new Email(form.value.from,this.user.email,form.value.subject,form.value.message,form.value.password);

@@ -6,7 +6,8 @@
     <div class="col-md-12">
       <form (ngSubmit)="onSubmit(feedback)" #feedback="ngForm">
         <label for="exampleInputEmail1">Stars</label>
-         <div class="input-group mb-3">
+        <!--->
+         <div class="input-group mb-3 .inline">
            <mat-form-field placeholder="Job Type">
              <mat-select  ngModel name="stars">
                <mat-option *ngFor="let star of stars" [value]="star">
@@ -14,10 +15,30 @@
                </mat-option>
              </mat-select>
            </mat-form-field>
+
         </div>
-        <label for="exampleInputEmail1">Comment</label>
-        <div class="input-group mb-3">
-         <input type="text" class="form-control" ngModel name="comment" >
+        <!--->
+        <div class="stars">
+          <fieldset class="rating">
+              <input type="radio" /><label class = "full" (click)="rate(5)"></label>
+              <input type="radio"  /><label class="half" (click)="rate(4.5)"></label>
+              <input type="radio"   /><label class = "full" (click)="rate(4)"></label>
+              <input type="radio"   /><label class="half" (click)="rate(3.5)"></label>
+              <input type="radio"  /><label class = "full" (click)="rate(3)"></label>
+              <input type="radio"  /><label class="half" (click)="rate(2.5)"></label>
+              <input type="radio"  /><label class = "full" (click)="rate(2)"></label>
+              <input type="radio" /><label class="half" (click)="rate(1.5)"></label>
+              <input type="radio" /><label class = "full" (click)="rate(1)"></label>
+              <input type="radio" /><label class="half" (click)="rate(0.5)" ></label>
+          </fieldset>
+        </div>
+
+        <br />
+        <div class="comment">
+          <label for="exampleInputEmail1">Comment</label>
+          <div class="input-group mb-3">
+           <input type="text" class="form-control" ngModel name="comment" />
+          </div>
         </div>
         <div class="update">
             <button class="btn btn-primary">Send</button>

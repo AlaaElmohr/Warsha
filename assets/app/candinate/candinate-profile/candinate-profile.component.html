@@ -66,18 +66,21 @@
                     <div class="about" id="about">
                       <p>{{user?.profile.coverLetter}}</p>
                     </div>
-                    <h3>Education</h3>
-                    <div  id="education">
-                       <div class="education">
-                         <img src="/../../../assets/images/education2.png" />
-                         <div class="info">
-                           <h5>{{user?.profile.education.title}}</h5>
-                           <h6>{{user?.profile.education.from | date}} - {{user?.profile.education.to | date}}</h6>
-                           <p>{{user?.profile.education.institue}}<span>{{user?.profile.education.description}}</span></p>
+                    <div *ngIf="user?.profile.education.from">
+                      <h3>Education</h3>
+                      <div  id="education">
+                         <div class="education">
+                           <img src="/../../../assets/images/education2.png" />
+                           <div class="info">
+                             <h5>{{user?.profile.education.title}}</h5>
+                             <h6>{{user?.profile.education.from | date}} - {{user?.profile.education.to | date}}</h6>
+                             <p>{{user?.profile.education.institue}}<span>{{user?.profile.education.description}}</span></p>
+                           </div>
                          </div>
-                       </div>
 
+                      </div>
                     </div>
+                  <div *ngIf="user?.profile.workExperience.title">
                     <h3>Work Experiece</h3>
                     <div class="experience" id="experience">
                       <div class="timeline">
@@ -93,6 +96,7 @@
                         </ul>
                       </div>
                     </div>
+                    </div>
                     <div class="work-history" id="work">
                       <h3>User's Work History and Feedback ({{user?.jobDoneCount}})</h3>
                       <ul class="list-group" *ngFor="let contract of user?.contracts">
@@ -102,7 +106,17 @@
                                  <h6>{{contract.title}}</h6>
                                  <div class="rate" *ngFor="let feedback of contract?.feedbacks">
                                    <div *ngIf="feedback.status==='fromClientToUser'">
-                                      <i class="fa fa-star" *ngFor="let star of  getStars(feedback.stars)"></i>
+                                     <div [ngClass]="{'m-t-20' : getStars(feedback.stars) == 0.5}">
+                                         <fieldset class="rating">
+                                           <div class="m-t-10">
+                                             <input type="radio" /><label *ngIf="feedback.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                                           </div>
+                                           <div *ngFor="let in of  getStars(feedback.stars)">
+                                             <input type="radio" /><label class="full"></label>
+                                             <input type="radio"  /><label  *ngIf="isInteger(feedback.stars) == false"  [ngClass]="{'half' :  isInteger(feedback.stars) == false}" ></label>
+                                           </div>
+                                         </fieldset>
+                                     </div>
                                       <span>{{feedback.comment}}</span>
                                    </div>
                                  </div>
@@ -175,12 +189,18 @@
                                   <img src="/../../../assets/images/education.png" />
                                   <div class="info">
                                       <p>Rate</p>
-                                      <div class="rate">
-                                      <i class="fa fa-star" *ngFor="let star of getStars(user?.stars)" ></i>
-                                      <p *ngIf="user?.stars%2 != 0">
-                                        {{user?.stars}} from 5
-                                      </p>
-                                    </div>
+                                        <div class="rate" [ngClass]="{'m-t-20' : getStars(user?.stars) == 0.5}">
+                                            <fieldset class="rating">
+                                              <div class="m-t-10">
+                                                <input type="radio" /><label *ngIf="user?.stars == 0.5"  [ngClass]="{'half' :  isInteger(0.5) == false}" ></label>
+                                              </div>
+                                              <div *ngFor="let in of  getStars(user?.stars)">
+                                                <input type="radio" /><label class="full"></label>
+                                                <input type="radio"  /><label  *ngIf="isInteger(user?.stars) == false"  [ngClass]="{'half' :  isInteger(user?.stars) == false}" ></label>
+                                              </div>
+                                            </fieldset>
+                                        </div>
+
                                   </div>
                                 </a>
                                 </li>

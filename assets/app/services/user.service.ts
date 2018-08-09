@@ -14,7 +14,7 @@ changePassword(password){
       : '';
   const body = {password:password};
   const  id = localStorage.getItem('userId');
-  return this.http.patch('http://app-warsha-1.herokuapp.comuser/changepassword/' + id +token, body)
+  return this.http.patch('http://localhost:3000/user/changepassword/' + id +token, body)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
 }
@@ -24,13 +24,11 @@ getUsers(filter){
       : '';
 const body = JSON.stringify(filter);
 const query='?query=' + body +'&' +token;
-  return this.http.get('http://app-warsha-1.herokuapp.comuser' + query)
+  return this.http.get('http://localhost:3000/user' + query)
       .map((response: Response) => {
           const users = response.json().obj;
-          console.log(users.length);
           let transformedUsers: User[] = [];
           for (let user of users) {
-            console.log(user);
               transformedUsers.push(new User(
                   user.name,
                   user.email,
@@ -55,7 +53,7 @@ getUser(value,type){
       : '';
     let query='?query=' + type + '&' + token;
    let result;
-  result= this.http.get('http://app-warsha-1.herokuapp.comuser/'+value+ query);
+  result= this.http.get('http://localhost:3000/user/'+value+ query);
     return result.map((response: Response) => {
               const users = response.json().obj[0];
               const jobDoneCount = response.json().obj[1];

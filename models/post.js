@@ -8,6 +8,10 @@ var schema = new Schema({
     title:[{type:String}],
     description:[{type:String}],
     categories:{type:String},
+    userImage:{
+      type:String,
+      default:'noImage.png'
+    },
     tags:[{type:String}],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
