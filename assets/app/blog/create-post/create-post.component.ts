@@ -14,6 +14,8 @@ import { FormGroup,FormControl,FormArray ,Validators} from '@angular/forms';
 })
 export class CreatePostComponent implements OnInit {
   id;
+  url;
+  imageName;
  description:any[]=[];
   title:any[]=[];
  editMode=false;
@@ -25,6 +27,7 @@ export class CreatePostComponent implements OnInit {
   action='Set';
   CreatePost : FormGroup;
   editModeAction:string;
+  filesToUpload: Array<File> = [];
 FromToDate;
   constructor(private postService: PostService, private route: ActivatedRoute,private router: Router ) {}
   addTag(event: MatChipInputEvent): void {
@@ -36,6 +39,19 @@ FromToDate;
     if (input) {
       input.value = '';
     }
+  }
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  if (fileInput.target.files && fileInput.target.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = (event:any) => {
+      this.url = event.target.result;
+    }
+    reader.readAsDataURL(fileInput.target.files[0]);
+  }
+
+  //  this.product.photo = fileInput.target.files[0]['name'];
   }
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
@@ -110,28 +126,46 @@ private initForm(){
   });
 }
 submit(){
+  const formData: any = new FormData();
+  let postData;
+  const files: Array<File> = this.filesToUpload;
    const categories=this.CreatePost.value['categories'];
     const titleAndDesc =this.CreatePost.value['titleAndDesc'].slice();
     for(let post of titleAndDesc){
       this.title.push(post.title);
       this.description.push(post.description);
     }
-    const post= new Post(this.title,this.description,categories,this.tags,new Date());
+
+      if(files[0]==undefined && this.editMode===true){
+        console.log("1");
+         postData= new Post(this.imageName,this.title,this.description,categories,this.tags,new Date());
+      }
+     else if(files[0]==undefined && this.editMode===false){
+         console.log("2");
+       postData= new Post('',this.title,this.description,categories,this.tags,new Date());
+     }
+     else{
+         console.log("3");
+         formData.append("uploads[]", files[0], files[0]['name']);
+        postData= new Post(files[0]['name'],this.title,this.description,categories,this.tags,new Date());
+
+     }
+     var post=JSON.stringify(postData);
+     formData.append("post", post);
   if(this.editMode==false){
-    this.postService.addPost(post)
+    this.postService.addPost(formData)
        .subscribe(
            data => console.log(data),
           error => console.error(error)
        );
   }
   else{
-    this.postService.updatePost(post,this.id)
+    this.postService.updatePost(formData,this.id)
        .subscribe(
            data => console.log(data),
           error => console.error(error)
        );
   }
- this.router.navigate(['Blog/myPosts']);
  this.CreatePost.reset();
 }
 }

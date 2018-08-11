@@ -1,4 +1,9 @@
 <div class="create-post">
+  <div class="background-post btn btn-default btn-file">
+    <input type="file" type="file" (change)="fileChangeEvent($event)">
+    <img [src]="url" class="img-circle" *ngIf="url" >
+
+  </div>
   <form  [formGroup]="CreatePost" (ngSubmit)="submit()" >
       <div>
          <div class="addMore">

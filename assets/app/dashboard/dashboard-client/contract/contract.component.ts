@@ -28,6 +28,7 @@ ngOnInit(){
        this.id = params['id'];
    this.contractService.getContracts('client').subscribe(
          (contracts: Contract[]) => {
+            console.log(contracts);
              this.contracts=contracts;
          }
      );

@@ -6,7 +6,16 @@ var Message = require('../models/message');
 var Client= require('../models/client');
 var Comment= require('../models/comment');
 var Post= require('../models/post');
-
+const multer=require('multer');
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './assets/assets/uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+var upload = multer({ storage: storage });
 router.get('/', function (req, res, next) {
   CommentsCount=[];
     Post.find()
@@ -41,7 +50,7 @@ router.use('/', function (req, res, next) {
 });
 router.get('/:id', function (req, res, next) {
       Post.findById(req.params.id)
-       .populate('user', 'name')
+       .populate({path:'user'})
        .populate({path:'comments'})
         .exec(function (err, post) {
             if (err) {
@@ -66,12 +75,16 @@ router.post('/:id/comment', function (req, res, next) {
                   error: err
               });
           }
-          var comment= new Comment({
-              description: req.body.description,
-              time: req.body.time,
-              name:req.body.userName,
-              user: decoded.user._id,
-              post:post._id
+          User.findById(decoded.user._id).exec(function(err,user){
+            var comment= new Comment({
+                description: req.body.description,
+                time: req.body.time,
+                name:req.body.userName,
+                user: decoded.user._id,
+                userImage:user.profile.userImage,
+                post:post._id
+          })
+
           });
            comment.save(function (err, result) {
                if (err) {
@@ -95,8 +108,9 @@ router.post('/:id/comment', function (req, res, next) {
       });
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', upload.array("uploads[]", 12),function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
+    var postValue=JSON.parse(req.body.post);
     User.findById(decoded.user._id, function (err, user) {
         if (err) {
             return res.status(500).json({
@@ -105,11 +119,12 @@ router.post('/', function (req, res, next) {
             });
         }
         var post = new Post({
-            title: req.body.title,
-            description: req.body.description,
-            categories: req.body.categories,
-            tags:req.body.tags,
-            time: req.body.time,
+          postImage: req.files[0].filename,
+            title: postValue.title,
+            description: postValue.description,
+            categories: postValue.categories,
+            tags:postValue.tags,
+            time: postValue.time,
             user: user._id
         });
         post.save(function (err, result) {
@@ -129,8 +144,10 @@ router.post('/', function (req, res, next) {
     });
 });
 
-router.patch('/:id', function (req, res, next) {
+router.patch('/:id', upload.array("uploads[]", 12),function (req, res, next) {
+    imageName='';
     var decoded = jwt.decode(req.query.token);
+    var postValue=JSON.parse(req.body.post);
     User.findById(decoded.user._id, function (err, user) {
     Post.findById(req.params.id, function (err, post) {
         if (err) {
@@ -151,11 +168,18 @@ router.patch('/:id', function (req, res, next) {
                 error: {message: 'Users do not match'}
             });
         }
-        post.title = req.body.title;
-        post.description= req.body.description;
-        post.categories= req.body.categories;
-        post.tags= req.body.tags;
-        post.time= req.body.time;
+        if(req.files[0]==undefined){
+          this.imageName=post.postImage;
+        }
+        else{
+          this.imageName=req.files[0].filename;
+              }
+        post.postImage=this.imageName;
+        post.title = postValue.title;
+        post.description= postValue.description;
+        post.categories= postValue.categories;
+        post.tags= postValue.tags;
+        post.time= postValue.time;
         post.save(function (err, result) {
             if (err) {
                 return res.status(500).json({

@@ -19,17 +19,17 @@
         </div>
         <!--->
         <div class="stars">
-          <fieldset class="rating">
-              <input type="radio" /><label class = "full" (click)="rate(5)"></label>
-              <input type="radio"  /><label class="half" (click)="rate(4.5)"></label>
-              <input type="radio"   /><label class = "full" (click)="rate(4)"></label>
-              <input type="radio"   /><label class="half" (click)="rate(3.5)"></label>
-              <input type="radio"  /><label class = "full" (click)="rate(3)"></label>
-              <input type="radio"  /><label class="half" (click)="rate(2.5)"></label>
-              <input type="radio"  /><label class = "full" (click)="rate(2)"></label>
-              <input type="radio" /><label class="half" (click)="rate(1.5)"></label>
-              <input type="radio" /><label class = "full" (click)="rate(1)"></label>
-              <input type="radio" /><label class="half" (click)="rate(0.5)" ></label>
+          <fieldset class="rating" #starsRef>
+            <input type="radio" /><a class = "full  5"  (click)="rate(5)"></a>
+            <input type="radio" /><a class="half 4.5" (click)="rate(4.5)"></a>
+            <input type="radio" /><a class = "full 4"  (click)="rate(4)"></a>
+            <input type="radio" /><a class="half 3.5"  (click)="rate(3.5)"></a>
+            <input type="radio" /><a class = "full 3"   (click)="rate(3)"></a>
+            <input type="radio" /><a class="half 2.5" (click)="rate(2.5)"></a>
+            <input type="radio"  /><a class = "full  2"  (click)="rate(2)"></a>
+            <input type="radio" /><a class="half 1.5"  (click)="rate(1.5)"></a>
+            <input type="radio" /><a class = "full 1"   (click)="rate(1)"></a>
+            <input type="radio" /><a class="half 0.5"  (click)="rate(0.5)" ></a>
           </fieldset>
         </div>
 

@@ -14,7 +14,7 @@ export class CommentService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://localhost:3000/post/' + id +'/comment'+ token, body, {headers: headers})
+      return this.http.post('http://app-warsha-1.herokuapp.com/post/' + id +'/comment'+ token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -25,15 +25,17 @@ export class CommentService{
           ? '?token=' + localStorage.getItem('token')
           : '';
       //    const userId = localStorage.getItem('userId');
-        return this.http.get('http://localhost:3000/comment/' + id +token )
+        return this.http.get('http://app-warsha-1.herokuapp.com/comment/' + id +token )
             .map((response: Response) => {
               const comments = response.json().obj;
               let  Comments: Comment[] = [];
               for (let comment of comments) {
+                console.log(comment);
                    Comments.push(new Comment(
                       comment.description,
                       comment.time,
                       comment.user.name,
+                      comment.userImage,
                       comment._id,
                       comment.post
                       )
@@ -48,7 +50,7 @@ export class CommentService{
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.delete('http://localhost:3000/comment/' + id + token)
+      return this.http.delete('http://app-warsha-1.herokuapp.com/comment/' + id + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }

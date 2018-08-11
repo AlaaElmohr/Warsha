@@ -12,11 +12,14 @@ export class BlogPostsComponent implements OnInit {
   collection: any[] = [1,2,4,5,6,7,7,];
   posts:Post[]=[];
   userId=localStorage.getItem('userId');
+  postImage=[];
  constructor(private postService:PostService){ }
  ngOnInit(){
     this.postService.getPosts().subscribe(
           (posts: Post[]) => {
             for(let post of posts){
+              const image="/assets/uploads/"+post.postImage;
+              this.postImage.push(image);
               this.posts.push(post);
           }
           }

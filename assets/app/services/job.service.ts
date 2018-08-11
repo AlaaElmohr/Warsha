@@ -12,7 +12,7 @@ export class JobService {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.post('http://localhost:3000/job' + token, body, {headers: headers})
+      return this.http.post('http://app-warsha-1.herokuapp.com/job' + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -24,7 +24,7 @@ export class JobService {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.patch('http://localhost:3000/job/' +id+ token, body, {headers: headers})
+      return this.http.patch('http://app-warsha-1.herokuapp.com/job/' +id+ token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })
@@ -36,7 +36,7 @@ export class JobService {
           : '';
           const body = JSON.stringify(filter);
           const query='?query=' + body;
-        return this.http.get('http://localhost:3000/job' + query)
+        return this.http.get('http://app-warsha-1.herokuapp.com/job' + query)
             .map((response: Response) => {
                 const posts = response.json().obj[0];
                 const AppCount = response.json().obj[1];
@@ -69,7 +69,7 @@ export class JobService {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.get('http://localhost:3000/job/' + id +token)
+      return this.http.get('http://app-warsha-1.herokuapp.com/job/' + id +token)
           .map((response: Response) => {
               const post = response.json().obj[0];
               const appCount= response.json().obj[1];
@@ -99,7 +99,7 @@ export class JobService {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.delete('http://localhost:3000/job/' + job.jobId + token)
+      return this.http.delete('http://app-warsha-1.herokuapp.com/job/' + job.jobId + token)
           .map((response: Response) => response.json())
           .catch((error: Response) => Observable.throw(error.json()));
     }
@@ -110,7 +110,7 @@ export class JobService {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-      return this.http.patch('http://localhost:3000/job/' + id + token, body, {headers: headers})
+      return this.http.patch('http://app-warsha-1.herokuapp.com/job/' + id + token, body, {headers: headers})
           .map((response: Response) => {
               const result = response.json();
           })

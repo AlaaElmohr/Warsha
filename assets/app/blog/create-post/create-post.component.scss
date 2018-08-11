@@ -1,8 +1,32 @@
 @import '../../../assets/sass/variables';
 .create-post{
   margin-top: 40px;
+  .btn-file {
+    margin-bottom: 30px;
+    display: block;
+  margin: 0 auto;
+  width: 77%;
+  height: 250px;
+    background: url('../../../assets/images/upload.png')
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  opacity: 0;
+  outline: none;
+  background: $darkPurple;
+  cursor: inherit;
+  display: block;
+
+
+  }
   .update{
-    margin-top: 20px;
+    margin-top: 40px;
     .btn-primary{
       border-radius: 30px
     }

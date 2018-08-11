@@ -10,14 +10,14 @@ export class ProfileUserService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-            return this.http.post('http://localhost:3000/user/profile' + token, formData )
+            return this.http.post('http://app-warsha-1.herokuapp.com/user/profile' + token, formData )
                     .map(files => files.json())
       }
     updateProfile(formData) {
       const token = localStorage.getItem('token')
           ? '?token=' + localStorage.getItem('token')
           : '';
-        return this.http.patch('http://localhost:3000/user/profile' + token, formData )
+        return this.http.patch('http://app-warsha-1.herokuapp.com/user/profile' + token, formData )
                 .map(files => files.json())
     }
     getProfile(id) {
@@ -26,7 +26,7 @@ export class ProfileUserService {
             ? '?token=' + localStorage.getItem('token')
             : '';
           //  const id=localStorage.getItem('userId')
-            return this.http.get('http://localhost:3000/user/profile/' + id +  token , {headers: headers})
+            return this.http.get('http://app-warsha-1.herokuapp.com/user/profile/' + id +  token , {headers: headers})
             .map((response: Response) => {
               const user= response.json().obj;
               const profile= user.profile;

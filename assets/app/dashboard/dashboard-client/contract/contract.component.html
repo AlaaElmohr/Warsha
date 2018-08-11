@@ -58,7 +58,7 @@
           </div></div>
         </td>
         <td>
-          <span matTooltip="Finish Contract" matTooltipClass="primary-tooltip"><img src="/../../../../assets/images/edit.png" (click)="finishContract(contract)" /></span>
+          <span matTooltip="Finish Contract" matTooltipClass="primary-tooltip" *ngIf="contract.status == 'opened' "><img src="/../../../../assets/images/edit.png" (click)="finishContract(contract)" /></span>
         </td>
       </tr>
     </tbody>

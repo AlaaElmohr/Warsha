@@ -39,7 +39,7 @@
               </div>
           </div></div></td>
         <td><p>{{contract?.startTime | date}}</p><p>{{contract?.finishTime | date}}</p></td>
-        <td><span matTooltip="Give FeedBack" matTooltipClass="primary-tooltip" ><img src="/../../../../assets/images/edit.png" (click)="goTo(contract)" /></span></td>
+        <td><span matTooltip="Give FeedBack" matTooltipClass="primary-tooltip" *ngIf="!contract.feedback[1]"><img src="/../../../../assets/images/edit.png" (click)="goTo(contract)" /></span></td>
       </tr>
     </tbody>
 

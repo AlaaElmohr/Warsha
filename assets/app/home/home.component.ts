@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
    jobType=[];
    jobLength;
    imageBlog;
+   postImage=[];
    categories = [ {name:'Plumber',count:0},{name:'Carpenter',count:0},{name:'Wall Painter',count:0},{name:'Electricians',count:0},{name:'Television Engineer',count:0},
    {name:'Refrigeration Engineer',count:0},{name:'Air Conditioning Engineer',count:0},{name:'Washing Machine Engineer',count:0}];
    lengthCategory=this.categories.length;
@@ -27,6 +28,8 @@ class=['fas fa-crop','fas fa-graduation-cap','fas fa-chart-line','fas fa-users',
           (posts: Post[]) => {
             for(let post of posts){
               if(posts.indexOf(post)<=3){
+                const image="/assets/uploads/"+post.postImage;
+                this.postImage.push(image);
                 this.posts.push(post);
               }
           }

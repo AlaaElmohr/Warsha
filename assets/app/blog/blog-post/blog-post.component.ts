@@ -15,6 +15,9 @@ export class BlogPostComponent implements OnInit {
   post:Post;
   id;
   userId=localStorage.getItem('userId');
+  backgroundImage=[];
+  postImage;
+  userImage;
  constructor(private commentService:CommentService,private route:ActivatedRoute,private postService:PostService){}
  ngOnInit(){
    this.route.params.subscribe(params => {
@@ -22,7 +25,10 @@ export class BlogPostComponent implements OnInit {
         this.postService.getPostById(this.id).subscribe(
               (post: Post) => {
                     this.post= post;
-                    console.log(this.post.comments)
+                    this.postImage="/assets/uploads/"+post.postImage;
+                    this.userImage="/assets/uploads/"+post.userImage;
+                    console.log(post.postImage);
+                    console.log(post);
               }
           );
      });
@@ -33,6 +39,10 @@ export class BlogPostComponent implements OnInit {
         .subscribe(
             result => console.log(result)
         );
+}
+image(value){
+  const image="/assets/uploads/" +value;
+  return image;
 }
  onSubmit(form:NgForm){
     const comment=new Comment(form.value.description,new Date(),form.value.name,form.value.email);

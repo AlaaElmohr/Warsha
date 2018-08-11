@@ -8,7 +8,7 @@ var schema = new Schema({
     title:[{type:String}],
     description:[{type:String}],
     categories:{type:String},
-    userImage:{
+    postImage:{
       type:String,
       default:'noImage.png'
     },

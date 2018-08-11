@@ -8,6 +8,7 @@ var schema = new Schema({
     description:{type:String},
     name:{type:String},
     user: {type: Schema.Types.ObjectId, ref: 'User'},
+    userImage:{type:String},
     post:{type: Schema.Types.ObjectId, ref: 'Post'}
 });
 

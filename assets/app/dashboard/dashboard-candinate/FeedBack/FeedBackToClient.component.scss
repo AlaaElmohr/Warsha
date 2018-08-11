@@ -1,5 +1,6 @@
 @import '../../../../assets/sass/variables';
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 .feedback{
    padding: 50px 0px;
   .header{
@@ -51,7 +52,7 @@
     float: right;
 
   }
-  fieldset, label { margin: 0; padding: 0; }
+  fieldset, a{ margin: 0; padding: 0; }
   body{ margin: 20px; }
   h1 { font-size: 1.5em; margin: 10px; }
 
@@ -59,7 +60,7 @@
 .stars{
   height: 30px
 }
-  .rating {
+  .rating  {
     border: none;
 
     float: left
@@ -67,7 +68,7 @@
 .rating >  div {
 }
   .rating >  input { display: none; }
-  .rating >  label:before {
+  .rating >  a:before {
     margin: 5px;
     font-size: 1.25em;
     font-family: FontAwesome;
@@ -75,26 +76,38 @@
     content: "\f005";
   }
 
-  .rating >   .half:before {
+  .rating > .half:before {
     content: "\f089";
     position: absolute;
   }
 
-  .rating >  label {
+  .rating >  a{
     color: #ddd;
     float: right;
   }
 
   /***** CSS Magic to Highlight Stars on Hover *****/
+.rating> input + a.rate-5{
+  color: #FFED85;
+}
+  .rating >  input:checked ~ a, /* show gold star when clicked */
+  .rating:not(:checked) >a:hover, /* hover current star */
+  .rating:not(:checked) > a:hover ~ a{ color: #FFD700;  } /* hover previous stars in list */
 
-  .rating >  input:checked ~ label, /* show gold star when clicked */
-  .rating:not(:checked) >label:hover, /* hover current star */
-  .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+  .rating >  input:checked + a:hover, /* hover current star when changing rating */
+  .rating >  input:checked ~ a:hover,
+  .rating >  a:hover ~ input:checked ~ a, /* lighten current selection */
+  .rating >  input:checked ~ a:hover ~ a { color: #FFED85;  }
 
-  .rating >  input:checked + label:hover, /* hover current star when changing rating */
-  .rating >  input:checked ~ label:hover,
-  .rating >  label:hover ~ input:checked ~ label, /* lighten current selection */
-  .rating >  input:checked ~ label:hover ~ label { color: #FFED85;  }
+  .rating >  input:checked ~ a, /* show gold star when clicked */
+  .rating:not(:checked) >a:active, /* active current star */
+  .rating:not(:checked) > a:active ~ a{ color: #FFD700;  } /* hover previous stars in list */
+
+  .rating >  input:checked + a:active, /* hover current star when changing rating */
+  .rating >  input:checked ~ a:active,
+  .rating >  a:active ~ input:checked ~ a, /* lighten current selection */
+  .rating >  input:checked ~ a:active ~ a { color: #FFED85;  }
+
   .background{
     margin-top: 10px;
     background:url(/../../../../assets/images/password-background.png);

@@ -54,6 +54,10 @@
   .btn-warning{
     margin-top: 40px;
     color:#fff !important;
+    &:hover{
+      background: $pink;
+      border-color:$pink
+    }
   }
 }
 .custom-control-label::before{

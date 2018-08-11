@@ -27,8 +27,6 @@ clientId=localStorage.getItem('clientId');
       );
       this.clientService.getClient(this.clientId).subscribe(
         (client: Client) => {
-          console.log(this.clientId);
-          console.log(client);
           this.client=client;
         }
       )

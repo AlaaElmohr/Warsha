@@ -70,7 +70,7 @@ footer{
 
 .footer{
 background-color: $footer;
-padding:55px 0px;
+padding:35px 0px;
 }
 .Address{
     margin-top: 50px
@@ -119,5 +119,16 @@ img{
     font-family: $openSans;
     font-size: 13px;
     font-weight: 500
+  }
+}
+.our-store{
+  .p-t-20{
+    margin-top: -20px
+  }
+  .btn-success{
+    &:hover{
+      background-color: transparent;
+      border-color:$white
+    }
   }
 }

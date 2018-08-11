@@ -183,10 +183,10 @@
         <p>Found by employers communicate directly with hiring managers and recruiters.</p>
         <div class="container p-t-40">
             <div class="row">
-                <div class="col-md-4" *ngFor="let post of posts ">
+                <div class="col-md-4" *ngFor="let post of posts ; let i = index">
                   <div class="card" >
                     <div class="card-img">
-                      <img class="card-img-top" src="../../assets/images/blog-1.png">
+                      <img class="card-img-top" [src]="postImage[i]">
                       <div class="card-info">
                           <span>{{post?.time | date}} | {{post?.commentsCount}} Comments</span>
                       </div>

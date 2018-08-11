@@ -1,10 +1,10 @@
 <div class="post">
     <div class="post-thumb">
-      <img src="/../../../assets/images/post-1.png">
+      <img [src]="postImage">
     </div>
     <div class="post-meta">
         <div>
-          <img src="/../../../assets/images/profile2.png">
+          <img [src]="userImage">
           <span>{{post?.userName}}</span>
         </div>
         <div>
@@ -35,7 +35,8 @@
         <h6>Comments</h6>
         <div class="comment"  *ngFor="let comment of post?.comments">
           <div class="user-image">
-            <img src="/../../../assets/images/profile4.png">
+            <img [src]="image(comment.userImage)">
+          
           </div>
           <div class="user-comment">
             <div class="user-info flex">

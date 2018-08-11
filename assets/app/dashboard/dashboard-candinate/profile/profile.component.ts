@@ -22,8 +22,8 @@ export class ProfileComponent implements OnInit{
   FromToDate: any[] = [];
   languages = [];
   url;
-  category;
   imageName;
+  category;
   workTo;workFrom;educationTo;educationFrom;
 //  categories= [];
   profile:ProfileUser;

@@ -13,13 +13,15 @@ export class MyPostsComponent implements OnInit {
   collection: any[] = [1,2,4,5,6,7,7,];
   posts:Post[]=[];
   userId=localStorage.getItem('userId');
+  postImage=[];
+  backgroundImage=[];
  constructor(private postService:PostService,private headerService:HeaderService){}
  ngOnInit(){
      this.headerService.addText('Blog / My Posts');
     this.postService.getPosts().subscribe(
           (posts: Post[]) => {
             for(let post of posts){
-              console.log("Posts"+post);
+              this.postImage.push("/assets/uploads/"+post.postImage);
             if(post.userId._id === this.userId){
               this.posts.push(post);
             }

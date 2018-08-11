@@ -38,6 +38,7 @@
     h6{
       @include font($Quicksand,$black,16px);
       font-weight: bold;
+      margin-top: 20px;
      }
   }
   .tags{
@@ -83,6 +84,8 @@
        .user-image{
          img{
            border-radius:50%;
+           height: 40px;
+           width: 40px;
          }
        }
        .user-comment{
