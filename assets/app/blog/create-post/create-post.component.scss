@@ -10,11 +10,9 @@
     background: url('../../../assets/images/upload.png')
 }
 .btn-file input[type=file] {
-  position: absolute;
   top: 0;
   right: 0;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
   font-size: 100px;
   text-align: right;
   opacity: 0;
@@ -22,9 +20,16 @@
   background: $darkPurple;
   cursor: inherit;
   display: block;
-
-
   }
+  .image-review{
+    margin-top: 50px;
+position: absolute;
+width: 40%;
+top: 0;
+/* right: 0; */
+left: 0;
+margin-left: -190px;
+}
   .update{
     margin-top: 40px;
     .btn-primary{

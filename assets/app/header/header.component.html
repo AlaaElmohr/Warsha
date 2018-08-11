@@ -74,11 +74,11 @@
               <span >{{userName}}</span>
               <a class="nav-link dropdown-toggle"  ngbDropdownToggle role="button" data-toggle="dropdown"  >
               </a>
-
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                <button class="dropdown-item" type="button" (click)="logOut()">Log Out</button>
+              </div>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="!isLoggedIn()">
-              <button class="dropdown-item" type="button" (click)="logOut()">Log Out</button>
-            </div>
+
           </nav>
         </div>
       </header>

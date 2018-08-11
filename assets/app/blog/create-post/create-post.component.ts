@@ -137,15 +137,12 @@ submit(){
     }
 
       if(files[0]==undefined && this.editMode===true){
-        console.log("1");
          postData= new Post(this.imageName,this.title,this.description,categories,this.tags,new Date());
       }
      else if(files[0]==undefined && this.editMode===false){
-         console.log("2");
        postData= new Post('',this.title,this.description,categories,this.tags,new Date());
      }
      else{
-         console.log("3");
          formData.append("uploads[]", files[0], files[0]['name']);
         postData= new Post(files[0]['name'],this.title,this.description,categories,this.tags,new Date());
 
@@ -155,14 +152,17 @@ submit(){
   if(this.editMode==false){
     this.postService.addPost(formData)
        .subscribe(
-           data => console.log(data),
+           data => {console.log(data);
+             this.router.navigate(['Blog/myPosts']);
+
+           },
           error => console.error(error)
        );
   }
   else{
     this.postService.updatePost(formData,this.id)
        .subscribe(
-           data => console.log(data),
+           data => {console.log(data);   this.router.navigate(['Blog/myPosts']);},
           error => console.error(error)
        );
   }
