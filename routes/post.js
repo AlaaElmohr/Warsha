@@ -110,6 +110,7 @@ router.post('/:id/comment', function (req, res, next) {
 
 router.post('/', upload.array("uploads[]", 12),function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
+    let image;
     var postValue=JSON.parse(req.body.post);
     User.findById(decoded.user._id, function (err, user) {
         if (err) {
@@ -118,8 +119,14 @@ router.post('/', upload.array("uploads[]", 12),function (req, res, next) {
                 error: err
             });
         }
+        if(req.files[0] == undefined){
+          image='noImage.png'
+        }
+        else{
+          image=req.files[0].filename;
+        }
         var post = new Post({
-          postImage: req.files[0].filename,
+          postImage:image,
             title: postValue.title,
             description: postValue.description,
             categories: postValue.categories,
